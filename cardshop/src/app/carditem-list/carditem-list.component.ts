@@ -16,13 +16,13 @@ import { CommonModule } from '@angular/common';
 export class CarditemListComponent {
 
   carditemList: CardItem[] = [];
-  search: string = '';
 
   constructor(private route: ActivatedRoute, private cardItemService: CardItemService, ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const categoria = params.get('categoria');
+      const search = params.get('search') || '';
       if (categoria !== null) {
       }else{
         this.carditemList = this.cardItemService.getCardsList();
