@@ -21,9 +21,10 @@ export class CarditemListComponent {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      const categoria = params.get('categoria');
+      const categoria = params.get('categoria') || '';
       const search = params.get('search') || '';
-      if (categoria !== null) {
+      if (categoria !== '' || search !== '') {
+        this.carditemList = this.cardItemService.getCardListWithFilters(categoria,search);
       }else{
         this.carditemList = this.cardItemService.getCardsList();
       }

@@ -326,7 +326,29 @@ export class CardItemService {
     ]
 
     getCardsList(): CardItem[]{
-        return this.cardItemList
+        return this.cardItemList;
+    }
+
+    getCardListWithFilters(category: string, search: string): CardItem[]{
+        var result: CardItem[] = [];
+        
+        if(category !== ''){
+            result = this.cardItemList.filter(cardItem =>
+                cardItem.CardType.toLowerCase().includes(category.toLowerCase())
+            );
+        }
+        
+        if(category === '' && search !== ''){
+            result = this.cardItemList;
+        }
+        
+        if(search !== ''){
+            result = result.filter(cardItem =>
+                cardItem.CardName.toLowerCase().includes(search.toLowerCase())
+            );
+        }
+
+        return result;
     }
 
     addCardItem(){
