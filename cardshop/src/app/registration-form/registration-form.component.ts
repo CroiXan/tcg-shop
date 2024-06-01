@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { UserService } from '../core/services/user.service';
+import { NgClass, CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-registration-form',
   standalone: true,
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgClass,
+    CommonModule
   ],
   templateUrl: './registration-form.component.html',
   styleUrl: './registration-form.component.css'
@@ -20,15 +23,21 @@ export class RegistrationFormComponent {
     this.registrationForm = new FormGroup({
       firstName: new FormControl('', [
         Validators.required,
-        onlyLettersValidator()
+        onlyLettersValidator(),
+        Validators.minLength(5),
+        Validators.maxLength(50)
       ]),
       lastName: new FormControl('', [
         Validators.required,
-        onlyLettersValidator()
+        onlyLettersValidator(),
+        Validators.minLength(5),
+        Validators.maxLength(50)
       ]),
       username: new FormControl('', [
         Validators.required,
-        onlyLettersValidator()
+        onlyLettersValidator(),
+        Validators.minLength(5),
+        Validators.maxLength(20)
       ]),
       email: new FormControl('', [
         Validators.required,
@@ -36,15 +45,43 @@ export class RegistrationFormComponent {
       ]),
       password: new FormControl('', [
         Validators.required,
-        passwordValidator()
+        passwordValidator(),
+        Validators.minLength(8),
+        Validators.maxLength(16)
       ]),
       confirmPassword: new FormControl('', [
         Validators.required,
-        passwordValidator()
+        passwordValidator(),
+        Validators.minLength(8),
+        Validators.maxLength(16)
       ])
     },{
       validators: samePasswordValidator('password','confirmPassword')
     });
+  }
+
+  get firstName(){
+    return this.registrationForm.get('firstName');
+  }
+
+  get lastName(){
+    return this.registrationForm.get('lastName');
+  }
+
+  get username(){
+    return this.registrationForm.get('username');
+  }
+
+  get email(){
+    return this.registrationForm.get('email');
+  }
+
+  get password(){
+    return this.registrationForm.get('password');
+  }
+
+  get confirmPassword(){
+    return this.registrationForm.get('confirmPassword');
   }
 
   onSubmit(): void {
