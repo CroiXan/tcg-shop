@@ -11,8 +11,8 @@ export class UserService {
         {
             id: 1,
             UserName: 'admin',
-            FirstName: '',
-            LastName: '',
+            FirstName: 'first',
+            LastName: 'second',
             Password: 'admin',
             Email: 'mail@mail.cl',
             Role: 'admin',
@@ -21,10 +21,10 @@ export class UserService {
         {
             id: 2,
             UserName: 'user1',
-            FirstName: '',
-            LastName: '',
+            FirstName: 'prueba',
+            LastName: 'prueba',
             Password: 'qwerty',
-            Email: 'mail@mail.cl',
+            Email: 'mail2@mail.cl',
             Role: 'user',
             IsActive: true
         }
@@ -34,7 +34,7 @@ export class UserService {
         let newUser: User = {} as User;
         const newId = this.userList.reduce((maxId, user) => {
             return Math.max(maxId, user.id);
-        }, 0);
+        }, 0) + 1;
 
         newUser.id = newId;
         newUser.UserName = userName;
@@ -47,6 +47,7 @@ export class UserService {
 
         this.userList.push(newUser);
 
+        this.consoleLogForTesting();
     }
 
     updateUser(){
@@ -57,4 +58,9 @@ export class UserService {
 
     }
 
+    consoleLogForTesting(){
+        this.userList.forEach(user => {
+            console.log('id: '+user.id+' userName: '+user.UserName);
+        })
+    }
 }
