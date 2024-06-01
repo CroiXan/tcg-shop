@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { FormGroup, ReactiveFormsModule, FormControl } from '@angular/forms';
+import { AuthService } from '../core/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,7 +17,7 @@ export class NavbarComponent {
 
   filterForm!: FormGroup;
 
-  constructor(private router: Router){};
+  constructor(private router: Router, private authService: AuthService){};
 
   ngOnInit(): void {
     this.filterForm = new FormGroup({

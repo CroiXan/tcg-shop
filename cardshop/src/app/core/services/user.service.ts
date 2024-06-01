@@ -56,8 +56,8 @@ export class UserService {
         return true;
     }
 
-    getUserAuth(userName: string, password: string): User | undefined{
-        return this.userList.find(user => user.UserName === userName && user.Password === password);
+    getUserAuth(userName: string, password: string): User{
+        return this.userList.find(user => user.UserName === userName && user.Password === password) || {} as User;
     }
 
     updateUser(){

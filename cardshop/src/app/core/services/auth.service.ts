@@ -7,35 +7,31 @@ import { User } from '../models/user.model';
   providedIn: 'root'
 })
 export class AuthService {
-  private userRole: string = '';
+  private logedUser: User = {} as User;
 
   constructor(private router: Router, private userService: UserService) {}
 
   login(userName: string, password: string): boolean {
 
-    const user: User|undefined = this.userService.getUserAuth(userName,password);
+    this.logedUser = this.userService.getUserAuth(userName,password);
 
-    if(user === undefined){
+    if(this.logedUser.id === 0 || this.logedUser.UserName === ''){
         return false;
     }
-
-    var role = user?.Role;
-
-    this.userRole = role;
 
     return true;
   }
 
   getRole(): string {
-    return this.userRole;
+    return this.logedUser.Role;
   }
 
   logout() {
-    this.userRole = '';
+    this.logedUser = {} as User;
     this.router.navigate(['/']);
   }
 
   isAuthenticated(): boolean {
-    return !!this.userRole;
+    return !!this.logedUser;
   }
 }
