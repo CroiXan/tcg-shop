@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormGroup, FormControl, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { UserService } from '../core/services/user.service';
 
 @Component({
@@ -18,12 +18,32 @@ export class RegistrationFormComponent {
 
   ngOnInit(): void {
     this.registrationForm = new FormGroup({
-      firstName: new FormControl('', [Validators.required]),
-      lastName: new FormControl('', [Validators.required]),
-      username: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
-      confirmPassword: new FormControl('', [Validators.required])
+      firstName: new FormControl('', [
+        Validators.required,
+        onlyLettersValidator()
+      ]),
+      lastName: new FormControl('', [
+        Validators.required,
+        onlyLettersValidator()
+      ]),
+      username: new FormControl('', [
+        Validators.required,
+        onlyLettersValidator()
+      ]),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.email
+      ]),
+      password: new FormControl('', [
+        Validators.required,
+        passwordValidator()
+      ]),
+      confirmPassword: new FormControl('', [
+        Validators.required,
+        passwordValidator()
+      ])
+    },{
+      validators: samePasswordValidator('password','confirmPassword')
     });
   }
 
@@ -42,4 +62,28 @@ export class RegistrationFormComponent {
       alert('Vuelva comprobar los campos del formulario');
     }
   }
+}
+
+export function onlyLettersValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const forbidden = !/(^[a-zA-Z]*$)/g.test(control.value);
+    return forbidden ? {onlyLetters: {value: control.value}} : null;
+  };
+}
+
+export function passwordValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const forbidden = !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])((?=.*\W)|(?=.*_))^[^ ]+$/g.test(control.value);
+    return forbidden ? {passwordFromat: {value: control.value}} : null;
+  };
+}
+
+export function samePasswordValidator(field1: string, field2: string): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const password = control.get(field1)?.value;
+    const confirmPassword = control.get(field2)?.value;
+    const forbidden = password && confirmPassword && password !== confirmPassword;
+    console.log( password + ' || ' + confirmPassword);
+    return forbidden ? {notSamePassword: {value: confirmPassword}} : null;
+  };
 }
