@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { UserService } from './user.service';
 import { User } from '../models/user.model';
 import { BehaviorSubject } from 'rxjs';
+import { Address } from '../models/address.model';
+import { AddressService } from './address.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +12,13 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
   private logedUser: User = {} as User;
   private loggedIn = new BehaviorSubject<boolean>(false);
+  private userAddress = new BehaviorSubject<Address[]>([] as Address[]);
 
-  constructor(private router: Router, private userService: UserService) {}
+  constructor(
+    private router: Router, 
+    private userService: UserService,
+    private addressService: AddressService
+  ) {}
 
   login(userName: string, password: string): boolean {
 
@@ -21,6 +28,7 @@ export class AuthService {
         this.loggedIn.next(false);
         return false;
     }
+    this.userAddress.next(this.addressService.getAddressByUser(this.logedUser.id));
     this.loggedIn.next(true);
     return true;
   }
@@ -36,6 +44,8 @@ export class AuthService {
     return this.userService.updateUser(this.logedUser);
   }
 
+
+
   getRole(): string {
     return this.logedUser.Role;
   }
@@ -48,6 +58,10 @@ export class AuthService {
 
   isLoggedIn(){
     return this.logedUser.id !== 0 && this.logedUser.UserName !== '' && this.logedUser.id !== undefined && this.logedUser.UserName !== undefined;
+  }
+
+  getCurrentUserAddress(){
+    return this.userAddress.asObservable();
   }
 
   isAuthenticated() {
