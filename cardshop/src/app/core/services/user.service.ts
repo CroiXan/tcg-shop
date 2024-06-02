@@ -60,8 +60,13 @@ export class UserService {
         return this.userList.find(user => user.UserName === userName && user.Password === password) || {} as User;
     }
 
-    updateUser(){
-
+    updateUser(updatedUser: User): boolean{
+        const index = this.userList.findIndex(user => user.id === updatedUser.id && user.UserName === updatedUser.UserName);
+        if(index !== -1){
+            this.userList[index] = updatedUser;
+            return true;
+        }
+        return false;
     }
 
     deactivateUser(){

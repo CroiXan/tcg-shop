@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { UserManagementComponent } from '../user-management/user-management.component';
 
 @Component({
   selector: 'app-account-management',
   standalone: true,
-  imports: [],
+  imports: [
+    UserManagementComponent
+  ],
   templateUrl: './account-management.component.html',
   styleUrl: './account-management.component.css'
 })

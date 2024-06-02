@@ -25,6 +25,17 @@ export class AuthService {
     return true;
   }
 
+  getUser(){
+    return this.logedUser;
+  }
+
+  updateBasicInfo(firstName: string, lastName: string, email: string): boolean {
+    this.logedUser.FirstName = firstName;
+    this.logedUser.LastName = lastName;
+    this.logedUser.Email = email;
+    return this.userService.updateUser(this.logedUser);
+  }
+
   getRole(): string {
     return this.logedUser.Role;
   }

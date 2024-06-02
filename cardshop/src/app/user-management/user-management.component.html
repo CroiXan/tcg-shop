@@ -1,0 +1,49 @@
+<div class="container-md margin-top-30">
+
+    <form class="needs-validation" [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+    
+        <div class="row">
+    
+          <div class="col-12">
+            <label for="username" class="form-label">Nombre de Usuario</label>
+            <div class="input-group has-validation">
+              <input type="text" class="form-control" id="username" value="{{userName}}" disabled readonly>
+            </div>
+          </div>
+    
+          <div class="col-sm-6">
+            <label for="firstName" class="form-label">Nombre</label>
+            <input type="text" class="form-control" [ngClass]="firstName?.invalid && (firstName?.dirty || firstName?.touched) ? 'is-invalid' : ''" [ngClass]="firstName?.valid ? 'is-valid' : ''" id="firstName" placeholder="" formControlName="firstName">
+            <div class="invalid-feedback">
+              <div *ngIf="firstName?.hasError('required')">Nombre es obligatorio.</div>
+              <div *ngIf="firstName?.hasError('minlength') || firstName?.hasError('maxlength')">Debe tener entre 5 y 50 caracteres.</div>
+              <div *ngIf="firstName?.hasError('onlyLetters')">Solo puede contener letras.</div>
+            </div>
+          </div>
+    
+          <div class="col-sm-6">
+            <label for="lastName" class="form-label">Apellido</label>
+            <input type="text" class="form-control" [ngClass]="lastName?.invalid && (lastName?.dirty || lastName?.touched) ? 'is-invalid' : ''" [ngClass]="lastName?.valid ? 'is-valid' : ''" id="lastName" placeholder="" formControlName="lastName" >
+            <div class="invalid-feedback">
+              <div *ngIf="lastName?.hasError('required')">Apellido es obligatorio.</div>
+              <div *ngIf="lastName?.hasError('minlength') || lastName?.hasError('maxlength')">Debe tener entre 5 y 50 caracteres.</div>
+              <div *ngIf="lastName?.hasError('onlyLetters')">Solo puede contener letras.</div>
+            </div>
+          </div>
+    
+          <div class="col-12">
+            <label for="email" class="form-label">Email <span class="text-body-secondary"></span></label>
+            <input type="email" class="form-control" id="email" [ngClass]="email?.invalid && (email?.dirty || email?.touched) ? 'is-invalid' : ''" [ngClass]="email?.valid ? 'is-valid' : ''" placeholder="you@example.com" formControlName="email">
+            <div class="invalid-feedback">
+              <div *ngIf="email?.hasError('required')">Email es obligatorio.</div>
+              <div *ngIf="email?.hasError('email')">Formato de email no válido.</div>
+            </div>
+          </div>
+          
+        </div>
+    
+        <button class="btn btn-primary btn-lg margin-top-10" type="submit" [disabled]="updateForm.invalid">Actualizar Datos</button>
+    
+      </form>
+    
+    </div>

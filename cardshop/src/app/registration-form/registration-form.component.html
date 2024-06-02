@@ -65,14 +65,14 @@
         <label for="email" class="form-label">Email <span class="text-body-secondary"></span></label>
         <input type="email" class="form-control" id="email" [ngClass]="email?.invalid && (email?.dirty || email?.touched) ? 'is-invalid' : ''" [ngClass]="email?.valid ? 'is-valid' : ''" placeholder="you@example.com" formControlName="email">
         <div class="invalid-feedback">
-          <div *ngIf="email?.hasError('required')">Apellido es obligatorio.</div>
+          <div *ngIf="email?.hasError('required')">Email es obligatorio.</div>
           <div *ngIf="email?.hasError('email')">Formato de email no válido.</div>
         </div>
       </div>
       
     </div>
 
-    <button class="w-100 btn btn-primary btn-lg margin-top-10" type="submit">Registrarse</button>
+    <button class="btn btn-primary btn-lg margin-top-10" type="submit" [disabled]="registrationForm.invalid">Registrarse</button>
 
   </form>
 
