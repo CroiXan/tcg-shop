@@ -81,6 +81,10 @@ export class ShoppingCartService {
         return [selectedShoppingCart,hasStock];
     }
 
+    changeStatus(status: CartStatus){
+        
+    }
+
     getLastShoppingCart(){
 
     }

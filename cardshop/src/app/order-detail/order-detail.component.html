@@ -1,1 +1,33 @@
-<p>order-detail works!</p>
+<table class="table table-dark table-hover">
+    <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Carta</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let card of currentShoppingCart.CardList">
+            <td></td>
+            <td>{{card.CardName}}</td>
+            <td>{{card.Price | currency}}</td>
+            <td>{{card.Quantity}}</td>
+            <td>{{card.Price * card.Quantity | currency}}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Total</td>
+            <td>{{total | currency}}</td>
+        </tr>
+    </tbody>

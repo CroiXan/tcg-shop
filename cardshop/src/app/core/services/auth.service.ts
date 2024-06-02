@@ -7,6 +7,7 @@ import { Address } from '../models/address.model';
 import { AddressService } from './address.service';
 import { ShoppingCart } from '../models/shopping-cart.model';
 import { ShoppingCartService } from './shopping-cart.service';
+import { CartStatus } from '../enum/cart-status.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -74,6 +75,13 @@ export class AuthService {
     const addItemResult = this.shoppingCartService.addItemToShoppingCart(this.logedUser.id,cardId,this.currentShoppingCart.value.id);
     this.currentShoppingCart.next(addItemResult[0]);
     return addItemResult[1];
+  }
+
+  updateShoppingCartStatus(status: CartStatus){
+    if(this.currentShoppingCart.value.id === undefined){
+      this.currentShoppingCart.value.Status = status;
+      this.shoppingCartService.updateShoppingCart(this.currentShoppingCart.value);
+    }
   }
 
   getCurrentShoppingCart(){
