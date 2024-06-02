@@ -1,40 +1,43 @@
 <h2>Nueva Dirección</h2>
-<form class="needs-validation" >
+<form class="needs-validation" [formGroup]="addressForm" (ngSubmit)="onSubmit()">
     <div class="row g-3">
 
       <div class="col-12">
         <label for="name" class="form-label">Dirección</label>
-        <input type="text" class="form-control" id="name" placeholder="" >
+        <input type="text" class="form-control" id="name" [ngClass]="name?.invalid && (name?.dirty || name?.touched) ? 'is-invalid' : ''" [ngClass]="name?.valid ? 'is-valid' : ''" formControlName="name">
         <div class="invalid-feedback">
-          
+            <div *ngIf="name?.hasError('required')">Dirección es obligatorio.</div>
         </div>
       </div>
 
       <div class="col-md-5">
         <label for="region" class="form-label">Región</label>
-        <input type="text" class="form-control" id="region" placeholder="" >
+        <input type="text" class="form-control" id="region" [ngClass]="region?.invalid && (region?.dirty || region?.touched) ? 'is-invalid' : ''" [ngClass]="region?.valid ? 'is-valid' : ''" formControlName="region">
         <div class="invalid-feedback">
-          
+            <div *ngIf="region?.hasError('required')">Región es obligatorio.</div>
+            <div *ngIf="region?.hasError('only_letters')">Solo puede contener letras.</div>
         </div>
       </div>
 
       <div class="col-md-5">
         <label for="commune" class="form-label">Comuna</label>
-        <input type="text" class="form-control" id="commune" placeholder="" >
+        <input type="text" class="form-control" id="commune" [ngClass]="commune?.invalid && commune?.touched ? 'is-invalid' : ''" [ngClass]="commune?.valid ? 'is-valid' : ''" formControlName="commune">
         <div class="invalid-feedback">
-          
+            <div *ngIf="commune?.hasError('required')">Comuna es obligatorio.</div>
+            <div *ngIf="commune?.hasError('only_letters')">Solo puede contener letras.</div>
         </div>
       </div>
 
       <div class="col-md-2">
         <label for="number" class="form-label">Número</label>
-        <input type="text" class="form-control" id="number" placeholder="" >
+        <input type="text" class="form-control" id="number" [ngClass]="number?.invalid && number?.touched ? 'is-invalid' : ''" [ngClass]="number?.valid ? 'is-valid' : ''" formControlName="number">
         <div class="invalid-feedback">
-          
+            <div *ngIf="number?.hasError('required')">Número es obligatorio.</div>
+            <div *ngIf="number?.hasError('onlyNumbers')">Solo puede contener números.</div>
         </div>
       </div>
     </div>
 
-    <button class="btn btn-primary btn-lg margin-top-30" type="submit">Agregar dirección</button>
+    <button class="btn btn-primary btn-lg margin-top-30" type="submit" [disabled]="addressForm.invalid">Agregar dirección</button>
 
 </form>

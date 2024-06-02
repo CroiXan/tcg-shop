@@ -8,9 +8,9 @@ import { AuthService } from '../core/services/auth.service';
   selector: 'app-address-create',
   standalone: true,
   imports: [
-    CommonModule,
     ReactiveFormsModule,
-    NgClass
+    NgClass,
+    CommonModule
   ],
   templateUrl: './address-create.component.html',
   styleUrl: './address-create.component.css'
@@ -28,12 +28,15 @@ export class AddressCreateComponent {
       ]),
       number: new FormControl('', [
         Validators.required,
+        onlyNumbersValidator()
       ]),
       region: new FormControl('', [
         Validators.required,
+        only_LettersValidator()
       ]),
       commune: new FormControl('', [
         Validators.required,
+        only_LettersValidator()
       ])
     });
   }
@@ -55,7 +58,22 @@ export class AddressCreateComponent {
   }
 
   onSubmit(){
-    
+    this.authService.createAddress(this.addressForm.get('name')?.value,this.addressForm.get('number')?.value,this.addressForm.get('region')?.value,this.addressForm.get('commune')?.value);
+    alert('Dirección agregada');
   }
 
+}
+
+export function only_LettersValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const forbidden = !/(^[a-zA-Z]*$)/g.test(control.value);
+    return forbidden ? {onlyletters: {value: control.value}} : null;
+  };
+}
+
+export function onlyNumbersValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const forbidden = !/^\d+$/g.test(control.value);
+    return forbidden ? {onlynumbers: {value: control.value}} : null;
+  };
 }

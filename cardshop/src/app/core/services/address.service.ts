@@ -27,7 +27,19 @@ export class AddressService{
     ];
 
     createAddress(userId: number, name: string, number: number, region: string, Commune: string){
+        let newAddress = {} as Address;
+        const newId = this.addressList.reduce((maxId, user) => {
+            return Math.max(maxId, user.id);
+        }, 0) + 1;
 
+        newAddress.id=newId;
+        newAddress.UserId = userId;
+        newAddress.Name = name;
+        newAddress.Number = number;
+        newAddress.Region = region;
+        newAddress.Commune = Commune;
+
+        this.addressList.push(newAddress);
     }
 
     updateAddress(updateAddress: Address):boolean{

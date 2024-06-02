@@ -44,7 +44,10 @@ export class AuthService {
     return this.userService.updateUser(this.logedUser);
   }
 
-
+  createAddress(name: string, number: number, region: string, Commune: string){
+    this.addressService.createAddress(this.logedUser.id,name,number,region,Commune);
+    this.userAddress.next(this.addressService.getAddressByUser(this.logedUser.id));
+  }
 
   getRole(): string {
     return this.logedUser.Role;
