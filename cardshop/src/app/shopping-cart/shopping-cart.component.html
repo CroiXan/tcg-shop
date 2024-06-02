@@ -18,9 +18,9 @@
             <tr *ngFor="let card of currentShoppingCart.CardList">
                 <td></td>
                 <td>{{card.CardName}}</td>
-                <td>{{card.Price}}</td>
+                <td>{{card.Price | currency}}</td>
                 <td>{{card.Quantity}}</td>
-                <td>{{card.Price * card.Quantity}}</td>
+                <td>{{card.Price * card.Quantity | currency}}</td>
                 <td></td>
             </tr>
             <tr>
@@ -36,10 +36,11 @@
                 <td></td>
                 <td></td>
                 <td>Total</td>
-                <td>{{total}}</td>
+                <td>{{total | currency}}</td>
                 <td></td>
             </tr>
         </tbody>
     </table>
 
+    <button class="btn btn-primary btn-lg margin-top-30" (click)="buy()" [disabled]="!hasItems">Comprar</button>
 </div>
