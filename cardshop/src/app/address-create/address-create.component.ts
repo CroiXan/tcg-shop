@@ -32,11 +32,11 @@ export class AddressCreateComponent {
       ]),
       region: new FormControl('', [
         Validators.required,
-        only_LettersValidator()
+        onlyLetters_Validator()
       ]),
       commune: new FormControl('', [
         Validators.required,
-        only_LettersValidator()
+        onlyLetters_Validator()
       ])
     });
   }
@@ -64,16 +64,16 @@ export class AddressCreateComponent {
 
 }
 
-export function only_LettersValidator(): ValidatorFn {
+export function onlyLetters_Validator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const forbidden = !/(^[a-zA-Z]*$)/g.test(control.value);
-    return forbidden ? {onlyletters: {value: control.value}} : null;
+    return forbidden ? {only_letters: {value: control.value}} : null;
   };
 }
 
 export function onlyNumbersValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const forbidden = !/^\d+$/g.test(control.value);
-    return forbidden ? {onlynumbers: {value: control.value}} : null;
+    return forbidden ? {onlyNumbers: {value: control.value}} : null;
   };
 }
