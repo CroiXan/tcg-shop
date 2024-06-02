@@ -35,6 +35,10 @@ export class AuthService {
     this.router.navigate(['/']);
   }
 
+  isLoggedIn(){
+    return this.logedUser.id !== 0 && this.logedUser.UserName !== '' && this.logedUser.id !== undefined && this.logedUser.UserName !== undefined;
+  }
+
   isAuthenticated() {
     return this.loggedIn.asObservable();
   }

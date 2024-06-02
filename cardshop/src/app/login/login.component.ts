@@ -46,7 +46,6 @@ export class LoginComponent {
     }else{
       alert('Usuario o Contraseña incorretos');
     }
-
   }
 
 }
