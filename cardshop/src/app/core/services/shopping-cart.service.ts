@@ -36,13 +36,14 @@ export class ShoppingCartService {
         return false;
     }
 
-    addItemToShoppingCart(userId: number, cardId: number): [ShoppingCart,boolean]{
+    addItemToShoppingCart(userId: number, cardId: number, shoppingCartId: number): [ShoppingCart,boolean]{
         const index = this.shoppingCartList.findIndex(shoppingCart => 
-            shoppingCart.UserId === userId &&
+            shoppingCart.id === shoppingCartId &&
             shoppingCart.Status === CartStatus.Abierto);
 
         let selectedShoppingCart: ShoppingCart = {} as ShoppingCart;
-        const stockCheckResult = this.cardItemService.checkStock(cardId);
+        const selectedCardItem = this.cardItemService.getCard(cardId);
+        let hasStock = false;
 
         if(index !== -1){
             selectedShoppingCart = this.shoppingCartList[index];
@@ -50,18 +51,34 @@ export class ShoppingCartService {
             selectedShoppingCart = this.createShoppingcar(userId);
         }
 
-        if(stockCheckResult[1]){
-            let cardIndex = selectedShoppingCart.CardList.findIndex(card => card.Id === cardId);
+        let cardIndex = -1;
             
-            if(cardIndex !== -1){
+        if(selectedShoppingCart.CardList !== undefined){
+            cardIndex = selectedShoppingCart.CardList.findIndex(card => card.Id === cardId);
+        }else{
+            selectedShoppingCart.CardList = [];
+        }
+            
+        
+        if(cardIndex !== -1){
+            console.log(selectedCardItem.Quantity)
+            console.log(selectedShoppingCart.CardList[cardIndex].Quantity)
+            hasStock = selectedCardItem.Quantity > selectedShoppingCart.CardList[cardIndex].Quantity;
+            if(hasStock){
                 selectedShoppingCart.CardList[cardIndex].Quantity += 1;
-            }else{
-                stockCheckResult[0].Quantity = 1;
-                selectedShoppingCart.CardList.push(stockCheckResult[0]);
+            }
+            
+        }else{
+            hasStock = selectedCardItem.Quantity > 1;
+            if(hasStock){
+                let cardCopy = {...selectedCardItem};
+                cardCopy.Quantity = 1;
+                selectedShoppingCart.CardList.push(cardCopy);
             }
         }
+        
 
-        return [selectedShoppingCart,stockCheckResult[1]];
+        return [selectedShoppingCart,hasStock];
     }
 
     getLastShoppingCart(){

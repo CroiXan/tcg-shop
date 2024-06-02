@@ -67,8 +67,13 @@ export class AuthService {
     return this.logedUser.id !== 0 && this.logedUser.UserName !== '' && this.logedUser.id !== undefined && this.logedUser.UserName !== undefined;
   }
 
-  addItemToShoppingCart(){
-    
+  addItemToShoppingCart(cardId: number): boolean{
+    if(this.currentShoppingCart.value.id === undefined){
+      this.currentShoppingCart.next(this.shoppingCartService.createShoppingcar(this.logedUser.id));
+    }
+    const addItemResult = this.shoppingCartService.addItemToShoppingCart(this.logedUser.id,cardId,this.currentShoppingCart.value.id);
+    this.currentShoppingCart.next(addItemResult[0]);
+    return addItemResult[1];
   }
 
   getCurrentShoppingCart(){

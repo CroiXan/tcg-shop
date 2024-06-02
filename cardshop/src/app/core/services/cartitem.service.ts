@@ -355,9 +355,12 @@ export class CardItemService {
         
     }
 
-    checkStock(cardId: number): [CardItem,boolean]{
-        const selectedCardItem = this.cardItemList.find(card => card.Id === cardId ) || {} as CardItem;
-        return [selectedCardItem, selectedCardItem.Quantity > 0];
+    getCard(cardId: number): CardItem{
+        return this.cardItemList.find(card => card.Id === cardId ) || {} as CardItem;
+    }
+
+    checkStock(cardId: number): boolean{
+        return this.getCard(cardId).Quantity > 0;
     }
 
 }
