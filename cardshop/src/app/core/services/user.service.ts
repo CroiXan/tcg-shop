@@ -30,7 +30,11 @@ export class UserService {
         }
     ];
     
-    createUser(userName: string, firstName: string, lastName: string, password: string, email: string){
+    createUser(userName: string, firstName: string, lastName: string, password: string, email: string): boolean{
+        if(this.userList.find(user => user.UserName === userName) === undefined){
+            return false;
+        }
+
         let newUser: User = {} as User;
         const newId = this.userList.reduce((maxId, user) => {
             return Math.max(maxId, user.id);
@@ -48,10 +52,21 @@ export class UserService {
         this.userList.push(newUser);
 
         this.consoleLogForTesting();
+
+        return true;
     }
 
-    updateUser(){
+    getUserAuth(userName: string, password: string): User{
+        return this.userList.find(user => user.UserName === userName && user.Password === password) || {} as User;
+    }
 
+    updateUser(updatedUser: User): boolean{
+        const index = this.userList.findIndex(user => user.id === updatedUser.id && user.UserName === updatedUser.UserName);
+        if(index !== -1){
+            this.userList[index] = updatedUser;
+            return true;
+        }
+        return false;
     }
 
     deactivateUser(){
