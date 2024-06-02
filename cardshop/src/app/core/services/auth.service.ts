@@ -5,6 +5,8 @@ import { User } from '../models/user.model';
 import { BehaviorSubject } from 'rxjs';
 import { Address } from '../models/address.model';
 import { AddressService } from './address.service';
+import { ShoppingCart } from '../models/shopping-cart.model';
+import { ShoppingCartService } from './shopping-cart.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +15,13 @@ export class AuthService {
   private logedUser: User = {} as User;
   private loggedIn = new BehaviorSubject<boolean>(false);
   private userAddress = new BehaviorSubject<Address[]>([] as Address[]);
+  private currentShoppingCart = new BehaviorSubject<ShoppingCart>({} as ShoppingCart);
 
   constructor(
     private router: Router, 
     private userService: UserService,
-    private addressService: AddressService
+    private addressService: AddressService,
+    private shoppingCartService: ShoppingCartService
   ) {}
 
   login(userName: string, password: string): boolean {
@@ -61,6 +65,14 @@ export class AuthService {
 
   isLoggedIn(){
     return this.logedUser.id !== 0 && this.logedUser.UserName !== '' && this.logedUser.id !== undefined && this.logedUser.UserName !== undefined;
+  }
+
+  addItemToShoppingCart(){
+    
+  }
+
+  getCurrentShoppingCart(){
+    return this.currentShoppingCart.asObservable();
   }
 
   getCurrentUserAddress(){

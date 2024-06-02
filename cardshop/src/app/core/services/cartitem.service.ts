@@ -352,7 +352,12 @@ export class CardItemService {
     }
 
     addCardItem(){
+        
+    }
 
+    checkStock(cardId: number): [CardItem,boolean]{
+        const selectedCardItem = this.cardItemList.find(card => card.Id === cardId ) || {} as CardItem;
+        return [selectedCardItem, selectedCardItem.Quantity > 0];
     }
 
 }
