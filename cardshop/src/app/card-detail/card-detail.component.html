@@ -1,1 +1,23 @@
-<p>card-detail works!</p>
+<div class="container-md">
+
+    <form class="needs-validation" [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+    
+        <div class="row">
+    
+          <div class="col-12">
+            <label for="CardText" class="form-label">Nombre de carta</label>
+            <div class="input-group has-validation">
+              <input type="text" class="form-control" [ngClass]="CardText?.invalid && (CardText?.dirty || CardText?.touched) ? 'is-invalid' : ''" [ngClass]="CardText?.valid ? 'is-valid' : ''" id="CardText" formControlName="CardText">
+            <div class="invalid-feedback">
+                <div *ngIf="CardName?.hasError('required')">Nombre de Usuario es obligatorio.</div>
+              </div>
+            </div>
+          </div>
+
+          <button class="w-100 btn btn-primary btn-lg margin-top-10" type="submit" [disabled]="cardForm.invalid">{{submitText}}</button>
+
+        </div>
+        
+    </form>
+
+</div>

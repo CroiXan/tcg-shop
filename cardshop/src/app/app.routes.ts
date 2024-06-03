@@ -7,6 +7,7 @@ import { authGuardGuard } from './auth-guard.guard';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { PaymentComponent } from './payment/payment.component';
 import { OrderFinishComponent } from './order-finish/order-finish.component';
+import { CardDetailComponent } from './card-detail/card-detail.component';
 
 export const routes: Routes = [
     { path: '', component: CarditemListComponent},
@@ -18,5 +19,5 @@ export const routes: Routes = [
     { path: 'pago', component: PaymentComponent, canActivate: [authGuardGuard]},
     { path: 'orden-realizada', component: OrderFinishComponent, canActivate: [authGuardGuard]},
     { path: 'cuenta', component: AccountManagementComponent, canActivate: [authGuardGuard]},
-    { path: 'card-detail', component: AccountManagementComponent, canActivate: [authGuardGuard]}
+    { path: 'card-detail', component: CardDetailComponent, canActivate: [authGuardGuard]}
 ];
