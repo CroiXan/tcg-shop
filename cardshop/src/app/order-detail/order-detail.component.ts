@@ -14,6 +14,7 @@ import { CardItem } from '../core/models/carditem.model';
 })
 export class OrderDetailComponent {
   @Input() currentShoppingCart: ShoppingCart;
+  @Input() showImage: boolean = false;
   total: number = 0;
 
   constructor(){
