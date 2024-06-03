@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule, NgClass } from '@angular/common';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { AuthService } from '../core/services/auth.service';
+import { onlyLettersValidator, onlyNumbersValidator } from '../core/validators/validators';
 
 
 @Component({
@@ -32,11 +33,11 @@ export class AddressCreateComponent {
       ]),
       region: new FormControl('', [
         Validators.required,
-        onlyLetters_Validator()
+        onlyLettersValidator()
       ]),
       commune: new FormControl('', [
         Validators.required,
-        onlyLetters_Validator()
+        onlyLettersValidator()
       ])
     });
   }
@@ -62,18 +63,4 @@ export class AddressCreateComponent {
     alert('Dirección agregada');
   }
 
-}
-
-export function onlyLetters_Validator(): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const forbidden = !/(^[a-zA-Z]*$)/g.test(control.value);
-    return forbidden ? {only_letters: {value: control.value}} : null;
-  };
-}
-
-export function onlyNumbersValidator(): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const forbidden = !/^\d+$/g.test(control.value);
-    return forbidden ? {onlyNumbers: {value: control.value}} : null;
-  };
 }

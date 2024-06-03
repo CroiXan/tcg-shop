@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { UserService } from '../core/services/user.service';
 import { NgClass, CommonModule} from '@angular/common';
+import { onlyLettersValidator, passwordValidator, samePasswordValidator } from '../core/validators/validators';
 
 @Component({
   selector: 'app-registration-form',
@@ -99,28 +100,4 @@ export class RegistrationFormComponent {
       alert('Vuelva comprobar los campos del formulario');
     }
   }
-}
-
-export function onlyLettersValidator(): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const forbidden = !/(^[a-zA-Z]*$)/g.test(control.value);
-    return forbidden ? {onlyLetters: {value: control.value}} : null;
-  };
-}
-
-export function passwordValidator(): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const forbidden = !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])((?=.*\W)|(?=.*_))^[^ ]+$/g.test(control.value);
-    return forbidden ? {passwordFromat: {value: control.value}} : null;
-  };
-}
-
-export function samePasswordValidator(field1: string, field2: string): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const password = control.get(field1)?.value;
-    const confirmPassword = control.get(field2)?.value;
-    const forbidden = password && confirmPassword && password !== confirmPassword;
-    console.log( password + ' || ' + confirmPassword);
-    return forbidden ? {notSamePassword: {value: confirmPassword}} : null;
-  };
 }

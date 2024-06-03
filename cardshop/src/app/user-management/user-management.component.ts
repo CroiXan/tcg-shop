@@ -3,6 +3,7 @@ import { CommonModule, NgClass } from '@angular/common';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { User } from '../core/models/user.model';
 import { AuthService } from '../core/services/auth.service';
+import { onlyLettersValidator } from '../core/validators/validators';
 
 @Component({
   selector: 'app-user-management',
@@ -68,11 +69,4 @@ export class UserManagementComponent {
     }
   }
 
-}
-
-export function onlyLettersValidator(): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const forbidden = !/(^[a-zA-Z]*$)/g.test(control.value);
-    return forbidden ? {onlyLetters: {value: control.value}} : null;
-  };
 }

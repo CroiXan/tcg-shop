@@ -8,6 +8,7 @@ import { AddressService } from './address.service';
 import { ShoppingCart } from '../models/shopping-cart.model';
 import { ShoppingCartService } from './shopping-cart.service';
 import { CartStatus } from '../enum/cart-status.enum';
+import { CardItem } from '../models/carditem.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class AuthService {
   private loggedIn = new BehaviorSubject<boolean>(false);
   private userAddress = new BehaviorSubject<Address[]>([] as Address[]);
   private currentShoppingCart = new BehaviorSubject<ShoppingCart>({} as ShoppingCart);
+  private selectedCard: CardItem = {} as CardItem;
 
   constructor(
     private router: Router, 
@@ -105,4 +107,13 @@ export class AuthService {
   isAuthenticated() {
     return this.loggedIn.asObservable();
   }
+
+  setSelectedCardForManage(selected: CardItem){
+    this.selectedCard = selected;
+  }
+
+  getSelectedCardForManage(): CardItem{
+    return this.selectedCard;
+  }
+
 }
