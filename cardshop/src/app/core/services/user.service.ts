@@ -51,8 +51,6 @@ export class UserService {
 
         this.userList.push(newUser);
 
-        this.consoleLogForTesting();
-
         return true;
     }
 

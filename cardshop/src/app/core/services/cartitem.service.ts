@@ -351,8 +351,22 @@ export class CardItemService {
         return result;
     }
 
-    addCardItem(){
-        
+    createOrUpdateCardItem(card: CardItem): boolean{
+        if(card.Id === undefined || card.Id === 0){
+            const newId = this.cardItemList.reduce((maxId, card) => {
+                return Math.max(maxId, card.Id);
+            }, 0) + 1;
+            card.Id = newId;
+            this.cardItemList.push(card);
+            return true;
+        }else{
+            const index = this.cardItemList.findIndex(cardItem => cardItem.Id === card.Id);
+            if(index !== -1){
+                this.cardItemList[index] = card;
+                return true;
+            }
+        }
+        return false;
     }
 
     getCard(cardId: number): CardItem{

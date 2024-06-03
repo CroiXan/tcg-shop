@@ -4,6 +4,8 @@ import { FormGroup, ReactiveFormsModule, FormControl, Validators } from '@angula
 import { AuthService } from '../core/services/auth.service';
 import { Router } from '@angular/router';
 import { CardItem } from '../core/models/carditem.model';
+import { onlyNumbersValidator } from '../core/validators/validators';
+import { CardItemService } from '../core/services/cartitem.service';
 
 @Component({
   selector: 'app-card-detail',
@@ -23,7 +25,8 @@ export class CardDetailComponent {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private cardItemService: CardItemService
   ){}
 
   ngOnInit(): void {
@@ -41,7 +44,8 @@ export class CardDetailComponent {
         Validators.required
       ]),
       Quantity: new FormControl( this.selectedCard.Quantity || '', [
-        Validators.required
+        Validators.required,
+        onlyNumbersValidator()
       ]),
       SetCode: new FormControl( this.selectedCard.SetCode || '', [
         Validators.required
@@ -50,13 +54,15 @@ export class CardDetailComponent {
         Validators.required
       ]),
       CardNumber: new FormControl( this.selectedCard.CardNumber || '', [
-        Validators.required
+        Validators.required,
+        onlyNumbersValidator()
       ]),
       Condition: new FormControl( this.selectedCard.Condition || '', [
         Validators.required
       ]),
       Price: new FormControl( this.selectedCard.Price || '', [
-        Validators.required
+        Validators.required,
+        onlyNumbersValidator()
       ]),
       Image: new FormControl( this.selectedCard.Image || '', [
         Validators.required
@@ -118,6 +124,26 @@ export class CardDetailComponent {
   }
 
   onSubmit(): void {
+    this.selectedCard.CreatedBy = 
+      this.selectedCard.CreatedBy ? this.selectedCard.CreatedBy : this.authService.getUser().id;
+    this.selectedCard.CardName = this.cardForm.get('CardName')?.value;
+    this.selectedCard.Quantity = this.cardForm.get('Quantity')?.value;
+    this.selectedCard.SetCode = this.cardForm.get('SetCode')?.value;
+    this.selectedCard.SetName = this.cardForm.get('SetName')?.value;
+    this.selectedCard.CardNumber = this.cardForm.get('CardNumber')?.value;
+    this.selectedCard.Condition = this.cardForm.get('Condition')?.value;
+    this.selectedCard.Price = this.cardForm.get('Price')?.value;
+    this.selectedCard.Image = this.cardForm.get('Image')?.value;
+    this.selectedCard.CardType = this.cardForm.get('CardType')?.value;
+    this.selectedCard.ManaValue = this.cardForm.get('ManaValue')?.value;
+    this.selectedCard.CardText = this.cardForm.get('CardText')?.value;
+
+    const result = this.cardItemService.createOrUpdateCardItem(this.selectedCard);
+    if(result){
+      alert(this.submitText + ' con éxito');
+    }else{
+      alert(this.submitText + ' con error');
+    }
 
   }
 
