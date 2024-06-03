@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule} from '@angular/common';
 import { FormGroup, ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../core/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CardItem } from '../core/models/carditem.model';
 import { onlyNumbersValidator } from '../core/validators/validators';
 import { CardItemService } from '../core/services/cartitem.service';
@@ -12,7 +12,8 @@ import { CardItemService } from '../core/services/cartitem.service';
   standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   templateUrl: './card-detail.component.html',
   styleUrl: './card-detail.component.css'
@@ -26,7 +27,7 @@ export class CardDetailComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private cardItemService: CardItemService
+    private cardItemService: CardItemService,
   ){}
 
   ngOnInit(): void {

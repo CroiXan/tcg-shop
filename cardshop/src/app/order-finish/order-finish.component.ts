@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../core/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ShoppingCart } from '../core/models/shopping-cart.model';
 import { OrderDetailComponent } from '../order-detail/order-detail.component';
 import { CartStatus } from '../core/enum/cart-status.enum';
@@ -9,7 +9,8 @@ import { CartStatus } from '../core/enum/cart-status.enum';
   selector: 'app-order-finish',
   standalone: true,
   imports: [
-    OrderDetailComponent
+    OrderDetailComponent,
+    RouterModule
   ],
   templateUrl: './order-finish.component.html',
   styleUrl: './order-finish.component.css'

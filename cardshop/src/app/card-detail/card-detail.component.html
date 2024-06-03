@@ -147,7 +147,10 @@
 
           <hr class="margin-top-10">
 
-          <button class="btn btn-primary btn-lg margin-top-10" type="submit" [disabled]="cardForm.invalid">{{submitText}}</button>
+          <div class="btn-group margin-top-10" role="group" aria-label="Basic outlined example">
+            <button type="button" class="btn btn-outline-primary" [routerLink]="['/cuenta']">Volver</button>
+            <button type="button" class="btn btn-outline-primary" type="submit" [disabled]="cardForm.invalid">{{submitText}}</button>
+          </div>
 
         </div>
         
