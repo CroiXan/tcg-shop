@@ -230,7 +230,7 @@ export class CardItemService {
             ManaValue: '3',
             CardText: 'Landfall — Whenever a land enters the battlefield under your control, create a 1/1 green Insect creature token. If you control six or more lands, create a token that\'s a copy of Scute Swarm instead.',
             CreatedBy: 0,
-            Image: 'https://cards.scryfall.io/large/front/d/5/d51269cf-a333-4a64-94cd-245798d840d2.jpg?1594736944',
+            Image: 'https://cards.scryfall.io/large/front/3/7/373f199d-f1a6-4a3d-ac83-28741131f313.jpg?1712354624',
             Quantity: 5
         },
         {
