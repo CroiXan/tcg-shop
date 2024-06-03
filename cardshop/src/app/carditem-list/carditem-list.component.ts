@@ -3,6 +3,7 @@ import { CardItem } from '../core/models/carditem.model';
 import { CardItemService } from '../core/services/cartitem.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../core/services/auth.service';
 
 @Component({
   selector: 'app-carditem-list',
@@ -17,7 +18,11 @@ export class CarditemListComponent {
 
   carditemList: CardItem[] = [];
 
-  constructor(private route: ActivatedRoute, private cardItemService: CardItemService, ) {}
+  constructor(
+    private route: ActivatedRoute, 
+    private cardItemService: CardItemService, 
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -29,6 +34,15 @@ export class CarditemListComponent {
         this.carditemList = this.cardItemService.getCardsList();
       }
     });
+  }
+
+  addItem(cardId: number, cardName: string){
+    const result = this.authService.addItemToShoppingCart(cardId);
+    if(result){
+      alert('Se ha agregado '+cardName+' al carrito');
+    }else{
+      alert('No hay suficiente stock para '+cardName);
+    }
   }
 
 }
