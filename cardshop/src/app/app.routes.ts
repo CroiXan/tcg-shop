@@ -15,7 +15,7 @@ export const routes: Routes = [
     { path: 'registro', component: RegistrationFormComponent},
     { path: 'login', component: LoginComponent},
     { path: 'carrito', component: ShoppingCartComponent},
-    { path: 'pago', component: PaymentComponent},
-    { path: 'orden-realizada', component: OrderFinishComponent},
-    { path: 'cuenta', component: AccountManagementComponent}//, canActivate: [authGuardGuard]}
+    { path: 'pago', component: PaymentComponent, canActivate: [authGuardGuard]},
+    { path: 'orden-realizada', component: OrderFinishComponent, canActivate: [authGuardGuard]},
+    { path: 'cuenta', component: AccountManagementComponent, canActivate: [authGuardGuard]}
 ];

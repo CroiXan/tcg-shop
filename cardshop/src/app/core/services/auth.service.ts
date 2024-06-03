@@ -29,10 +29,12 @@ export class AuthService {
 
     this.logedUser = this.userService.getUserAuth(userName,password);
 
-    if(this.logedUser.id === 0 || this.logedUser.UserName === ''){
+    if(this.logedUser.id === undefined || this.logedUser.id === 0 || this.logedUser.UserName === '' ){
         this.loggedIn.next(false);
         return false;
     }
+    
+    this.setUserIdToShoppingCart();
     this.userAddress.next(this.addressService.getAddressByUser(this.logedUser.id));
     this.loggedIn.next(true);
     return true;
@@ -80,6 +82,13 @@ export class AuthService {
   updateShoppingCartStatus(status: CartStatus){
     if(this.currentShoppingCart.value.id !== undefined){
       this.currentShoppingCart.value.Status = status;
+      this.shoppingCartService.updateShoppingCart(this.currentShoppingCart.value);
+    }
+  }
+
+  setUserIdToShoppingCart(){
+    if(this.currentShoppingCart.value.id !== undefined){
+      this.currentShoppingCart.value.UserId = this.logedUser.id;
       this.shoppingCartService.updateShoppingCart(this.currentShoppingCart.value);
     }
   }

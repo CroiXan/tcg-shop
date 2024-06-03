@@ -39,6 +39,10 @@ export class ShoppingCartComponent {
   }
 
   buy(){
+    if(this.authService.getUser().id === undefined){
+      alert('Necesita Ingresar al sitio para realizar la compra');
+      this.router.navigate(['/login']);
+    }
     this.router.navigate(['/pago']);
   }
 }
