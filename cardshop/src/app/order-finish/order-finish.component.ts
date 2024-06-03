@@ -25,16 +25,16 @@ export class OrderFinishComponent {
 
   ngOnInit() {
     this.authService.getCurrentShoppingCart().subscribe(shoppingCart => {
-      if(shoppingCart.id === undefined || shoppingCart.id === 0){
-        alert('ha ocurrido un error');
-        this.router.navigate(['/']);
-      }else{
-        if(shoppingCart.Status === CartStatus.Abierto){
-          this.authService.updateShoppingCartStatus(CartStatus.Pagado);
-        }
-        this.currentShoppingCart = shoppingCart;
-      }
+      this.currentShoppingCart = shoppingCart;
     });
+    if(this.currentShoppingCart.id === undefined || this.currentShoppingCart.id === 0){
+      alert('ha ocurrido un error');
+      this.router.navigate(['/']);
+    }else{
+      if(this.currentShoppingCart.Status === CartStatus.Abierto){
+        this.authService.updateShoppingCartStatus(CartStatus.Pagado);
+      }
+    }
   }
 
 }

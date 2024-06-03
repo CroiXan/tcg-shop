@@ -33,7 +33,7 @@ export class AuthService {
         this.loggedIn.next(false);
         return false;
     }
-    
+
     this.setUserIdToShoppingCart();
     this.userAddress.next(this.addressService.getAddressByUser(this.logedUser.id));
     this.loggedIn.next(true);
@@ -71,7 +71,8 @@ export class AuthService {
   }
 
   addItemToShoppingCart(cardId: number): boolean{
-    if(this.currentShoppingCart.value.id === undefined){
+    if(this.currentShoppingCart.value.id === undefined || this.currentShoppingCart.value.Status != CartStatus.Abierto){
+      console.log('create cart '+this.currentShoppingCart.value.Status != CartStatus.Abierto);
       this.currentShoppingCart.next(this.shoppingCartService.createShoppingcar(this.logedUser.id));
     }
     const addItemResult = this.shoppingCartService.addItemToShoppingCart(this.logedUser.id,cardId,this.currentShoppingCart.value.id);
