@@ -31,7 +31,7 @@ export class UserService {
     ];
     
     createUser(userName: string, firstName: string, lastName: string, password: string, email: string): boolean{
-        if(this.userList.find(user => user.UserName === userName) === undefined){
+        if(this.userList.find(user => user.UserName === userName) !== undefined){
             return false;
         }
 

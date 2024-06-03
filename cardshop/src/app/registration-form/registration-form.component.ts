@@ -3,6 +3,8 @@ import { FormGroup, FormControl, ReactiveFormsModule, Validators, AbstractContro
 import { UserService } from '../core/services/user.service';
 import { NgClass, CommonModule} from '@angular/common';
 import { onlyLettersValidator, passwordValidator, samePasswordValidator } from '../core/validators/validators';
+import { AuthService } from '../core/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration-form',
@@ -18,7 +20,11 @@ import { onlyLettersValidator, passwordValidator, samePasswordValidator } from '
 export class RegistrationFormComponent {
   registrationForm!: FormGroup;
 
-  constructor(private userService: UserService){}
+  constructor(
+    private userService: UserService,
+    private authService: AuthService,
+    private router: Router
+  ){}
 
   ngOnInit(): void {
     this.registrationForm = new FormGroup({
@@ -87,15 +93,20 @@ export class RegistrationFormComponent {
 
   onSubmit(): void {
     if (this.registrationForm.valid) {
-      alert('Se ha registrado con exito');
-      console.log(this.registrationForm.value);
-      this.userService.createUser(
+      const result = this.userService.createUser(
         this.registrationForm.get('username')?.value,
         this.registrationForm.get('firstName')?.value,
         this.registrationForm.get('lastName')?.value,
         this.registrationForm.get('password')?.value,
         this.registrationForm.get('email')?.value
       );
+      if(result){
+        alert('Se ha registrado con exito');
+        this.authService.login(this.registrationForm.get('username')?.value,this.registrationForm.get('password')?.value);
+        this.router.navigate(['/']);
+      }else{
+        alert('El nombre de usuario ya esta en uso');
+      }
     }else{
       alert('Vuelva comprobar los campos del formulario');
     }

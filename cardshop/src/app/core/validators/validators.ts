@@ -19,8 +19,7 @@ export function samePasswordValidator(field1: string, field2: string): Validator
       const password = control.get(field1)?.value;
       const confirmPassword = control.get(field2)?.value;
       const forbidden = password && confirmPassword && password !== confirmPassword;
-      console.log( password + ' || ' + confirmPassword);
-      return forbidden ? {notSamePassword: {value: confirmPassword}} : null;
+      return forbidden ? {notSamePassword: {value: control.value}} : null;
     };
 }
 

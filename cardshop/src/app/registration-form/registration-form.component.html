@@ -31,7 +31,9 @@
       <div class="col-12">
         <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
         <div class="input-group has-validation">
-          <input type="password" class="form-control" [ngClass]="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched) ? 'is-invalid' : ''" [ngClass]="confirmPassword?.valid ? 'is-valid' : ''" id="confirmPassword" formControlName="confirmPassword">
+          <input type="password" class="form-control" 
+            [ngClass]="(confirmPassword?.invalid || registrationForm.hasError('notSamePassword') ) && (confirmPassword?.dirty || confirmPassword?.touched) ? 'is-invalid' : ''" 
+            [ngClass]="confirmPassword?.valid ? 'is-valid' : ''" id="confirmPassword" formControlName="confirmPassword">
         <div class="invalid-feedback">
           <div *ngIf="confirmPassword?.hasError('required')">Confirmar Contraseña es obligatorio.</div>
           <div *ngIf="confirmPassword?.hasError('minlength') || confirmPassword?.hasError('maxlength')">Debe tener entre 8 y 16 caracteres.</div>
