@@ -78,7 +78,7 @@ export class AuthService {
   }
 
   updateShoppingCartStatus(status: CartStatus){
-    if(this.currentShoppingCart.value.id === undefined){
+    if(this.currentShoppingCart.value.id !== undefined){
       this.currentShoppingCart.value.Status = status;
       this.shoppingCartService.updateShoppingCart(this.currentShoppingCart.value);
     }

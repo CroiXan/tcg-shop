@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ShoppingCart } from '../core/models/shopping-cart.model';
 import { CommonModule } from '@angular/common';
+import { CardItem } from '../core/models/carditem.model';
 
 @Component({
   selector: 'app-order-detail',
@@ -19,13 +20,14 @@ export class OrderDetailComponent {
     this.currentShoppingCart = {} as ShoppingCart;
   }
 
-  ngOnChanges(): void {
+  calcTotal(cardList: CardItem[]): number{
     let calcTotal = 0;
-    if(this.currentShoppingCart.CardList !== undefined){
-      this.currentShoppingCart.CardList.forEach(card => {
+    if(cardList !== undefined){
+      cardList.forEach(card => {
         calcTotal += (card.Price * card.Quantity);
       });
     }
+    return calcTotal;
   }
   
 }

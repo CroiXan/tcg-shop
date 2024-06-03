@@ -81,12 +81,10 @@ export class ShoppingCartService {
         return [selectedShoppingCart,hasStock];
     }
 
-    changeStatus(status: CartStatus){
-        
-    }
-
-    getLastShoppingCart(){
-
+    getAllShopppingCartsByUser(userId: number): ShoppingCart[]{
+        return this.shoppingCartList.filter(shoppinCart => 
+            shoppinCart.UserId === userId
+        ) || [] as ShoppingCart[];
     }
 
 }
