@@ -48,4 +48,14 @@ export class OrderListComponent {
     return calcTotal;
   }
 
+  calcQuantity(cardList: CardItem[]): number{
+    let calcQuantity = 0;
+    if(cardList !== undefined){
+      cardList.forEach(card => {
+        calcQuantity += card.Quantity;
+      });
+    }
+    return calcQuantity;
+  }
+
 }

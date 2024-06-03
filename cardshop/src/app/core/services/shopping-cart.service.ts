@@ -61,8 +61,6 @@ export class ShoppingCartService {
             
         
         if(cardIndex !== -1){
-            console.log(selectedCardItem.Quantity)
-            console.log(selectedShoppingCart.CardList[cardIndex].Quantity)
             hasStock = selectedCardItem.Quantity > selectedShoppingCart.CardList[cardIndex].Quantity;
             if(hasStock){
                 selectedShoppingCart.CardList[cardIndex].Quantity += 1;

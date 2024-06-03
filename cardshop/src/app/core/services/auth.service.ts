@@ -74,7 +74,6 @@ export class AuthService {
 
   addItemToShoppingCart(cardId: number): boolean{
     if(this.currentShoppingCart.value.id === undefined || this.currentShoppingCart.value.Status != CartStatus.Abierto){
-      console.log('create cart '+this.currentShoppingCart.value.Status != CartStatus.Abierto);
       this.currentShoppingCart.next(this.shoppingCartService.createShoppingcar(this.logedUser.id));
     }
     const addItemResult = this.shoppingCartService.addItemToShoppingCart(this.logedUser.id,cardId,this.currentShoppingCart.value.id);
