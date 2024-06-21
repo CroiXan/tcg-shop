@@ -3,16 +3,28 @@ import { ShoppingCart } from '../models/shopping-cart.model';
 import { CartStatus } from '../enum/cart-status.enum';
 import { CardItemService } from './cartitem.service';
 
+/**
+ * @description
+ * Mock de funciones para manejo de carros de compra.
+ */
 @Injectable({
     providedIn: 'root'
 })
 
 export class ShoppingCartService {
 
+    /**
+     * Mock para menejar los carritos de compras del sitio
+     */
     shoppingCartList: ShoppingCart[] = [];
 
     constructor(private cardItemService: CardItemService){}
 
+    /**
+     * Funcion para crear un carrito de compras dado un usuario especifico.
+     * @param userId Identificador de usuario
+     * @returns objeto de carrito de compras
+     */
     createShoppingcar(userId: number): ShoppingCart{
         let newShoppingCart: ShoppingCart = {} as ShoppingCart;
         const newId = this.shoppingCartList.reduce((maxId, user) => {
@@ -27,6 +39,11 @@ export class ShoppingCartService {
         return newShoppingCart;
     }
 
+    /**
+     * Funcion para actualizar carrito de compras
+     * @param updatedShoppingCart Carrito de compras con valores actualizados
+     * @returns booleano indicando si se logro actualizar el carrito de compras
+     */
     updateShoppingCart(updatedShoppingCart: ShoppingCart): boolean{
         const index = this.shoppingCartList.findIndex(shoppingCart => shoppingCart.id === updatedShoppingCart.id);
         if(index !== -1){
@@ -36,6 +53,13 @@ export class ShoppingCartService {
         return false;
     }
 
+    /**
+     * Funcion para agregar una carta al carrito de compras.
+     * @param userId Identificador de usuario
+     * @param cardId Identificador de carta a agregar al carrito
+     * @param shoppingCartId Identificador de carrito de compras actual
+     * @returns tupla de item de carrito actualizado y booleano que indica si hay stock
+     */
     addItemToShoppingCart(userId: number, cardId: number, shoppingCartId: number): [ShoppingCart,boolean]{
         const index = this.shoppingCartList.findIndex(shoppingCart => 
             shoppingCart.id === shoppingCartId &&
@@ -79,6 +103,11 @@ export class ShoppingCartService {
         return [selectedShoppingCart,hasStock];
     }
 
+    /**
+     * Funcion para obtener los carritos de compra realizados dado un usuario especifico.
+     * @param userId identificador de usuario
+     * @returns Listado de carritos de compra realizadas por el usuario.
+     */
     getAllShopppingCartsByUser(userId: number): ShoppingCart[]{
         return this.shoppingCartList.filter(shoppinCart => 
             shoppinCart.UserId === userId

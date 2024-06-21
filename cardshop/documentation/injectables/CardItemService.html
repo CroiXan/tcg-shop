@@ -1,0 +1,1367 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>cardshop documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">cardshop documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >CardItemService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/core/services/cartitem.service.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Mock de funciones para catalogo de cartas.</p>
+
+            </p>
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#cardItemList" >cardItemList</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addCardItem" >addCardItem</a>
+                            </li>
+                            <li>
+                                <a href="#checkStock" >checkStock</a>
+                            </li>
+                            <li>
+                                <a href="#getCard" >getCard</a>
+                            </li>
+                            <li>
+                                <a href="#getCardListWithFilters" >getCardListWithFilters</a>
+                            </li>
+                            <li>
+                                <a href="#getCardsList" >getCardsList</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addCardItem"></a>
+                    <span class="name">
+                        <span ><b>addCardItem</b></span>
+                        <a href="#addCardItem"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addCardItem()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="375"
+                                    class="link-to-prism">src/app/core/services/cartitem.service.ts:375</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para agregar cartas al catalogo</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkStock"></a>
+                    <span class="name">
+                        <span ><b>checkStock</b></span>
+                        <a href="#checkStock"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkStock(cardId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="393"
+                                    class="link-to-prism">src/app/core/services/cartitem.service.ts:393</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para validar stock de carta del catalogo.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>cardId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Identificador de carta</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>booleano que indica si hay stock</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCard"></a>
+                    <span class="name">
+                        <span ><b>getCard</b></span>
+                        <a href="#getCard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getCard(cardId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="384"
+                                    class="link-to-prism">src/app/core/services/cartitem.service.ts:384</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para obtener carta por Id.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>cardId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Identificador de carta</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/CardItem.html" target="_self" >CardItem</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Objeto de carta, si no se encuentra el objeto se retorna vacio.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCardListWithFilters"></a>
+                    <span class="name">
+                        <span ><b>getCardListWithFilters</b></span>
+                        <a href="#getCardListWithFilters"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getCardListWithFilters(category: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, search: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="350"
+                                    class="link-to-prism">src/app/core/services/cartitem.service.ts:350</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para obtener listado de cartas del catalogo segun nombre de carta y/o tipo de carta.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>category</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Filtro para buscar por de tipo de carta</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>search</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Filtro para buscar por nombre de carta.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/CardItem.html" target="_self" >CardItem[]</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Listado de cartas resultado de busqueda por filtros.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCardsList"></a>
+                    <span class="name">
+                        <span ><b>getCardsList</b></span>
+                        <a href="#getCardsList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getCardsList()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="340"
+                                    class="link-to-prism">src/app/core/services/cartitem.service.ts:340</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para obtener catalogo de cartas.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/CardItem.html" target="_self" >CardItem[]</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Listado de catalogo de cartas</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cardItemList"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>cardItemList</b></span>
+                        <a href="#cardItemList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/CardItem.html" target="_self" >CardItem[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+        {
+            Id: 1,
+            CardName: &#x27;Oko, Thief of Crowns&#x27;,
+            SetCode: &#x27;ELD&#x27;,
+            SetName: &#x27;Throne of Eldraine&#x27;,
+            CardNumber: 197,
+            Condition: &#x27;NM&#x27;,
+            Price: 30,
+            CardType: &#x27;Legendary Planeswalker — Oko&#x27;,
+            ManaValue: &#x27;3&#x27;,
+            CardText: &#x27;+2: Create a Food token.\n+1: Target artifact or creature loses all abilities and becomes a green Elk creature with base power and toughness 3/3.\n-5: Exchange control of target artifact or creature you control and target creature an opponent controls with power 3 or less.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 2,
+            CardName: &#x27;Uro, Titan of Nature\&#x27;s Wrath&#x27;,
+            SetCode: &#x27;THB&#x27;,
+            SetName: &#x27;Theros Beyond Death&#x27;,
+            CardNumber: 229,
+            Condition: &#x27;NM&#x27;,
+            Price: 20,
+            CardType: &#x27;Legendary Creature — Elder Giant&#x27;,
+            ManaValue: &#x27;3&#x27;,
+            CardText: &#x27;When Uro enters the battlefield, sacrifice it unless it escaped.\nWhenever Uro enters the battlefield or attacks, you gain 3 life and draw a card, then you may put a land card from your hand onto the battlefield.\nEscape—{G}{G}{U}{U}, Exile five other cards from your graveyard.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 3,
+            CardName: &#x27;Fabled Passage&#x27;,
+            SetCode: &#x27;ELD&#x27;,
+            SetName: &#x27;Throne of Eldraine&#x27;,
+            CardNumber: 244,
+            Condition: &#x27;NM&#x27;,
+            Price: 5,
+            CardType: &#x27;Land&#x27;,
+            ManaValue: &#x27;0&#x27;,
+            CardText: &#x27;{T}, Sacrifice Fabled Passage: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle your library. If you control four or more lands, untap that land.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 4,
+            CardName: &#x27;Embercleave&#x27;,
+            SetCode: &#x27;ELD&#x27;,
+            SetName: &#x27;Throne of Eldraine&#x27;,
+            CardNumber: 120,
+            Condition: &#x27;NM&#x27;,
+            Price: 7,
+            CardType: &#x27;Legendary Artifact — Equipment&#x27;,
+            ManaValue: &#x27;6&#x27;,
+            CardText: &#x27;Flash\nThis spell costs {1} less to cast for each attacking creature you control.\nWhen Embercleave enters the battlefield, attach it to target creature you control.\nEquipped creature gets +1/+1 and has double strike and trample.\nEquip {3}&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 5,
+            CardName: &#x27;The Great Henge&#x27;,
+            SetCode: &#x27;ELD&#x27;,
+            SetName: &#x27;Throne of Eldraine&#x27;,
+            CardNumber: 161,
+            Condition: &#x27;NM&#x27;,
+            Price: 50,
+            CardType: &#x27;Legendary Artifact&#x27;,
+            ManaValue: &#x27;9&#x27;,
+            CardText: &#x27;This spell costs {X} less to cast, where X is the greatest power among creatures you control.\n{T}: Add {G}{G}. You gain 2 life.\nWhenever a nontoken creature enters the battlefield under your control, put a +1/+1 counter on it and draw a card.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 6,
+            CardName: &#x27;Gilded Goose&#x27;,
+            SetCode: &#x27;ELD&#x27;,
+            SetName: &#x27;Throne of Eldraine&#x27;,
+            CardNumber: 160,
+            Condition: &#x27;NM&#x27;,
+            Price: 3,
+            CardType: &#x27;Creature — Bird&#x27;,
+            ManaValue: &#x27;1&#x27;,
+            CardText: &#x27;Flying\nWhen Gilded Goose enters the battlefield, create a Food token.\n{1}{G}, {T}: Create a Food token.\n{T}, Sacrifice a Food: Add one mana of any color.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 7,
+            CardName: &#x27;Heliod, Sun-Crowned&#x27;,
+            SetCode: &#x27;THB&#x27;,
+            SetName: &#x27;Theros Beyond Death&#x27;,
+            CardNumber: 18,
+            Condition: &#x27;NM&#x27;,
+            Price: 10,
+            CardType: &#x27;Legendary Enchantment Creature — God&#x27;,
+            ManaValue: &#x27;3&#x27;,
+            CardText: &#x27;Indestructible\nAs long as your devotion to white is less than five, Heliod isn\&#x27;t a creature.\nWhenever you gain life, put a +1/+1 counter on target creature or enchantment you control.\n{1}{W}: Another target creature gains lifelink until end of turn.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 8,
+            CardName: &#x27;Thassa\&#x27;s Oracle&#x27;,
+            SetCode: &#x27;THB&#x27;,
+            SetName: &#x27;Theros Beyond Death&#x27;,
+            CardNumber: 73,
+            Condition: &#x27;NM&#x27;,
+            Price: 15,
+            CardType: &#x27;Creature — Merfolk Wizard&#x27;,
+            ManaValue: &#x27;2&#x27;,
+            CardText: &#x27;When Thassa\&#x27;s Oracle enters the battlefield, look at the top X cards of your library, where X is your devotion to blue. Put up to one of them on top of your library and the rest on the bottom of your library in a random order. If X is greater than or equal to the number of cards in your library, you win the game.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 9,
+            CardName: &#x27;Dryad of the Ilysian Grove&#x27;,
+            SetCode: &#x27;THB&#x27;,
+            SetName: &#x27;Theros Beyond Death&#x27;,
+            CardNumber: 169,
+            Condition: &#x27;NM&#x27;,
+            Price: 8,
+            CardType: &#x27;Creature — Nymph Dryad&#x27;,
+            ManaValue: &#x27;3&#x27;,
+            CardText: &#x27;You may play an additional land on each of your turns.\nLands you control are every basic land type in addition to their other types.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 10,
+            CardName: &#x27;Questing Beast&#x27;,
+            SetCode: &#x27;ELD&#x27;,
+            SetName: &#x27;Throne of Eldraine&#x27;,
+            CardNumber: 171,
+            Condition: &#x27;NM&#x27;,
+            Price: 10,
+            CardType: &#x27;Legendary Creature — Beast&#x27;,
+            ManaValue: &#x27;4&#x27;,
+            CardText: &#x27;Vigilance, deathtouch, haste\nQuesting Beast can\&#x27;t be blocked by creatures with power 2 or less.\nCombat damage that would be dealt by creatures you control can\&#x27;t be prevented.\nWhenever Questing Beast deals combat damage to an opponent, it deals that much damage to target planeswalker that player controls.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 11,
+            CardName: &#x27;Fiery Emancipation&#x27;,
+            SetCode: &#x27;M21&#x27;,
+            SetName: &#x27;Core Set 2021&#x27;,
+            CardNumber: 143,
+            Condition: &#x27;NM&#x27;,
+            Price: 5,
+            CardType: &#x27;Enchantment&#x27;,
+            ManaValue: &#x27;6&#x27;,
+            CardText: &#x27;If a source you control would deal damage to a permanent or player, it deals triple that damage to that permanent or player instead.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 12,
+            CardName: &#x27;Shark Typhoon&#x27;,
+            SetCode: &#x27;IKO&#x27;,
+            SetName: &#x27;Ikoria: Lair of Behemoths&#x27;,
+            CardNumber: 67,
+            Condition: &#x27;NM&#x27;,
+            Price: 10,
+            CardType: &#x27;Enchantment&#x27;,
+            ManaValue: &#x27;6&#x27;,
+            CardText: &#x27;Whenever you cast a noncreature spell, create an X/X blue Shark creature token with flying, where X is that spell\&#x27;s mana value.\nCycling {X}{1}{U}\nWhen you cycle Shark Typhoon, create an X/X blue Shark creature token with flying.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 13,
+            CardName: &#x27;Winota, Joiner of Forces&#x27;,
+            SetCode: &#x27;IKO&#x27;,
+            SetName: &#x27;Ikoria: Lair of Behemoths&#x27;,
+            CardNumber: 216,
+            Condition: &#x27;NM&#x27;,
+            Price: 7,
+            CardType: &#x27;Legendary Creature — Human Warrior&#x27;,
+            ManaValue: &#x27;4&#x27;,
+            CardText: &#x27;Whenever a non-Human creature you control attacks, look at the top six cards of your library. You may put a Human creature card from among them onto the battlefield tapped and attacking. It gains indestructible until end of turn. Put the rest on the bottom of your library in a random order.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 14,
+            CardName: &#x27;Elder Gargaroth&#x27;,
+            SetCode: &#x27;M21&#x27;,
+            SetName: &#x27;Core Set 2021&#x27;,
+            CardNumber: 179,
+            Condition: &#x27;NM&#x27;,
+            Price: 5,
+            CardType: &#x27;Creature — Beast&#x27;,
+            ManaValue: &#x27;5&#x27;,
+            CardText: &#x27;Vigilance, reach, trample\nWhenever Elder Gargaroth attacks or blocks, choose one —\n• Create a 3/3 green Beast creature token.\n• You gain 3 life.\n• Draw a card.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 15,
+            CardName: &#x27;Scute Swarm&#x27;,
+            SetCode: &#x27;ZNR&#x27;,
+            SetName: &#x27;Zendikar Rising&#x27;,
+            CardNumber: 203,
+            Condition: &#x27;NM&#x27;,
+            Price: 2,
+            CardType: &#x27;Creature — Insect&#x27;,
+            ManaValue: &#x27;3&#x27;,
+            CardText: &#x27;Landfall — Whenever a land enters the battlefield under your control, create a 1/1 green Insect creature token. If you control six or more lands, create a token that\&#x27;s a copy of Scute Swarm instead.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 16,
+            CardName: &#x27;Goldspan Dragon&#x27;,
+            SetCode: &#x27;KHM&#x27;,
+            SetName: &#x27;Kaldheim&#x27;,
+            CardNumber: 139,
+            Condition: &#x27;NM&#x27;,
+            Price: 20,
+            CardType: &#x27;Creature — Dragon&#x27;,
+            ManaValue: &#x27;5&#x27;,
+            CardText: &#x27;Flying, haste\nWhenever Goldspan Dragon attacks or becomes the target of a spell, create a Treasure token.\nTreasures you control have \&#x27;{T}, Sacrifice this artifact: Add two mana of any one color.\&#x27;&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 17,
+            CardName: &#x27;Valki, God of Lies // Tibalt, Cosmic Impostor&#x27;,
+            SetCode: &#x27;KHM&#x27;,
+            SetName: &#x27;Kaldheim&#x27;,
+            CardNumber: 114,
+            Condition: &#x27;NM&#x27;,
+            Price: 15,
+            CardType: &#x27;Legendary Creature — God // Legendary Planeswalker — Tibalt&#x27;,
+            ManaValue: &#x27;2 // 7&#x27;,
+            CardText: &#x27;When Valki enters the battlefield, each opponent reveals their hand. For each opponent, exile a creature card they revealed this way until Valki leaves the battlefield.\n{X}: Choose a creature card exiled with Valki with mana value X. Valki becomes a copy of that card. // As Tibalt enters the battlefield, you get an emblem with \&#x27;You may play cards exiled with Tibalt, Cosmic Impostor, and you may spend mana as though it were mana of any color to cast those spells.\&#x27;\n+2: Exile the top card of each player\&#x27;s library.\n-3: Exile target artifact or creature.\n-8: Exile all cards from all graveyards. Add {R}{R}{R}.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 18,
+            CardName: &#x27;Esika\&#x27;s Chariot&#x27;,
+            SetCode: &#x27;KHM&#x27;,
+            SetName: &#x27;Kaldheim&#x27;,
+            CardNumber: 169,
+            Condition: &#x27;NM&#x27;,
+            Price: 4,
+            CardType: &#x27;Legendary Artifact — Vehicle&#x27;,
+            ManaValue: &#x27;4&#x27;,
+            CardText: &#x27;When Esika\&#x27;s Chariot enters the battlefield, create two 2/2 green Cat creature tokens.\nWhenever Esika\&#x27;s Chariot attacks, create a token that\&#x27;s a copy of target token you control.\nCrew 4&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 19,
+            CardName: &#x27;Vorinclex, Monstrous Raider&#x27;,
+            SetCode: &#x27;KHM&#x27;,
+            SetName: &#x27;Kaldheim&#x27;,
+            CardNumber: 199,
+            Condition: &#x27;NM&#x27;,
+            Price: 20,
+            CardType: &#x27;Legendary Creature — Phyrexian Praetor&#x27;,
+            ManaValue: &#x27;6&#x27;,
+            CardText: &#x27;Trample, haste\nIf you would put one or more counters on a permanent or player, put twice that many of each of those kinds of counters on that permanent or player instead.\nIf an opponent would put one or more counters on a permanent or player, they put half that many of each of those kinds of counters on that permanent or player instead, rounded down.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 20,
+            CardName: &#x27;Brazen Borrower // Petty Theft&#x27;,
+            SetCode: &#x27;ELD&#x27;,
+            SetName: &#x27;Throne of Eldraine&#x27;,
+            CardNumber: 39,
+            Condition: &#x27;NM&#x27;,
+            Price: 15,
+            CardType: &#x27;Creature — Faerie Rogue // Instant&#x27;,
+            ManaValue: &#x27;3&#x27;,
+            CardText: &#x27;Flash\nFlying\nBrazen Borrower can block only creatures with flying. // Return target nonland permanent an opponent controls to its owner\&#x27;s hand.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 21,
+            CardName: &#x27;Jegantha, the Wellspring&#x27;,
+            SetCode: &#x27;IKO&#x27;,
+            SetName: &#x27;Ikoria: Lair of Behemoths&#x27;,
+            CardNumber: 222,
+            Condition: &#x27;NM&#x27;,
+            Price: 3,
+            CardType: &#x27;Legendary Creature — Elemental Elk&#x27;,
+            ManaValue: &#x27;5&#x27;,
+            CardText: &#x27;Companion — No card in your starting deck has more than one of the same mana symbol in its mana cost.\n{T}: Add {W}{U}{B}{R}{G}. This mana can\&#x27;t be spent to pay generic mana costs.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        }
+    ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/core/services/cartitem.service.ts:18</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mock de cartas de catalogo.
+Listado de Cartas de Objeto CardItem.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { CardItem } from &#x27;../models/carditem.model&#x27;;
+
+/**
+ * @description
+ * Mock de funciones para catalogo de cartas.
+ */
+@Injectable({
+    providedIn: &#x27;root&#x27;
+})
+
+export class CardItemService {
+
+    /**
+     * Mock de cartas de catalogo.
+     * Listado de Cartas de Objeto CardItem.
+     */
+    private cardItemList: CardItem[] &#x3D; [
+        {
+            Id: 1,
+            CardName: &#x27;Oko, Thief of Crowns&#x27;,
+            SetCode: &#x27;ELD&#x27;,
+            SetName: &#x27;Throne of Eldraine&#x27;,
+            CardNumber: 197,
+            Condition: &#x27;NM&#x27;,
+            Price: 30,
+            CardType: &#x27;Legendary Planeswalker — Oko&#x27;,
+            ManaValue: &#x27;3&#x27;,
+            CardText: &#x27;+2: Create a Food token.\n+1: Target artifact or creature loses all abilities and becomes a green Elk creature with base power and toughness 3/3.\n-5: Exchange control of target artifact or creature you control and target creature an opponent controls with power 3 or less.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 2,
+            CardName: &#x27;Uro, Titan of Nature\&#x27;s Wrath&#x27;,
+            SetCode: &#x27;THB&#x27;,
+            SetName: &#x27;Theros Beyond Death&#x27;,
+            CardNumber: 229,
+            Condition: &#x27;NM&#x27;,
+            Price: 20,
+            CardType: &#x27;Legendary Creature — Elder Giant&#x27;,
+            ManaValue: &#x27;3&#x27;,
+            CardText: &#x27;When Uro enters the battlefield, sacrifice it unless it escaped.\nWhenever Uro enters the battlefield or attacks, you gain 3 life and draw a card, then you may put a land card from your hand onto the battlefield.\nEscape—{G}{G}{U}{U}, Exile five other cards from your graveyard.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 3,
+            CardName: &#x27;Fabled Passage&#x27;,
+            SetCode: &#x27;ELD&#x27;,
+            SetName: &#x27;Throne of Eldraine&#x27;,
+            CardNumber: 244,
+            Condition: &#x27;NM&#x27;,
+            Price: 5,
+            CardType: &#x27;Land&#x27;,
+            ManaValue: &#x27;0&#x27;,
+            CardText: &#x27;{T}, Sacrifice Fabled Passage: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle your library. If you control four or more lands, untap that land.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 4,
+            CardName: &#x27;Embercleave&#x27;,
+            SetCode: &#x27;ELD&#x27;,
+            SetName: &#x27;Throne of Eldraine&#x27;,
+            CardNumber: 120,
+            Condition: &#x27;NM&#x27;,
+            Price: 7,
+            CardType: &#x27;Legendary Artifact — Equipment&#x27;,
+            ManaValue: &#x27;6&#x27;,
+            CardText: &#x27;Flash\nThis spell costs {1} less to cast for each attacking creature you control.\nWhen Embercleave enters the battlefield, attach it to target creature you control.\nEquipped creature gets +1/+1 and has double strike and trample.\nEquip {3}&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 5,
+            CardName: &#x27;The Great Henge&#x27;,
+            SetCode: &#x27;ELD&#x27;,
+            SetName: &#x27;Throne of Eldraine&#x27;,
+            CardNumber: 161,
+            Condition: &#x27;NM&#x27;,
+            Price: 50,
+            CardType: &#x27;Legendary Artifact&#x27;,
+            ManaValue: &#x27;9&#x27;,
+            CardText: &#x27;This spell costs {X} less to cast, where X is the greatest power among creatures you control.\n{T}: Add {G}{G}. You gain 2 life.\nWhenever a nontoken creature enters the battlefield under your control, put a +1/+1 counter on it and draw a card.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 6,
+            CardName: &#x27;Gilded Goose&#x27;,
+            SetCode: &#x27;ELD&#x27;,
+            SetName: &#x27;Throne of Eldraine&#x27;,
+            CardNumber: 160,
+            Condition: &#x27;NM&#x27;,
+            Price: 3,
+            CardType: &#x27;Creature — Bird&#x27;,
+            ManaValue: &#x27;1&#x27;,
+            CardText: &#x27;Flying\nWhen Gilded Goose enters the battlefield, create a Food token.\n{1}{G}, {T}: Create a Food token.\n{T}, Sacrifice a Food: Add one mana of any color.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 7,
+            CardName: &#x27;Heliod, Sun-Crowned&#x27;,
+            SetCode: &#x27;THB&#x27;,
+            SetName: &#x27;Theros Beyond Death&#x27;,
+            CardNumber: 18,
+            Condition: &#x27;NM&#x27;,
+            Price: 10,
+            CardType: &#x27;Legendary Enchantment Creature — God&#x27;,
+            ManaValue: &#x27;3&#x27;,
+            CardText: &#x27;Indestructible\nAs long as your devotion to white is less than five, Heliod isn\&#x27;t a creature.\nWhenever you gain life, put a +1/+1 counter on target creature or enchantment you control.\n{1}{W}: Another target creature gains lifelink until end of turn.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 8,
+            CardName: &#x27;Thassa\&#x27;s Oracle&#x27;,
+            SetCode: &#x27;THB&#x27;,
+            SetName: &#x27;Theros Beyond Death&#x27;,
+            CardNumber: 73,
+            Condition: &#x27;NM&#x27;,
+            Price: 15,
+            CardType: &#x27;Creature — Merfolk Wizard&#x27;,
+            ManaValue: &#x27;2&#x27;,
+            CardText: &#x27;When Thassa\&#x27;s Oracle enters the battlefield, look at the top X cards of your library, where X is your devotion to blue. Put up to one of them on top of your library and the rest on the bottom of your library in a random order. If X is greater than or equal to the number of cards in your library, you win the game.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 9,
+            CardName: &#x27;Dryad of the Ilysian Grove&#x27;,
+            SetCode: &#x27;THB&#x27;,
+            SetName: &#x27;Theros Beyond Death&#x27;,
+            CardNumber: 169,
+            Condition: &#x27;NM&#x27;,
+            Price: 8,
+            CardType: &#x27;Creature — Nymph Dryad&#x27;,
+            ManaValue: &#x27;3&#x27;,
+            CardText: &#x27;You may play an additional land on each of your turns.\nLands you control are every basic land type in addition to their other types.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 10,
+            CardName: &#x27;Questing Beast&#x27;,
+            SetCode: &#x27;ELD&#x27;,
+            SetName: &#x27;Throne of Eldraine&#x27;,
+            CardNumber: 171,
+            Condition: &#x27;NM&#x27;,
+            Price: 10,
+            CardType: &#x27;Legendary Creature — Beast&#x27;,
+            ManaValue: &#x27;4&#x27;,
+            CardText: &#x27;Vigilance, deathtouch, haste\nQuesting Beast can\&#x27;t be blocked by creatures with power 2 or less.\nCombat damage that would be dealt by creatures you control can\&#x27;t be prevented.\nWhenever Questing Beast deals combat damage to an opponent, it deals that much damage to target planeswalker that player controls.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 11,
+            CardName: &#x27;Fiery Emancipation&#x27;,
+            SetCode: &#x27;M21&#x27;,
+            SetName: &#x27;Core Set 2021&#x27;,
+            CardNumber: 143,
+            Condition: &#x27;NM&#x27;,
+            Price: 5,
+            CardType: &#x27;Enchantment&#x27;,
+            ManaValue: &#x27;6&#x27;,
+            CardText: &#x27;If a source you control would deal damage to a permanent or player, it deals triple that damage to that permanent or player instead.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 12,
+            CardName: &#x27;Shark Typhoon&#x27;,
+            SetCode: &#x27;IKO&#x27;,
+            SetName: &#x27;Ikoria: Lair of Behemoths&#x27;,
+            CardNumber: 67,
+            Condition: &#x27;NM&#x27;,
+            Price: 10,
+            CardType: &#x27;Enchantment&#x27;,
+            ManaValue: &#x27;6&#x27;,
+            CardText: &#x27;Whenever you cast a noncreature spell, create an X/X blue Shark creature token with flying, where X is that spell\&#x27;s mana value.\nCycling {X}{1}{U}\nWhen you cycle Shark Typhoon, create an X/X blue Shark creature token with flying.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 13,
+            CardName: &#x27;Winota, Joiner of Forces&#x27;,
+            SetCode: &#x27;IKO&#x27;,
+            SetName: &#x27;Ikoria: Lair of Behemoths&#x27;,
+            CardNumber: 216,
+            Condition: &#x27;NM&#x27;,
+            Price: 7,
+            CardType: &#x27;Legendary Creature — Human Warrior&#x27;,
+            ManaValue: &#x27;4&#x27;,
+            CardText: &#x27;Whenever a non-Human creature you control attacks, look at the top six cards of your library. You may put a Human creature card from among them onto the battlefield tapped and attacking. It gains indestructible until end of turn. Put the rest on the bottom of your library in a random order.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 14,
+            CardName: &#x27;Elder Gargaroth&#x27;,
+            SetCode: &#x27;M21&#x27;,
+            SetName: &#x27;Core Set 2021&#x27;,
+            CardNumber: 179,
+            Condition: &#x27;NM&#x27;,
+            Price: 5,
+            CardType: &#x27;Creature — Beast&#x27;,
+            ManaValue: &#x27;5&#x27;,
+            CardText: &#x27;Vigilance, reach, trample\nWhenever Elder Gargaroth attacks or blocks, choose one —\n• Create a 3/3 green Beast creature token.\n• You gain 3 life.\n• Draw a card.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 15,
+            CardName: &#x27;Scute Swarm&#x27;,
+            SetCode: &#x27;ZNR&#x27;,
+            SetName: &#x27;Zendikar Rising&#x27;,
+            CardNumber: 203,
+            Condition: &#x27;NM&#x27;,
+            Price: 2,
+            CardType: &#x27;Creature — Insect&#x27;,
+            ManaValue: &#x27;3&#x27;,
+            CardText: &#x27;Landfall — Whenever a land enters the battlefield under your control, create a 1/1 green Insect creature token. If you control six or more lands, create a token that\&#x27;s a copy of Scute Swarm instead.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 16,
+            CardName: &#x27;Goldspan Dragon&#x27;,
+            SetCode: &#x27;KHM&#x27;,
+            SetName: &#x27;Kaldheim&#x27;,
+            CardNumber: 139,
+            Condition: &#x27;NM&#x27;,
+            Price: 20,
+            CardType: &#x27;Creature — Dragon&#x27;,
+            ManaValue: &#x27;5&#x27;,
+            CardText: &#x27;Flying, haste\nWhenever Goldspan Dragon attacks or becomes the target of a spell, create a Treasure token.\nTreasures you control have \&#x27;{T}, Sacrifice this artifact: Add two mana of any one color.\&#x27;&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 17,
+            CardName: &#x27;Valki, God of Lies // Tibalt, Cosmic Impostor&#x27;,
+            SetCode: &#x27;KHM&#x27;,
+            SetName: &#x27;Kaldheim&#x27;,
+            CardNumber: 114,
+            Condition: &#x27;NM&#x27;,
+            Price: 15,
+            CardType: &#x27;Legendary Creature — God // Legendary Planeswalker — Tibalt&#x27;,
+            ManaValue: &#x27;2 // 7&#x27;,
+            CardText: &#x27;When Valki enters the battlefield, each opponent reveals their hand. For each opponent, exile a creature card they revealed this way until Valki leaves the battlefield.\n{X}: Choose a creature card exiled with Valki with mana value X. Valki becomes a copy of that card. // As Tibalt enters the battlefield, you get an emblem with \&#x27;You may play cards exiled with Tibalt, Cosmic Impostor, and you may spend mana as though it were mana of any color to cast those spells.\&#x27;\n+2: Exile the top card of each player\&#x27;s library.\n-3: Exile target artifact or creature.\n-8: Exile all cards from all graveyards. Add {R}{R}{R}.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 18,
+            CardName: &#x27;Esika\&#x27;s Chariot&#x27;,
+            SetCode: &#x27;KHM&#x27;,
+            SetName: &#x27;Kaldheim&#x27;,
+            CardNumber: 169,
+            Condition: &#x27;NM&#x27;,
+            Price: 4,
+            CardType: &#x27;Legendary Artifact — Vehicle&#x27;,
+            ManaValue: &#x27;4&#x27;,
+            CardText: &#x27;When Esika\&#x27;s Chariot enters the battlefield, create two 2/2 green Cat creature tokens.\nWhenever Esika\&#x27;s Chariot attacks, create a token that\&#x27;s a copy of target token you control.\nCrew 4&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 19,
+            CardName: &#x27;Vorinclex, Monstrous Raider&#x27;,
+            SetCode: &#x27;KHM&#x27;,
+            SetName: &#x27;Kaldheim&#x27;,
+            CardNumber: 199,
+            Condition: &#x27;NM&#x27;,
+            Price: 20,
+            CardType: &#x27;Legendary Creature — Phyrexian Praetor&#x27;,
+            ManaValue: &#x27;6&#x27;,
+            CardText: &#x27;Trample, haste\nIf you would put one or more counters on a permanent or player, put twice that many of each of those kinds of counters on that permanent or player instead.\nIf an opponent would put one or more counters on a permanent or player, they put half that many of each of those kinds of counters on that permanent or player instead, rounded down.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 20,
+            CardName: &#x27;Brazen Borrower // Petty Theft&#x27;,
+            SetCode: &#x27;ELD&#x27;,
+            SetName: &#x27;Throne of Eldraine&#x27;,
+            CardNumber: 39,
+            Condition: &#x27;NM&#x27;,
+            Price: 15,
+            CardType: &#x27;Creature — Faerie Rogue // Instant&#x27;,
+            ManaValue: &#x27;3&#x27;,
+            CardText: &#x27;Flash\nFlying\nBrazen Borrower can block only creatures with flying. // Return target nonland permanent an opponent controls to its owner\&#x27;s hand.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        },
+        {
+            Id: 21,
+            CardName: &#x27;Jegantha, the Wellspring&#x27;,
+            SetCode: &#x27;IKO&#x27;,
+            SetName: &#x27;Ikoria: Lair of Behemoths&#x27;,
+            CardNumber: 222,
+            Condition: &#x27;NM&#x27;,
+            Price: 3,
+            CardType: &#x27;Legendary Creature — Elemental Elk&#x27;,
+            ManaValue: &#x27;5&#x27;,
+            CardText: &#x27;Companion — No card in your starting deck has more than one of the same mana symbol in its mana cost.\n{T}: Add {W}{U}{B}{R}{G}. This mana can\&#x27;t be spent to pay generic mana costs.&#x27;,
+            CreatedBy: 0,
+            Image: &#x27;&#x27;,
+            Quantity: 5
+        }
+    ]
+
+    /**
+     * Funcion para obtener catalogo de cartas.
+     * @returns Listado de catalogo de cartas
+     */
+    getCardsList(): CardItem[]{
+        return this.cardItemList;
+    }
+
+    /**
+     * Funcion para obtener listado de cartas del catalogo segun nombre de carta y/o tipo de carta.
+     * @param category Filtro para buscar por de tipo de carta
+     * @param search Filtro para buscar por nombre de carta.
+     * @returns Listado de cartas resultado de busqueda por filtros.
+     */
+    getCardListWithFilters(category: string, search: string): CardItem[]{
+        var result: CardItem[] &#x3D; [];
+        
+        if(category !&#x3D;&#x3D; &#x27;&#x27;){
+            result &#x3D; this.cardItemList.filter(cardItem &#x3D;&gt;
+                cardItem.CardType.toLowerCase().includes(category.toLowerCase())
+            );
+        }
+        
+        if(category &#x3D;&#x3D;&#x3D; &#x27;&#x27; &amp;&amp; search !&#x3D;&#x3D; &#x27;&#x27;){
+            result &#x3D; this.cardItemList;
+        }
+        
+        if(search !&#x3D;&#x3D; &#x27;&#x27;){
+            result &#x3D; result.filter(cardItem &#x3D;&gt;
+                cardItem.CardName.toLowerCase().includes(search.toLowerCase())
+            );
+        }
+
+        return result;
+    }
+
+    /**
+     * Funcion para agregar cartas al catalogo
+     */
+    addCardItem(){
+        
+    }
+
+    /**
+     * Funcion para obtener carta por Id.
+     * @param cardId Identificador de carta
+     * @returns Objeto de carta, si no se encuentra el objeto se retorna vacio.
+     */
+    getCard(cardId: number): CardItem{
+        return this.cardItemList.find(card &#x3D;&gt; card.Id &#x3D;&#x3D;&#x3D; cardId ) || {} as CardItem;
+    }
+
+    /**
+     * Funcion para validar stock de carta del catalogo.
+     * @param cardId Identificador de carta
+     * @returns booleano que indica si hay stock
+     */
+    checkStock(cardId: number): boolean{
+        return this.getCard(cardId).Quantity &gt; 0;
+    }
+
+}</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'CardItemService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,12 +1,20 @@
 import { Injectable } from '@angular/core';
 import { CardItem } from '../models/carditem.model';
 
+/**
+ * @description
+ * Mock de funciones para catalogo de cartas.
+ */
 @Injectable({
     providedIn: 'root'
 })
 
 export class CardItemService {
 
+    /**
+     * Mock de cartas de catalogo.
+     * Listado de Cartas de Objeto CardItem.
+     */
     private cardItemList: CardItem[] = [
         {
             Id: 1,
@@ -325,10 +333,20 @@ export class CardItemService {
         }
     ]
 
+    /**
+     * Funcion para obtener catalogo de cartas.
+     * @returns Listado de catalogo de cartas
+     */
     getCardsList(): CardItem[]{
         return this.cardItemList;
     }
 
+    /**
+     * Funcion para obtener listado de cartas del catalogo segun nombre de carta y/o tipo de carta.
+     * @param category Filtro para buscar por de tipo de carta
+     * @param search Filtro para buscar por nombre de carta.
+     * @returns Listado de cartas resultado de busqueda por filtros.
+     */
     getCardListWithFilters(category: string, search: string): CardItem[]{
         var result: CardItem[] = [];
         
@@ -351,6 +369,9 @@ export class CardItemService {
         return result;
     }
 
+    /**
+     * Funcion para agregar cartas al catalogo
+     */
     createOrUpdateCardItem(card: CardItem): boolean{
         if(card.Id === undefined || card.Id === 0){
             const newId = this.cardItemList.reduce((maxId, card) => {
@@ -369,10 +390,20 @@ export class CardItemService {
         return false;
     }
 
+    /**
+     * Funcion para obtener carta por Id.
+     * @param cardId Identificador de carta
+     * @returns Objeto de carta, si no se encuentra el objeto se retorna vacio.
+     */
     getCard(cardId: number): CardItem{
         return this.cardItemList.find(card => card.Id === cardId ) || {} as CardItem;
     }
 
+    /**
+     * Funcion para validar stock de carta del catalogo.
+     * @param cardId Identificador de carta
+     * @returns booleano que indica si hay stock
+     */
     checkStock(cardId: number): boolean{
         return this.getCard(cardId).Quantity > 0;
     }
