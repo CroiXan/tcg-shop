@@ -119,6 +119,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Mock de funciones para catalogo de cartas.</p>
+
+            </p>
 
 
 
@@ -203,14 +210,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="354"
-                                    class="link-to-prism">src/app/core/services/cartitem.service.ts:354</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="375"
+                                    class="link-to-prism">src/app/core/services/cartitem.service.ts:375</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para agregar cartas al catalogo</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -240,14 +249,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="362"
-                                    class="link-to-prism">src/app/core/services/cartitem.service.ts:362</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="393"
+                                    class="link-to-prism">src/app/core/services/cartitem.service.ts:393</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para validar stock de carta del catalogo.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -258,6 +269,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -272,6 +284,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Identificador de carta</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -281,7 +297,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>booleano que indica si hay stock</p>
+
                             </div>
                 </td>
             </tr>
@@ -307,14 +324,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="358"
-                                    class="link-to-prism">src/app/core/services/cartitem.service.ts:358</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="384"
+                                    class="link-to-prism">src/app/core/services/cartitem.service.ts:384</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para obtener carta por Id.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -325,6 +344,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -339,6 +359,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Identificador de carta</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -348,7 +372,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Objeto de carta, si no se encuentra el objeto se retorna vacio.</p>
+
                             </div>
                 </td>
             </tr>
@@ -374,14 +399,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="332"
-                                    class="link-to-prism">src/app/core/services/cartitem.service.ts:332</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="350"
+                                    class="link-to-prism">src/app/core/services/cartitem.service.ts:350</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para obtener listado de cartas del catalogo segun nombre de carta y/o tipo de carta.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -392,6 +419,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -406,6 +434,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Filtro para buscar por de tipo de carta</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>search</td>
@@ -418,6 +450,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Filtro para buscar por nombre de carta.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -427,7 +463,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Listado de cartas resultado de busqueda por filtros.</p>
+
                             </div>
                 </td>
             </tr>
@@ -453,19 +490,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="328"
-                                    class="link-to-prism">src/app/core/services/cartitem.service.ts:328</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="340"
+                                    class="link-to-prism">src/app/core/services/cartitem.service.ts:340</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para obtener catalogo de cartas.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="../interfaces/CardItem.html" target="_self" >CardItem[]</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Listado de catalogo de cartas</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -817,10 +860,17 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/core/services/cartitem.service.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/core/services/cartitem.service.ts:18</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mock de cartas de catalogo.
+Listado de Cartas de Objeto CardItem.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -833,12 +883,20 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { CardItem } from &#x27;../models/carditem.model&#x27;;
 
+/**
+ * @description
+ * Mock de funciones para catalogo de cartas.
+ */
 @Injectable({
     providedIn: &#x27;root&#x27;
 })
 
 export class CardItemService {
 
+    /**
+     * Mock de cartas de catalogo.
+     * Listado de Cartas de Objeto CardItem.
+     */
     private cardItemList: CardItem[] &#x3D; [
         {
             Id: 1,
@@ -1157,10 +1215,20 @@ export class CardItemService {
         }
     ]
 
+    /**
+     * Funcion para obtener catalogo de cartas.
+     * @returns Listado de catalogo de cartas
+     */
     getCardsList(): CardItem[]{
         return this.cardItemList;
     }
 
+    /**
+     * Funcion para obtener listado de cartas del catalogo segun nombre de carta y/o tipo de carta.
+     * @param category Filtro para buscar por de tipo de carta
+     * @param search Filtro para buscar por nombre de carta.
+     * @returns Listado de cartas resultado de busqueda por filtros.
+     */
     getCardListWithFilters(category: string, search: string): CardItem[]{
         var result: CardItem[] &#x3D; [];
         
@@ -1183,14 +1251,27 @@ export class CardItemService {
         return result;
     }
 
+    /**
+     * Funcion para agregar cartas al catalogo
+     */
     addCardItem(){
         
     }
 
+    /**
+     * Funcion para obtener carta por Id.
+     * @param cardId Identificador de carta
+     * @returns Objeto de carta, si no se encuentra el objeto se retorna vacio.
+     */
     getCard(cardId: number): CardItem{
         return this.cardItemList.find(card &#x3D;&gt; card.Id &#x3D;&#x3D;&#x3D; cardId ) || {} as CardItem;
     }
 
+    /**
+     * Funcion para validar stock de carta del catalogo.
+     * @param cardId Identificador de carta
+     * @returns booleano que indica si hay stock
+     */
     checkStock(cardId: number): boolean{
         return this.getCard(cardId).Quantity &gt; 0;
     }
