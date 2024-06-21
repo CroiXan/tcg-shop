@@ -126,6 +126,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Objeto para definir estructura de usuarios del sistema.</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -230,6 +237,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Correo Electronico del usuario.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -263,6 +276,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Nombre del usuario.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -296,6 +315,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Identificador de Objeto.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -329,6 +354,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Indicador para representar que el usuario se encuentre Habilitado/Deshabilitado.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -362,6 +393,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>apellido del usuario.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -395,6 +432,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Contrasena del usuario.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -428,6 +471,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Rol del usuario que define las acciones disponibles que puede realizar.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -461,6 +510,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Nombre del usuario.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -469,13 +524,37 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface User{
+    /**
+     * Identificador de Objeto.
+     */
     id: number;
+    /**
+     * Nombre del usuario.
+     */
     UserName: string;
+    /**
+     * Nombre del usuario.
+     */
     FirstName: string;
+    /**
+     * apellido del usuario.
+     */
     LastName: string;
+    /**
+     * Contrasena del usuario.
+     */
     Password: string;
+    /**
+     * Correo Electronico del usuario.
+     */
     Email: string;
+    /**
+     * Rol del usuario que define las acciones disponibles que puede realizar.
+     */
     Role: string;
+    /**
+     * Indicador para representar que el usuario se encuentre Habilitado/Deshabilitado.
+     */
     IsActive: boolean;
 }</code></pre>
     </div>

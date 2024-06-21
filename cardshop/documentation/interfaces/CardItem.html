@@ -126,6 +126,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Objeto para definir la estructura de Cartas del catalogo y el sitio.</p>
+
+            </p>
 
 
         <section data-compodoc="block-index">
@@ -260,6 +267,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Nombre de carta.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -293,6 +306,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Numero de edicion de la carta.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -326,6 +345,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Habilidad de juego de la carta.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -359,6 +384,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>tipo de carta de juego.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -392,6 +423,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Estado de la carta.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -425,6 +462,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Id de Ususario que agrego la carta al catalogo.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -458,6 +501,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Identificador de objeto.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -491,6 +540,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Url de la imagen de la carta.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -524,6 +579,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Coste para jugar la carta</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -557,6 +618,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Precio de la carta.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -590,6 +657,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Catidad de la carta en catalogo.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -623,6 +696,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Sigla de la edicion de la carta.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -656,6 +735,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Nombre de la edicion de la carta.</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -664,18 +749,57 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface CardItem{
+    /**
+     * Identificador de objeto.
+     */
     Id: number;
+    /**
+     * Nombre de carta.
+     */
     CardName: string;
+    /**
+     * Id de Ususario que agrego la carta al catalogo.
+     */
     CreatedBy: number;
+    /**
+     * Catidad de la carta en catalogo.
+     */
     Quantity: number;
+    /**
+     * Sigla de la edicion de la carta.
+     */
     SetCode: string;
+    /**
+     * Nombre de la edicion de la carta.
+     */
     SetName: string;
+    /**
+     * Numero de edicion de la carta.
+     */
     CardNumber: number;
+    /**
+     * Estado de la carta.
+     */
     Condition: string;
+    /**
+     * Precio de la carta.
+     */
     Price: number;
+    /**
+     * Url de la imagen de la carta.
+     */
     Image: string;
+    /**
+     * tipo de carta de juego.
+     */
     CardType: string;
+    /**
+     * Coste para jugar la carta
+     */
     ManaValue: string;
+    /**
+     * Habilidad de juego de la carta.
+     */
     CardText: string;
 }</code></pre>
     </div>
