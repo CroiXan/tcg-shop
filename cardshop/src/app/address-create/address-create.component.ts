@@ -2,8 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule, NgClass } from '@angular/common';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { AuthService } from '../core/services/auth.service';
+import { onlyLettersValidator, onlyNumbersValidator } from '../core/validators/validators';
 
-
+/**
+ * @description
+ * Componente de formulario de creacion de direccion de entrega del cliente
+ */
 @Component({
   selector: 'app-address-create',
   standalone: true,
@@ -17,10 +21,20 @@ import { AuthService } from '../core/services/auth.service';
 })
 export class AddressCreateComponent {
 
+  /**
+   * Formulario de direccion
+   */
   addressForm!: FormGroup;
 
+  /**
+   * Constructor con dependencia a funciones de sesion
+   * @param authService Manejo de sesion
+   */
   constructor(private authService: AuthService){}
 
+  /**
+   * Iniciacion de formulario de creacion de direccion con definicion de validaciones.
+   */
   ngOnInit(): void {
     this.addressForm = new FormGroup({
       name: new FormControl('', [
@@ -32,11 +46,11 @@ export class AddressCreateComponent {
       ]),
       region: new FormControl('', [
         Validators.required,
-        onlyLetters_Validator()
+        onlyLettersValidator()
       ]),
       commune: new FormControl('', [
         Validators.required,
-        onlyLetters_Validator()
+        onlyLettersValidator()
       ])
     });
   }
@@ -57,23 +71,12 @@ export class AddressCreateComponent {
     return this.addressForm.get('commune');
   }
 
+  /**
+   * Acion submit de formulario
+   */
   onSubmit(){
     this.authService.createAddress(this.addressForm.get('name')?.value,this.addressForm.get('number')?.value,this.addressForm.get('region')?.value,this.addressForm.get('commune')?.value);
     alert('Dirección agregada');
   }
 
-}
-
-export function onlyLetters_Validator(): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const forbidden = !/(^[a-zA-Z]*$)/g.test(control.value);
-    return forbidden ? {only_letters: {value: control.value}} : null;
-  };
-}
-
-export function onlyNumbersValidator(): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const forbidden = !/^\d+$/g.test(control.value);
-    return forbidden ? {onlyNumbers: {value: control.value}} : null;
-  };
 }

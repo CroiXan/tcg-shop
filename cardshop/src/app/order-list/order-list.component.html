@@ -19,7 +19,7 @@
                 <tr *ngFor="let order of orderList">
                     <td>{{order.id}}</td>
                     <td>{{order.Status}}</td>
-                    <td>{{order.CardList.length}}</td>
+                    <td>{{calcQuantity(order.CardList)}}</td>
                     <td>{{calcTotal(order.CardList) | currency}}</td>
                     <td><button type="button" class="btn btn-outline-info" (click)="selectForDetail(order)">Ver detalle</button></td>
                 </tr>

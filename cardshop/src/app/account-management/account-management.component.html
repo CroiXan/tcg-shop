@@ -10,17 +10,17 @@
         <button class="nav-link" id="address-tab" data-bs-toggle="tab" data-bs-target="#address-tab-pane" type="button" role="tab" aria-controls="address-tab-pane" aria-selected="false">Tus direcciones</button>
         </li>
         <li class="nav-item" role="presentation">
-        <button class="nav-link" id="manage-catalog-tab" data-bs-toggle="tab" data-bs-target="#manage-catalog-tab-pane" type="button" role="tab" aria-controls="manage-catalog-tab-pane" aria-selected="false">Administrar catálogo</button>
+        <button class="nav-link" id="manage-catalog-tab" data-bs-toggle="tab" data-bs-target="#manage-catalog-tab-pane" type="button" role="tab" aria-controls="manage-catalog-tab-pane" aria-selected="false" *ngIf="userRole === 'admin'">Administrar catálogo</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="manage-orders-tab" data-bs-toggle="tab" data-bs-target="#manage-orders-tab-pane" type="button" role="tab" aria-controls="manage-orders-tab-pane" aria-selected="false">Administrar órdenes</button>
+            <button class="nav-link" id="manage-orders-tab" data-bs-toggle="tab" data-bs-target="#manage-orders-tab-pane" type="button" role="tab" aria-controls="manage-orders-tab-pane" aria-selected="false" *ngIf="false">Administrar órdenes</button>
         </li>
     </ul>
     <div class="tab-content" id="managementContent">
         <div class="tab-pane fade show active" id="account-tab-pane" role="tabpanel" aria-labelledby="account-tab" tabindex="0"> <app-user-management></app-user-management> </div>
-        <div class="tab-pane fade" id="orders-tab-pane" role="tabpanel" aria-labelledby="orders-tab" tabindex="0"><app-order-list></app-order-list></div>
-        <div class="tab-pane fade" id="address-tab-pane" role="tabpanel" aria-labelledby="address-tab" tabindex="0"> <app-address-management></app-address-management> </div>
-        <div class="tab-pane fade" id="manage-catalog-tab-pane" role="tabpanel" aria-labelledby="manage-catalog-tab" tabindex="0">4</div>
-        <div class="tab-pane fade" id="manage-orders-tab-pane" role="tabpanel" aria-labelledby="manage-orders-tab" tabindex="0">5</div>
+        <div class="tab-pane fade" id="orders-tab-pane" role="tabpanel" aria-labelledby="orders-tab" tabindex="1"><app-order-list></app-order-list></div>
+        <div class="tab-pane fade" id="address-tab-pane" role="tabpanel" aria-labelledby="address-tab" tabindex="2"> <app-address-management></app-address-management> </div>
+        <div class="tab-pane fade" id="manage-catalog-tab-pane" role="tabpanel" aria-labelledby="manage-catalog-tab" tabindex="3" *ngIf="userRole === 'admin'"><app-card-manage></app-card-manage></div>
+        <div class="tab-pane fade" id="manage-orders-tab-pane" role="tabpanel" aria-labelledby="manage-orders-tab" tabindex="4" *ngIf="false">5</div>
     </div>
 </div> 

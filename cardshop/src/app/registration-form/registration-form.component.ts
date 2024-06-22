@@ -2,7 +2,14 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { UserService } from '../core/services/user.service';
 import { NgClass, CommonModule} from '@angular/common';
+import { onlyLettersValidator, passwordValidator, samePasswordValidator } from '../core/validators/validators';
+import { AuthService } from '../core/services/auth.service';
+import { Router } from '@angular/router';
 
+/**
+ * @description
+ * Componente con pantalla de formulario de registro
+ */
 @Component({
   selector: 'app-registration-form',
   standalone: true,
@@ -15,10 +22,26 @@ import { NgClass, CommonModule} from '@angular/common';
   styleUrl: './registration-form.component.css'
 })
 export class RegistrationFormComponent {
+  /**
+   * formulario de registro
+   */
   registrationForm!: FormGroup;
 
-  constructor(private userService: UserService){}
+  /**
+   * Constructor con dependencias a capa service
+   * @param userService Manejo de informacion de usuario
+   * @param authService Manejo de sesion
+   * @param router Manejo de redirecciones
+   */
+  constructor(
+    private userService: UserService,
+    private authService: AuthService,
+    private router: Router
+  ){}
 
+  /**
+   * Inciacion de formulario de registro definiendo validaciones de cada campo
+   */
   ngOnInit(): void {
     this.registrationForm = new FormGroup({
       firstName: new FormControl('', [
@@ -84,43 +107,27 @@ export class RegistrationFormComponent {
     return this.registrationForm.get('confirmPassword');
   }
 
+  /**
+   * Accion submit de formulario
+   */
   onSubmit(): void {
     if (this.registrationForm.valid) {
-      alert('Se ha registrado con exito');
-      console.log(this.registrationForm.value);
-      this.userService.createUser(
+      const result = this.userService.createUser(
         this.registrationForm.get('username')?.value,
         this.registrationForm.get('firstName')?.value,
         this.registrationForm.get('lastName')?.value,
         this.registrationForm.get('password')?.value,
         this.registrationForm.get('email')?.value
       );
+      if(result){
+        alert('Se ha registrado con exito');
+        this.authService.login(this.registrationForm.get('username')?.value,this.registrationForm.get('password')?.value);
+        this.router.navigate(['/']);
+      }else{
+        alert('El nombre de usuario ya esta en uso');
+      }
     }else{
       alert('Vuelva comprobar los campos del formulario');
     }
   }
-}
-
-export function onlyLettersValidator(): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const forbidden = !/(^[a-zA-Z]*$)/g.test(control.value);
-    return forbidden ? {onlyLetters: {value: control.value}} : null;
-  };
-}
-
-export function passwordValidator(): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const forbidden = !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])((?=.*\W)|(?=.*_))^[^ ]+$/g.test(control.value);
-    return forbidden ? {passwordFromat: {value: control.value}} : null;
-  };
-}
-
-export function samePasswordValidator(field1: string, field2: string): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const password = control.get(field1)?.value;
-    const confirmPassword = control.get(field2)?.value;
-    const forbidden = password && confirmPassword && password !== confirmPassword;
-    console.log( password + ' || ' + confirmPassword);
-    return forbidden ? {notSamePassword: {value: confirmPassword}} : null;
-  };
 }

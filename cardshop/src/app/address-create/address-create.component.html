@@ -15,7 +15,7 @@
         <input type="text" class="form-control" id="region" [ngClass]="region?.invalid && (region?.dirty || region?.touched) ? 'is-invalid' : ''" [ngClass]="region?.valid ? 'is-valid' : ''" formControlName="region">
         <div class="invalid-feedback">
             <div *ngIf="region?.hasError('required')">Región es obligatorio.</div>
-            <div *ngIf="region?.hasError('only_letters')">Solo puede contener letras.</div>
+            <div *ngIf="region?.hasError('onlyLetters')">Solo puede contener letras.</div>
         </div>
       </div>
 
@@ -24,7 +24,7 @@
         <input type="text" class="form-control" id="commune" [ngClass]="commune?.invalid && commune?.touched ? 'is-invalid' : ''" [ngClass]="commune?.valid ? 'is-valid' : ''" formControlName="commune">
         <div class="invalid-feedback">
             <div *ngIf="commune?.hasError('required')">Comuna es obligatorio.</div>
-            <div *ngIf="commune?.hasError('only_letters')">Solo puede contener letras.</div>
+            <div *ngIf="commune?.hasError('onlyLetters')">Solo puede contener letras.</div>
         </div>
       </div>
 

@@ -1,0 +1,966 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>cardshop documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">cardshop documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  OrderListComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/order-list/order-list.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente para listar los carritos de compra realizados por el usuario logueado</p>
+
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-order-list</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                                <code><a href="../components/OrderDetailComponent.html" target="_self" >OrderDetailComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./order-list.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./order-list.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#isSelected" >isSelected</a>
+                            </li>
+                            <li>
+                                <a href="#orderList" >orderList</a>
+                            </li>
+                            <li>
+                                <a href="#selectedOrder" >selectedOrder</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#calcQuantity" >calcQuantity</a>
+                            </li>
+                            <li>
+                                <a href="#calcTotal" >calcTotal</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#selectForDetail" >selectForDetail</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(shoppingCartService: <a href="../injectables/ShoppingCartService.html" target="_self">ShoppingCartService</a>, authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/order-list/order-list.component.ts:35</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor con dependencias a capa service</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>shoppingCartService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ShoppingCartService.html" target="_self" >ShoppingCartService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Manejo de carrito de compras</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Manejo de sesion</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="calcQuantity"></a>
+                    <span class="name">
+                        <span ><b>calcQuantity</b></span>
+                        <a href="#calcQuantity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>calcQuantity(cardList: <a href="../interfaces/CardItem.html" target="_self">CardItem[]</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="85"
+                                    class="link-to-prism">src/app/order-list/order-list.component.ts:85</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para sumar el total de cartas de un carrito de compras</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>cardList</td>
+                                            <td>
+                                                            <code><a href="../interfaces/CardItem.html" target="_self" >CardItem[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Listado de cartas de un carrito de compras</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>total de cartas del carrito de compras</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="calcTotal"></a>
+                    <span class="name">
+                        <span ><b>calcTotal</b></span>
+                        <a href="#calcTotal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>calcTotal(cardList: <a href="../interfaces/CardItem.html" target="_self">CardItem[]</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="70"
+                                    class="link-to-prism">src/app/order-list/order-list.component.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para aclcular el total de la compra del carrito de compras</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>cardList</td>
+                                            <td>
+                                                            <code><a href="../interfaces/CardItem.html" target="_self" >CardItem[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Listado de cartas del carrito de compras</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Valor total de la compra</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="50"
+                                    class="link-to-prism">src/app/order-list/order-list.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Iniciacion de id usuario actual y sus respectivos carritos de compra realizados.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectForDetail"></a>
+                    <span class="name">
+                        <span ><b>selectForDetail</b></span>
+                        <a href="#selectForDetail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectForDetail(selected: <a href="../interfaces/ShoppingCart.html" target="_self">ShoppingCart</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="60"
+                                    class="link-to-prism">src/app/order-list/order-list.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Accion que setea carrito de compras seleccionado</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>selected</td>
+                                            <td>
+                                                            <code><a href="../interfaces/ShoppingCart.html" target="_self" >ShoppingCart</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Carrito de compras selecionado</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isSelected"></a>
+                    <span class="name">
+                        <span ><b>isSelected</b></span>
+                        <a href="#isSelected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/order-list/order-list.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Booleano para mostrar card con informacion del carrito de compras seleccionado</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="orderList"></a>
+                    <span class="name">
+                        <span ><b>orderList</b></span>
+                        <a href="#orderList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ShoppingCart.html" target="_self" >ShoppingCart[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/order-list/order-list.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Listado de carritos de compra realizados por el usuario activo</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedOrder"></a>
+                    <span class="name">
+                        <span ><b>selectedOrder</b></span>
+                        <a href="#selectedOrder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ShoppingCart.html" target="_self" >ShoppingCart</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{} as ShoppingCart</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/order-list/order-list.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Carrito de compras seleccionado</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { ShoppingCartService } from &#x27;../core/services/shopping-cart.service&#x27;;
+import { AuthService } from &#x27;../core/services/auth.service&#x27;;
+import { ShoppingCart } from &#x27;../core/models/shopping-cart.model&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { CardItem } from &#x27;../core/models/carditem.model&#x27;;
+import { OrderDetailComponent } from &#x27;../order-detail/order-detail.component&#x27;;
+
+/**
+ * @description
+ * Componente para listar los carritos de compra realizados por el usuario logueado
+ */
+@Component({
+  selector: &#x27;app-order-list&#x27;,
+  standalone: true,
+  imports: [
+    CommonModule,
+    OrderDetailComponent
+  ],
+  templateUrl: &#x27;./order-list.component.html&#x27;,
+  styleUrl: &#x27;./order-list.component.css&#x27;
+})
+export class OrderListComponent {
+  /**
+   * Listado de carritos de compra realizados por el usuario activo
+   */
+  orderList: ShoppingCart[] &#x3D; [];
+  /**
+   * Carrito de compras seleccionado
+   */
+  selectedOrder: ShoppingCart &#x3D; {} as ShoppingCart;
+  /**
+   * Booleano para mostrar card con informacion del carrito de compras seleccionado
+   */
+  isSelected: boolean &#x3D; false;
+
+  /**
+   * Constructor con dependencias a capa service
+   * @param shoppingCartService Manejo de carrito de compras 
+   * @param authService Manejo de sesion
+   */
+  constructor(
+    private shoppingCartService: ShoppingCartService,
+    private authService: AuthService
+  ){}
+
+  /**
+   * Iniciacion de id usuario actual y sus respectivos carritos de compra realizados.
+   */
+  ngOnInit(): void {
+    this.isSelected &#x3D; false;
+    const userId &#x3D; this.authService.getUser().id;
+    this.orderList &#x3D; this.shoppingCartService.getAllShopppingCartsByUser(userId);
+  }
+
+  /**
+   * Accion que setea carrito de compras seleccionado
+   * @param selected Carrito de compras selecionado
+   */
+  selectForDetail(selected: ShoppingCart){
+    this.selectedOrder &#x3D; selected;
+    this.isSelected &#x3D; true;
+  }
+
+  /**
+   * Funcion para aclcular el total de la compra del carrito de compras
+   * @param cardList Listado de cartas del carrito de compras
+   * @returns Valor total de la compra
+   */
+  calcTotal(cardList: CardItem[]): number{
+    let calcTotal &#x3D; 0;
+    if(cardList !&#x3D;&#x3D; undefined){
+      cardList.forEach(card &#x3D;&gt; {
+        calcTotal +&#x3D; (card.Price * card.Quantity);
+      });
+    }
+    return calcTotal;
+  }
+
+  /**
+   * Funcion para sumar el total de cartas de un carrito de compras
+   * @param cardList Listado de cartas de un carrito de compras
+   * @returns total de cartas del carrito de compras
+   */
+  calcQuantity(cardList: CardItem[]): number{
+    let calcQuantity &#x3D; 0;
+    if(cardList !&#x3D;&#x3D; undefined){
+      cardList.forEach(card &#x3D;&gt; {
+        calcQuantity +&#x3D; card.Quantity;
+      });
+    }
+    return calcQuantity;
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;row g-5 margin-top-30&quot;&gt;
+
+    &lt;div class&#x3D;&quot;col-md-5 col-lg-4 order-md-last&quot; *ngIf&#x3D;&quot;isSelected&quot;&gt;
+      &lt;app-order-detail [currentShoppingCart]&#x3D;&quot;selectedOrder&quot;&gt;&lt;/app-order-detail&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;col-md-7 col-lg-8&quot;&gt;
+        &lt;table class&#x3D;&quot;table table-dark table-hover&quot;&gt;
+            &lt;thead&gt;
+                &lt;tr&gt;
+                    &lt;th scope&#x3D;&quot;col&quot;&gt;Orden&lt;/th&gt;
+                    &lt;th scope&#x3D;&quot;col&quot;&gt;Estado&lt;/th&gt;
+                    &lt;th scope&#x3D;&quot;col&quot;&gt;Cantidad de Cartas&lt;/th&gt;
+                    &lt;th scope&#x3D;&quot;col&quot;&gt;Total&lt;/th&gt;
+                    &lt;th scope&#x3D;&quot;col&quot;&gt;&lt;/th&gt;
+                &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+                &lt;tr *ngFor&#x3D;&quot;let order of orderList&quot;&gt;
+                    &lt;td&gt;{{order.id}}&lt;/td&gt;
+                    &lt;td&gt;{{order.Status}}&lt;/td&gt;
+                    &lt;td&gt;{{calcQuantity(order.CardList)}}&lt;/td&gt;
+                    &lt;td&gt;{{calcTotal(order.CardList) | currency}}&lt;/td&gt;
+                    &lt;td&gt;&lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-outline-info&quot; (click)&#x3D;&quot;selectForDetail(order)&quot;&gt;Ver detalle&lt;/button&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="row g-5 margin-top-30">    <div class="col-md-5 col-lg-4 order-md-last" *ngIf="isSelected">      <app-order-detail [currentShoppingCart]="selectedOrder"></app-order-detail>    </div>    <div class="col-md-7 col-lg-8">        <table class="table table-dark table-hover">            <thead>                <tr>                    <th scope="col">Orden</th>                    <th scope="col">Estado</th>                    <th scope="col">Cantidad de Cartas</th>                    <th scope="col">Total</th>                    <th scope="col"></th>                </tr>            </thead>            <tbody>                <tr *ngFor="let order of orderList">                    <td>{{order.id}}</td>                    <td>{{order.Status}}</td>                    <td>{{calcQuantity(order.CardList)}}</td>                    <td>{{calcTotal(order.CardList) | currency}}</td>                    <td><button type="button" class="btn btn-outline-info" (click)="selectForDetail(order)">Ver detalle</button></td>                </tr>            </tbody>        </table>    </div>  </div></div>'
+    var COMPONENTS = [{'name': 'AccountManagementComponent', 'selector': 'app-account-management'},{'name': 'AddressCreateComponent', 'selector': 'app-address-create'},{'name': 'AddressManagementComponent', 'selector': 'app-address-management'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardDetailComponent', 'selector': 'app-card-detail'},{'name': 'CarditemListComponent', 'selector': 'app-carditem-list'},{'name': 'CardManageComponent', 'selector': 'app-card-manage'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'OrderDetailComponent', 'selector': 'app-order-detail'},{'name': 'OrderFinishComponent', 'selector': 'app-order-finish'},{'name': 'OrderListComponent', 'selector': 'app-order-list'},{'name': 'PasswordRecoveryComponent', 'selector': 'app-password-recovery'},{'name': 'PasswordResetComponent', 'selector': 'app-password-reset'},{'name': 'PaymentComponent', 'selector': 'app-payment'},{'name': 'RegistrationFormComponent', 'selector': 'app-registration-form'},{'name': 'ShoppingCartComponent', 'selector': 'app-shopping-cart'},{'name': 'UserManagementComponent', 'selector': 'app-user-management'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'OrderListComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'OrderListComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

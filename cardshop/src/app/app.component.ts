@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 
+/**
+ * @description
+ * Componente principal de la aplicacion
+ */
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -12,5 +16,8 @@ import { NavbarComponent } from './navbar/navbar.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  /**
+   * Titulo de aplicacion
+   */
   title = 'cardshop';
 }

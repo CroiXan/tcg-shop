@@ -5,6 +5,10 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../core/services/auth.service';
 
+/**
+ * @description
+ * Componente para mostrar catalogo de cartas.
+ */
 @Component({
   selector: 'app-carditem-list',
   standalone: true,
@@ -15,15 +19,30 @@ import { AuthService } from '../core/services/auth.service';
   styleUrl: './carditem-list.component.css'
 })
 export class CarditemListComponent {
-
+  /**
+   * Listado de cartas a mostrar en el catalogo
+   */
   carditemList: CardItem[] = [];
 
+  /**
+   * Constructor con dependencias a capa service
+   * @param route Manejo de redirecciones
+   * @param cardItemService Manejo de catalogo de cartas
+   * @param authService Manejo de sesion
+   */
   constructor(
     private route: ActivatedRoute, 
     private cardItemService: CardItemService, 
     private authService: AuthService
   ) {}
 
+  /**
+   * Iniciacion de componente.
+   * Se obtiene parametros de url:
+   *  -categoria = tipo de carta
+   *  -search = nombre de carta
+   * Se obtiene listado de carta segun filtros o se trae el catalogo completo a mostrar.
+   */
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const categoria = params.get('categoria') || '';
@@ -36,6 +55,11 @@ export class CarditemListComponent {
     });
   }
 
+  /**
+   * Accion para agregar una carta seleccionada a al carrito de compras
+   * @param cardId Identificador de carta
+   * @param cardName Nombre de carta
+   */
   addItem(cardId: number, cardName: string){
     const result = this.authService.addItemToShoppingCart(cardId);
     if(result){

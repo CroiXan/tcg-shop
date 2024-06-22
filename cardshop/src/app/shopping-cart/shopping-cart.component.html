@@ -16,7 +16,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let card of currentShoppingCart.CardList">
-                <td></td>
+                <td><img class="rounded mx-auto d-block max-height-100" [src]="card.Image" alt="{{ card.CardName }}"></td>
                 <td>{{card.CardName}}</td>
                 <td>{{card.Price | currency}}</td>
                 <td>{{card.Quantity}}</td>

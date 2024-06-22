@@ -7,6 +7,9 @@ import { authGuardGuard } from './auth-guard.guard';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { PaymentComponent } from './payment/payment.component';
 import { OrderFinishComponent } from './order-finish/order-finish.component';
+import { CardDetailComponent } from './card-detail/card-detail.component';
+import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
 
 export const routes: Routes = [
     { path: '', component: CarditemListComponent},
@@ -15,7 +18,10 @@ export const routes: Routes = [
     { path: 'registro', component: RegistrationFormComponent},
     { path: 'login', component: LoginComponent},
     { path: 'carrito', component: ShoppingCartComponent},
-    { path: 'pago', component: PaymentComponent},
-    { path: 'orden-realizada', component: OrderFinishComponent},
-    { path: 'cuenta', component: AccountManagementComponent}//, canActivate: [authGuardGuard]}
+    { path: 'pago', component: PaymentComponent, canActivate: [authGuardGuard]},
+    { path: 'orden-realizada', component: OrderFinishComponent, canActivate: [authGuardGuard]},
+    { path: 'cuenta', component: AccountManagementComponent, canActivate: [authGuardGuard]},
+    { path: 'card-detail', component: CardDetailComponent, canActivate: [authGuardGuard]},
+    { path: 'recuperar-contrasena', component: PasswordRecoveryComponent},
+    { path: 'actualizar-contrasena/:recovery', component: PasswordResetComponent}
 ];
