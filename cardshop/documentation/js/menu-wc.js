@@ -90,6 +90,12 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="components/OrderListComponent.html" data-type="entity-link" >OrderListComponent</a>
                             </li>
                             <li class="link">
+                                <a href="components/PasswordRecoveryComponent.html" data-type="entity-link" >PasswordRecoveryComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/PasswordResetComponent.html" data-type="entity-link" >PasswordResetComponent</a>
+                            </li>
+                            <li class="link">
                                 <a href="components/PaymentComponent.html" data-type="entity-link" >PaymentComponent</a>
                             </li>
                             <li class="link">

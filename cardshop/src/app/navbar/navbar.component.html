@@ -40,6 +40,7 @@
                     <li class="nav-item" *ngIf="!isLoggedIn"><a class="nav-link" [routerLink]="['/registro']">Registrarse</a></li>
                     <li class="nav-item" *ngIf="isLoggedIn"><a class="nav-link" [routerLink]="['/cuenta']">Cuenta Usuario</a></li>
                     <li class="nav-item" *ngIf="isLoggedIn"><a class="nav-link" (click)="logout()">Cerrar sesión</a></li>
+                    <li class="nav-item" *ngIf="!isLoggedIn"><a class="nav-link" [routerLink]="['/recuperar-contrasena']">Recuperar Contraseña</a></li>
                 </ul>
             </div>
         </div>

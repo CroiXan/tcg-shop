@@ -41,6 +41,7 @@ export class UserService {
      * Funcion Mock para crear usuarios.
      * Agrega un usuario a listado UsarList.
      * Valida que el nombre de usuario no se repita con los ya existentes.
+     * Valida si email ya se encuentra en uso.
      * Se agrega un usario con id correlativo a los id existentes.
      * El rol por defecto es 'user' que representa un cliente normal.
      * @param userName Nombre de usuario
@@ -52,6 +53,10 @@ export class UserService {
      */
     createUser(userName: string, firstName: string, lastName: string, password: string, email: string): boolean{
         if(this.userList.find(user => user.UserName === userName) !== undefined){
+            return false;
+        }
+
+        if(this.checkEmail(email)){
             return false;
         }
 
@@ -107,4 +112,10 @@ export class UserService {
 
     }
 
+    /**
+     * Funcion para validar si email ya se encuentra en uso
+     */
+    checkEmail(email: string): boolean{
+        return (this.userList.find(user => user.Email === email) !== undefined)
+    }
 }

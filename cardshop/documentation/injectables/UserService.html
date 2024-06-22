@@ -157,6 +157,9 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#checkEmail" >checkEmail</a>
+                            </li>
+                            <li>
                                 <a href="#createUser" >createUser</a>
                             </li>
                             <li>
@@ -190,6 +193,75 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="checkEmail"></a>
+                    <span class="name">
+                        <span ><b>checkEmail</b></span>
+                        <a href="#checkEmail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkEmail(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="118"
+                                    class="link-to-prism">src/app/core/services/user.service.ts:118</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para validar si email ya se encuentra en uso</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>email</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="createUser"></a>
                     <span class="name">
                         <span ><b>createUser</b></span>
@@ -206,8 +278,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="53"
-                                    class="link-to-prism">src/app/core/services/user.service.ts:53</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="54"
+                                    class="link-to-prism">src/app/core/services/user.service.ts:54</a></div>
                         </td>
                     </tr>
 
@@ -217,6 +289,7 @@
                         <div class="io-description"><p>Funcion Mock para crear usuarios.
 Agrega un usuario a listado UsarList.
 Valida que el nombre de usuario no se repita con los ya existentes.
+Valida si email ya se encuentra en uso.
 Se agrega un usario con id correlativo a los id existentes.
 El rol por defecto es &#39;user&#39; que representa un cliente normal.</p>
 </div>
@@ -349,8 +422,8 @@ El rol por defecto es &#39;user&#39; que representa un cliente normal.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="106"
-                                    class="link-to-prism">src/app/core/services/user.service.ts:106</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="111"
+                                    class="link-to-prism">src/app/core/services/user.service.ts:111</a></div>
                         </td>
                     </tr>
 
@@ -388,8 +461,8 @@ El rol por defecto es &#39;user&#39; que representa un cliente normal.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="83"
-                                    class="link-to-prism">src/app/core/services/user.service.ts:83</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="88"
+                                    class="link-to-prism">src/app/core/services/user.service.ts:88</a></div>
                         </td>
                     </tr>
 
@@ -479,8 +552,8 @@ El rol por defecto es &#39;user&#39; que representa un cliente normal.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="94"
-                                    class="link-to-prism">src/app/core/services/user.service.ts:94</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="99"
+                                    class="link-to-prism">src/app/core/services/user.service.ts:99</a></div>
                         </td>
                     </tr>
 
@@ -649,6 +722,7 @@ export class UserService {
      * Funcion Mock para crear usuarios.
      * Agrega un usuario a listado UsarList.
      * Valida que el nombre de usuario no se repita con los ya existentes.
+     * Valida si email ya se encuentra en uso.
      * Se agrega un usario con id correlativo a los id existentes.
      * El rol por defecto es &#x27;user&#x27; que representa un cliente normal.
      * @param userName Nombre de usuario
@@ -660,6 +734,10 @@ export class UserService {
      */
     createUser(userName: string, firstName: string, lastName: string, password: string, email: string): boolean{
         if(this.userList.find(user &#x3D;&gt; user.UserName &#x3D;&#x3D;&#x3D; userName) !&#x3D;&#x3D; undefined){
+            return false;
+        }
+
+        if(this.checkEmail(email)){
             return false;
         }
 
@@ -715,6 +793,12 @@ export class UserService {
 
     }
 
+    /**
+     * Funcion para validar si email ya se encuentra en uso
+     */
+    checkEmail(email: string): boolean{
+        return (this.userList.find(user &#x3D;&gt; user.Email &#x3D;&#x3D;&#x3D; email) !&#x3D;&#x3D; undefined)
+    }
 }</code></pre>
     </div>
 
