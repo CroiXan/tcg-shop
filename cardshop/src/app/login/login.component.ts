@@ -5,7 +5,8 @@ import { AuthService } from '../core/services/auth.service';
 import { Router, RouterModule } from '@angular/router';
 
 /**
- * 
+ * @description
+ * Componente de formulario de ingreso a la aplicacion
  */
 @Component({
   selector: 'app-login',

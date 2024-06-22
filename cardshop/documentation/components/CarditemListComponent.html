@@ -120,6 +120,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente para mostrar catalogo de cartas.</p>
+
+    </p>
 
 
 
@@ -236,12 +243,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/carditem-list/carditem-list.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/carditem-list/carditem-list.component.ts:25</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor con dependencias a capa service</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -250,6 +259,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -264,6 +274,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Manejo de redirecciones</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>cardItemService</td>
@@ -276,6 +290,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Manejo de catalogo de cartas</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>authService</td>
@@ -288,6 +306,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Manejo de sesion</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -327,14 +349,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="39"
-                                    class="link-to-prism">src/app/carditem-list/carditem-list.component.ts:39</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="63"
+                                    class="link-to-prism">src/app/carditem-list/carditem-list.component.ts:63</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Accion para agregar una carta seleccionada a al carrito de compras</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -345,6 +369,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -359,6 +384,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Identificador de carta</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>cardName</td>
@@ -371,6 +400,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Nombre de carta</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -406,14 +439,20 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="27"
-                                    class="link-to-prism">src/app/carditem-list/carditem-list.component.ts:27</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="46"
+                                    class="link-to-prism">src/app/carditem-list/carditem-list.component.ts:46</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Iniciacion de componente.
+Se obtiene parametros de url:
+ -categoria = tipo de carta
+ -search = nombre de carta
+Se obtiene listado de carta segun filtros o se trae el catalogo completo a mostrar.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -453,10 +492,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/carditem-list/carditem-list.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/carditem-list/carditem-list.component.ts:25</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Listado de cartas a mostrar en el catalogo</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -473,6 +518,10 @@ import { ActivatedRoute } from &#x27;@angular/router&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { AuthService } from &#x27;../core/services/auth.service&#x27;;
 
+/**
+ * @description
+ * Componente para mostrar catalogo de cartas.
+ */
 @Component({
   selector: &#x27;app-carditem-list&#x27;,
   standalone: true,
@@ -483,15 +532,30 @@ import { AuthService } from &#x27;../core/services/auth.service&#x27;;
   styleUrl: &#x27;./carditem-list.component.css&#x27;
 })
 export class CarditemListComponent {
-
+  /**
+   * Listado de cartas a mostrar en el catalogo
+   */
   carditemList: CardItem[] &#x3D; [];
 
+  /**
+   * Constructor con dependencias a capa service
+   * @param route Manejo de redirecciones
+   * @param cardItemService Manejo de catalogo de cartas
+   * @param authService Manejo de sesion
+   */
   constructor(
     private route: ActivatedRoute, 
     private cardItemService: CardItemService, 
     private authService: AuthService
   ) {}
 
+  /**
+   * Iniciacion de componente.
+   * Se obtiene parametros de url:
+   *  -categoria &#x3D; tipo de carta
+   *  -search &#x3D; nombre de carta
+   * Se obtiene listado de carta segun filtros o se trae el catalogo completo a mostrar.
+   */
   ngOnInit(): void {
     this.route.paramMap.subscribe(params &#x3D;&gt; {
       const categoria &#x3D; params.get(&#x27;categoria&#x27;) || &#x27;&#x27;;
@@ -504,6 +568,11 @@ export class CarditemListComponent {
     });
   }
 
+  /**
+   * Accion para agregar una carta seleccionada a al carrito de compras
+   * @param cardId Identificador de carta
+   * @param cardName Nombre de carta
+   */
   addItem(cardId: number, cardName: string){
     const result &#x3D; this.authService.addItemToShoppingCart(cardId);
     if(result){

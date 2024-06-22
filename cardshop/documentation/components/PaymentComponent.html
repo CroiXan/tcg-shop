@@ -120,6 +120,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente de pantalla de Mock de proceso de pago</p>
+
+    </p>
 
 
 
@@ -236,12 +243,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/payment/payment.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/payment/payment.component.ts:24</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Contructor de componente con dependencias a funciones de sesion</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -250,6 +259,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -264,6 +274,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Manejo de informacion de sesion</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>router</td>
@@ -276,6 +290,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Manejo de redirecciones</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -315,14 +333,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="24"
-                                    class="link-to-prism">src/app/payment/payment.component.ts:24</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="40"
+                                    class="link-to-prism">src/app/payment/payment.component.ts:40</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Iniciacion de componente donde se verifica que exista un carrito de compras activo en la sesion.
+Tempo de espera de 4 segundos para simular proceso de pago.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -352,14 +373,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="40"
-                                    class="link-to-prism">src/app/payment/payment.component.ts:40</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="59"
+                                    class="link-to-prism">src/app/payment/payment.component.ts:59</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Acion de simulacion de pago, espera de 4 segundos antes de redirigir a pantalla de finalizacion de carrito</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -399,10 +422,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/payment/payment.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/payment/payment.component.ts:24</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Booleano para indicar si se ha realizado el pago</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -417,6 +446,10 @@ import { CommonModule } from &#x27;@angular/common&#x27;;
 import { AuthService } from &#x27;../core/services/auth.service&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
 
+/**
+ * @description
+ * Componente de pantalla de Mock de proceso de pago
+ */
 @Component({
   selector: &#x27;app-payment&#x27;,
   standalone: true,
@@ -428,13 +461,25 @@ import { Router } from &#x27;@angular/router&#x27;;
 })
 export class PaymentComponent {
 
+  /**
+   * Booleano para indicar si se ha realizado el pago
+   */
   isPaymentSuccess: boolean &#x3D; false;
 
+  /**
+   * Contructor de componente con dependencias a funciones de sesion
+   * @param authService Manejo de informacion de sesion
+   * @param router Manejo de redirecciones
+   */
   constructor(
     private authService: AuthService,
     private router: Router
   ){}
 
+  /**
+   * Iniciacion de componente donde se verifica que exista un carrito de compras activo en la sesion.
+   * Tempo de espera de 4 segundos para simular proceso de pago.
+   */
   ngOnInit() {
 
     this.authService.getCurrentShoppingCart().subscribe(shoppingCart &#x3D;&gt; {
@@ -451,6 +496,9 @@ export class PaymentComponent {
 
   }
 
+  /**
+   * Acion de simulacion de pago, espera de 4 segundos antes de redirigir a pantalla de finalizacion de carrito
+   */
   redirect() {
     setTimeout(() &#x3D;&gt; {
       this.router.navigate([&#x27;/orden-realizada&#x27;]);

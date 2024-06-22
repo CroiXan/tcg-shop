@@ -4,7 +4,10 @@ import { FormGroup, FormControl, ReactiveFormsModule, Validators, AbstractContro
 import { AuthService } from '../core/services/auth.service';
 import { onlyLettersValidator, onlyNumbersValidator } from '../core/validators/validators';
 
-
+/**
+ * @description
+ * Componente de formulario de creacion de direccion de entrega del cliente
+ */
 @Component({
   selector: 'app-address-create',
   standalone: true,
@@ -18,10 +21,20 @@ import { onlyLettersValidator, onlyNumbersValidator } from '../core/validators/v
 })
 export class AddressCreateComponent {
 
+  /**
+   * Formulario de direccion
+   */
   addressForm!: FormGroup;
 
+  /**
+   * Constructor con dependencia a funciones de sesion
+   * @param authService Manejo de sesion
+   */
   constructor(private authService: AuthService){}
 
+  /**
+   * Iniciacion de formulario de creacion de direccion con definicion de validaciones.
+   */
   ngOnInit(): void {
     this.addressForm = new FormGroup({
       name: new FormControl('', [
@@ -58,6 +71,9 @@ export class AddressCreateComponent {
     return this.addressForm.get('commune');
   }
 
+  /**
+   * Acion submit de formulario
+   */
   onSubmit(){
     this.authService.createAddress(this.addressForm.get('name')?.value,this.addressForm.get('number')?.value,this.addressForm.get('region')?.value,this.addressForm.get('commune')?.value);
     alert('Dirección agregada');

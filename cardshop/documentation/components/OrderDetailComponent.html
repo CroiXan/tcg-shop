@@ -120,6 +120,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente para mostrar detalle de un carrito de compras selecionado</p>
+
+    </p>
 
 
 
@@ -250,10 +257,16 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/order-detail/order-detail.component.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/order-detail/order-detail.component.ts:31</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor con iniciacion de objeto de carrito de compras</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -276,9 +289,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/order-detail/order-detail.component.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/order-detail/order-detail.component.ts:23</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Valor de entrada del carrito selecionado</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
@@ -302,9 +321,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/order-detail/order-detail.component.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/order-detail/order-detail.component.ts:27</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Bolleano de entrada para indicar si se debe mostrar las imagenes de las cartas del carrito</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -336,14 +361,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="24"
-                                    class="link-to-prism">src/app/order-detail/order-detail.component.ts:24</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="45"
+                                    class="link-to-prism">src/app/order-detail/order-detail.component.ts:45</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para calcular precio total de la compra</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -354,6 +381,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -368,6 +396,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Listado de cartas del carrito selecionado</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -377,7 +409,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Precio total del carrito de compras</p>
+
                             </div>
                 </td>
             </tr>
@@ -413,10 +446,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/order-detail/order-detail.component.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/order-detail/order-detail.component.ts:31</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Precio total de compra del carro</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -431,6 +470,10 @@ import { ShoppingCart } from &#x27;../core/models/shopping-cart.model&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { CardItem } from &#x27;../core/models/carditem.model&#x27;;
 
+/**
+ * @description
+ * Componente para mostrar detalle de un carrito de compras selecionado
+ */
 @Component({
   selector: &#x27;app-order-detail&#x27;,
   standalone: true,
@@ -441,14 +484,31 @@ import { CardItem } from &#x27;../core/models/carditem.model&#x27;;
   styleUrl: &#x27;./order-detail.component.css&#x27;
 })
 export class OrderDetailComponent {
+  /**
+   * Valor de entrada del carrito selecionado
+   */
   @Input() currentShoppingCart: ShoppingCart;
+  /**
+   * Bolleano de entrada para indicar si se debe mostrar las imagenes de las cartas del carrito
+   */
   @Input() showImage: boolean &#x3D; false;
+  /**
+   * Precio total de compra del carro
+   */
   total: number &#x3D; 0;
 
+  /**
+   * Constructor con iniciacion de objeto de carrito de compras
+   */
   constructor(){
     this.currentShoppingCart &#x3D; {} as ShoppingCart;
   }
 
+  /**
+   * Funcion para calcular precio total de la compra
+   * @param cardList Listado de cartas del carrito selecionado
+   * @returns Precio total del carrito de compras
+   */
   calcTotal(cardList: CardItem[]): number{
     let calcTotal &#x3D; 0;
     if(cardList !&#x3D;&#x3D; undefined){

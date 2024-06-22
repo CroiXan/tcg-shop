@@ -120,6 +120,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente principal de la aplicacion</p>
+
+    </p>
 
 
 
@@ -244,10 +251,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/app.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/app.component.ts:22</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Titulo de aplicacion</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -261,6 +274,10 @@
 import { RouterOutlet } from &#x27;@angular/router&#x27;;
 import { NavbarComponent } from &#x27;./navbar/navbar.component&#x27;;
 
+/**
+ * @description
+ * Componente principal de la aplicacion
+ */
 @Component({
   selector: &#x27;app-root&#x27;,
   standalone: true,
@@ -271,6 +288,9 @@ import { NavbarComponent } from &#x27;./navbar/navbar.component&#x27;;
   styleUrl: &#x27;./app.component.css&#x27;
 })
 export class AppComponent {
+  /**
+   * Titulo de aplicacion
+   */
   title &#x3D; &#x27;cardshop&#x27;;
 }
 </code></pre>
