@@ -144,6 +144,9 @@
                             <li>
                                 <a href="#userList" >userList</a>
                             </li>
+                            <li>
+                                <a href="#userRecoveryTry" >userRecoveryTry</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -160,13 +163,28 @@
                                 <a href="#checkEmail" >checkEmail</a>
                             </li>
                             <li>
+                                <a href="#checkRecovery" >checkRecovery</a>
+                            </li>
+                            <li>
+                                <a href="#createRecovery" >createRecovery</a>
+                            </li>
+                            <li>
                                 <a href="#createUser" >createUser</a>
                             </li>
                             <li>
                                 <a href="#deactivateUser" >deactivateUser</a>
                             </li>
                             <li>
+                                <a href="#findRecovery" >findRecovery</a>
+                            </li>
+                            <li>
+                                <a href="#generateRandomToken" >generateRandomToken</a>
+                            </li>
+                            <li>
                                 <a href="#getUserAuth" >getUserAuth</a>
+                            </li>
+                            <li>
+                                <a href="#updatePassword" >updatePassword</a>
                             </li>
                             <li>
                                 <a href="#updateUser" >updateUser</a>
@@ -209,8 +227,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="118"
-                                    class="link-to-prism">src/app/core/services/user.service.ts:118</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="127"
+                                    class="link-to-prism">src/app/core/services/user.service.ts:127</a></div>
                         </td>
                     </tr>
 
@@ -229,6 +247,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -243,6 +262,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>email para validar</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -252,7 +275,158 @@
 
                         </div>
                             <div class="io-description">
+                                <p>booleano si email se encuentra en uso</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkRecovery"></a>
+                    <span class="name">
+                        <span ><b>checkRecovery</b></span>
+                        <a href="#checkRecovery"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkRecovery(token: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="176"
+                                    class="link-to-prism">src/app/core/services/user.service.ts:176</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para checkear validez de token de recuperacion</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
                                 
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>token</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Token de recuperacion</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>mensaje de error</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createRecovery"></a>
+                    <span class="name">
+                        <span ><b>createRecovery</b></span>
+                        <a href="#createRecovery"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createRecovery(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="136"
+                                    class="link-to-prism">src/app/core/services/user.service.ts:136</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para crear un registro de recuperar contrasena</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>email</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>email para recuperar contrasena</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Token generado</p>
+
                             </div>
                 </td>
             </tr>
@@ -278,8 +452,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="54"
-                                    class="link-to-prism">src/app/core/services/user.service.ts:54</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="61"
+                                    class="link-to-prism">src/app/core/services/user.service.ts:61</a></div>
                         </td>
                     </tr>
 
@@ -422,8 +596,8 @@ El rol por defecto es &#39;user&#39; que representa un cliente normal.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="111"
-                                    class="link-to-prism">src/app/core/services/user.service.ts:111</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="118"
+                                    class="link-to-prism">src/app/core/services/user.service.ts:118</a></div>
                         </td>
                     </tr>
 
@@ -437,6 +611,124 @@ El rol por defecto es &#39;user&#39; que representa un cliente normal.</p>
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findRecovery"></a>
+                    <span class="name">
+                        <span ><b>findRecovery</b></span>
+                        <a href="#findRecovery"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>findRecovery(token: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="167"
+                                    class="link-to-prism">src/app/core/services/user.service.ts:167</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para encontrar item de recuperacion segun un token dado</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>token</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Token de recuperacion</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/Recovery.html" target="_self" >Recovery</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Item de recuperacion de clave</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="generateRandomToken"></a>
+                    <span class="name">
+                        <span ><b>generateRandomToken</b></span>
+                        <a href="#generateRandomToken"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>generateRandomToken()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="157"
+                                    class="link-to-prism">src/app/core/services/user.service.ts:157</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para generar token aleatorio</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Token</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -461,8 +753,8 @@ El rol por defecto es &#39;user&#39; que representa un cliente normal.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="88"
-                                    class="link-to-prism">src/app/core/services/user.service.ts:88</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="95"
+                                    class="link-to-prism">src/app/core/services/user.service.ts:95</a></div>
                         </td>
                     </tr>
 
@@ -536,6 +828,97 @@ El rol por defecto es &#39;user&#39; que representa un cliente normal.</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="updatePassword"></a>
+                    <span class="name">
+                        <span ><b>updatePassword</b></span>
+                        <a href="#updatePassword"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updatePassword(token: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, password: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="202"
+                                    class="link-to-prism">src/app/core/services/user.service.ts:202</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para actualizar contrasena dado un token</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>token</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>token de recuperacion</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>password</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>nueva contrasena</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>mensaje de error</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="updateUser"></a>
                     <span class="name">
                         <span ><b>updateUser</b></span>
@@ -552,8 +935,8 @@ El rol por defecto es &#39;user&#39; que representa un cliente normal.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="99"
-                                    class="link-to-prism">src/app/core/services/user.service.ts:99</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="106"
+                                    class="link-to-prism">src/app/core/services/user.service.ts:106</a></div>
                         </td>
                     </tr>
 
@@ -660,13 +1043,50 @@ Si se encuentra se pisa objeto con nueva informacion.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/core/services/user.service.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/core/services/user.service.ts:19</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>Mock de listado de Usuarios de la aplicacion.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userRecoveryTry"></a>
+                    <span class="name">
+                        <span ><b>userRecoveryTry</b></span>
+                        <a href="#userRecoveryTry"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Recovery.html" target="_self" >Recovery[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/core/services/user.service.ts:45</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Listado de intentos de recuperacion de contrasena</p>
 </div>
                 </td>
             </tr>
@@ -681,6 +1101,8 @@ Si se encuentra se pisa objeto con nueva informacion.</p>
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { User } from &#x27;../models/user.model&#x27;;
+import { Recovery } from &#x27;../models/Recovery.model&#x27;;
+import * as CryptoJS from &#x27;crypto-js&#x27;;
 
 /**
  * @description
@@ -717,6 +1139,11 @@ export class UserService {
             IsActive: true
         }
     ];
+
+    /**
+     * Listado de intentos de recuperacion de contrasena
+     */
+    userRecoveryTry: Recovery[] &#x3D; [];
 
     /**
      * Funcion Mock para crear usuarios.
@@ -795,9 +1222,117 @@ export class UserService {
 
     /**
      * Funcion para validar si email ya se encuentra en uso
+     * @param email email para validar
+     * @returns booleano si email se encuentra en uso
      */
     checkEmail(email: string): boolean{
         return (this.userList.find(user &#x3D;&gt; user.Email &#x3D;&#x3D;&#x3D; email) !&#x3D;&#x3D; undefined)
+    }
+
+    /**
+     * Funcion para crear un registro de recuperar contrasena
+     * @param email email para recuperar contrasena
+     * @returns Token generado
+     */
+    createRecovery(email:string): string{
+        let findUser &#x3D; this.userList.find(user &#x3D;&gt; user.Email &#x3D;&#x3D;&#x3D; email);
+
+        if(findUser &#x3D;&#x3D; undefined){
+            return &#x27;&#x27;;
+        }
+
+        let recovery &#x3D; {} as Recovery;
+        recovery.UserId &#x3D; findUser.id;
+        recovery.date &#x3D; new Date();
+        recovery.token &#x3D; this.generateRandomToken();
+
+        this.userRecoveryTry.push(recovery);
+
+        return recovery.token;
+    }
+
+    /**
+     * Funcion para generar token aleatorio
+     * @returns Token
+     */
+    generateRandomToken(): string {
+        const randomBytes &#x3D; CryptoJS.lib.WordArray.random(16);
+        return randomBytes.toString(CryptoJS.enc.Hex);
+    }
+
+    /**
+     * Funcion para encontrar item de recuperacion segun un token dado
+     * @param token Token de recuperacion
+     * @returns Item de recuperacion de clave
+     */
+    findRecovery(token: string): Recovery{
+        return this.userRecoveryTry.find(recovery &#x3D;&gt; recovery.token &#x3D;&#x3D;&#x3D; token) || {} as Recovery;
+    }
+
+    /**
+     * Funcion para checkear validez de token de recuperacion
+     * @param token Token de recuperacion
+     * @returns mensaje de error
+     */
+    checkRecovery(token: string): string{
+        let recovery &#x3D; this.findRecovery(token);
+        let currentDate &#x3D; new Date();
+
+        if(recovery.UserId &#x3D;&#x3D; undefined){
+            return &#x27;error de recuperacion&#x27;
+        }
+
+        const recoverytimestamp &#x3D; recovery.date.getTime();
+        const currenttimestamp &#x3D; currentDate.getTime();
+        const differenceInMillis &#x3D; Math.abs(currenttimestamp - recoverytimestamp);
+        const differenceInHours &#x3D; differenceInMillis / (1000 * 60 * 60);
+
+        if(differenceInHours &gt; 1){
+            return &#x27;token ha expirado&#x27;
+        }
+
+        return &#x27;&#x27;;
+    }
+
+    /**
+     * Funcion para actualizar contrasena dado un token 
+     * @param token token de recuperacion
+     * @param password nueva contrasena
+     * @returns mensaje de error
+     */
+    updatePassword(token: string, password: string): string{
+        let recovery &#x3D; this.findRecovery(token);
+        let currentDate &#x3D; new Date();
+
+        if(recovery.UserId &#x3D;&#x3D; undefined){
+            return &#x27;error de recuperacion&#x27;;
+        }
+
+        const recoverytimestamp &#x3D; recovery.date.getTime();
+        const currenttimestamp &#x3D; currentDate.getTime();
+        const differenceInMillis &#x3D; Math.abs(currenttimestamp - recoverytimestamp);
+        const differenceInHours &#x3D; differenceInMillis / (1000 * 60 * 60);
+
+        if(differenceInHours &gt; 1){
+            return &#x27;token ha expirado&#x27;;
+        }
+
+        let user: User &#x3D; this.userList.find(user &#x3D;&gt; user.id &#x3D;&#x3D;&#x3D; recovery.UserId ) || {} as User
+
+        if(user.id &#x3D;&#x3D; undefined){
+            return &#x27;error de recuperacion&#x27;;
+        }
+
+        console.log(user.id);
+        user.Password &#x3D; password;
+
+        let result &#x3D; this.updateUser(user);
+
+        if (!result) {
+            return &#x27;error al actualizar usuario&#x27;;
+        }
+
+        return &#x27;&#x27;;
     }
 }</code></pre>
     </div>

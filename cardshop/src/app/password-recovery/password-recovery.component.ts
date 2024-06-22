@@ -55,7 +55,8 @@ export class PasswordRecoveryComponent {
     alert('Se ha enviado Email de recuperacion');
 
     if(this.userServie.checkEmail(this.email?.value)){
-      this.router.navigate(['/']);
+      let token = this.userServie.createRecovery(this.email?.value);
+      this.router.navigate(['/actualizar-contrasena/'+token]);
     }
 
   }
