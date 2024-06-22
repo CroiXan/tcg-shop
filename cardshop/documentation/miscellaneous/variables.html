@@ -179,14 +179,12 @@
                         <i>Default value : </i><code>(route, state) &#x3D;&gt; {
   const authService &#x3D; inject(AuthService);
   const router &#x3D; inject(Router);
-  console.log(authService.isLoggedIn())
   if (authService.isLoggedIn()) {
     return true;
   } else {
     router.navigate([&#x27;/login&#x27;]);
     return false;
   }
-
 }</code>
                     </td>
                 </tr>

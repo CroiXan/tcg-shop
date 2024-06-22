@@ -18,6 +18,10 @@ export class ShoppingCartService {
      */
     shoppingCartList: ShoppingCart[] = [];
 
+    /**
+     * Constructor que referencia funcione para manejo de catalogo
+     * @param cardItemService Funciones para manejo de cartas del catalogo
+     */
     constructor(private cardItemService: CardItemService){}
 
     /**

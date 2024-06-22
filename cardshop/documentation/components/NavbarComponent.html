@@ -323,14 +323,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="41"
-                                    class="link-to-prism">src/app/navbar/navbar.component.ts:41</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="44"
+                                    class="link-to-prism">src/app/navbar/navbar.component.ts:44</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Accion de boton para que el usuario salga de su session actual</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -523,6 +525,9 @@ export class NavbarComponent {
     }
   }
 
+  /**
+   * Accion de boton para que el usuario salga de su session actual
+   */
   logout(){
     this.authService.logout();
     alert(&#x27;Se ha cerrado sesión.&#x27;);
@@ -611,7 +616,7 @@ export class NavbarComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><header>    <nav class="navbar bg-body-tertiary fixed-top">        <div class="container-fluid">        <a class="navbar-brand" [routerLink]="[\'/\']">Mana Market</a>        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">            <span class="navbar-toggler-icon"></span>        </button>        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">            <div class="offcanvas-header">            <h5 class="offcanvas-title" id="offcanvasNavbarLabel" [routerLink]="[\'/\']">Mana Market</h5>            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>            </div>            <div class="offcanvas-body">                <hr>                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mb-auto">                    <li class="nav-item">                    <a class="nav-link" aria-current="page" [routerLink]="[\'/carrito\']">Carrito de compras</a>                    </li>                </ul>                <hr>                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mb-auto">                    <li class="nav-item">                    <a class="nav-link active" aria-current="page" [routerLink]="[\'/\']">Home</a>                    </li>                    <li class="nav-item">                    <a class="nav-link" [routerLink]="[\'/categoria/Planeswalker\']">Planeswalkers</a>                    <a class="nav-link" [routerLink]="[\'/categoria/Enchantment\']">Encantamientos</a>                    <a class="nav-link" [routerLink]="[\'/categoria/Creature\']">Criaturas</a>                    <a class="nav-link" [routerLink]="[\'/categoria/Artifact\']">Artefactos</a>                    </li>                </ul>                <hr>                <form class="d-flex mt-3" role="search" [formGroup]="filterForm" (ngSubmit)="onSearch()">                    <input class="form-control me-2" type="search" placeholder="Nombre de carta" formControlName="search" aria-label="Nombre de carta">                    <button class="btn btn-outline-success" type="submit">Buscar</button>                </form>                <hr>                <ul class="nav nav-pills flex-column text-small">                    <li class="nav-item" *ngIf="!isLoggedIn"><a class="nav-link" [routerLink]="[\'/login\']">Ingresar</a></li>                    <li class="nav-item" *ngIf="!isLoggedIn"><a class="nav-link" [routerLink]="[\'/registro\']">Registrarse</a></li>                    <li class="nav-item" *ngIf="isLoggedIn"><a class="nav-link" [routerLink]="[\'/cuenta\']">Cuenta Usuario</a></li>                    <li class="nav-item" *ngIf="isLoggedIn"><a class="nav-link" (click)="logout()">Cerrar sesión</a></li>                </ul>            </div>        </div>        </div>    </nav></header></div>'
-    var COMPONENTS = [{'name': 'AccountManagementComponent', 'selector': 'app-account-management'},{'name': 'AddressCreateComponent', 'selector': 'app-address-create'},{'name': 'AddressManagementComponent', 'selector': 'app-address-management'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarditemListComponent', 'selector': 'app-carditem-list'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'OrderDetailComponent', 'selector': 'app-order-detail'},{'name': 'OrderFinishComponent', 'selector': 'app-order-finish'},{'name': 'OrderListComponent', 'selector': 'app-order-list'},{'name': 'PaymentComponent', 'selector': 'app-payment'},{'name': 'RegistrationFormComponent', 'selector': 'app-registration-form'},{'name': 'ShoppingCartComponent', 'selector': 'app-shopping-cart'},{'name': 'UserManagementComponent', 'selector': 'app-user-management'}];
+    var COMPONENTS = [{'name': 'AccountManagementComponent', 'selector': 'app-account-management'},{'name': 'AddressCreateComponent', 'selector': 'app-address-create'},{'name': 'AddressManagementComponent', 'selector': 'app-address-management'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardDetailComponent', 'selector': 'app-card-detail'},{'name': 'CarditemListComponent', 'selector': 'app-carditem-list'},{'name': 'CardManageComponent', 'selector': 'app-card-manage'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'OrderDetailComponent', 'selector': 'app-order-detail'},{'name': 'OrderFinishComponent', 'selector': 'app-order-finish'},{'name': 'OrderListComponent', 'selector': 'app-order-list'},{'name': 'PaymentComponent', 'selector': 'app-payment'},{'name': 'RegistrationFormComponent', 'selector': 'app-registration-form'},{'name': 'ShoppingCartComponent', 'selector': 'app-shopping-cart'},{'name': 'UserManagementComponent', 'selector': 'app-user-management'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'NavbarComponent'};
 </script>

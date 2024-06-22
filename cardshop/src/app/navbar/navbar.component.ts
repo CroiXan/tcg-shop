@@ -38,6 +38,9 @@ export class NavbarComponent {
     }
   }
 
+  /**
+   * Accion de boton para que el usuario salga de su session actual
+   */
   logout(){
     this.authService.logout();
     alert('Se ha cerrado sesión.');

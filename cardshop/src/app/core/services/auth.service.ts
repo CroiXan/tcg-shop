@@ -20,23 +20,33 @@ import { CardItem } from '../models/carditem.model';
 
 export class AuthService {
   /**
-   * 
+   * Variable para manejo de informacion de ususario
    */
   private logedUser: User = {} as User;
   /**
-   * 
+   * Variable suscribible booleana para indicar si el usuario se encuentra logueado
    */
   private loggedIn = new BehaviorSubject<boolean>(false);
   /**
-   * 
+   * Variable suscribible para almacenar las direcciones del ususario logueado
    */
   private userAddress = new BehaviorSubject<Address[]>([] as Address[]);
   /**
-   * 
+   * Variable suscribible para guardar el carrito de compras
    */
   private currentShoppingCart = new BehaviorSubject<ShoppingCart>({} as ShoppingCart);
+  /**
+   * variable para guardar la carta seleccionada
+   */
   private selectedCard: CardItem = {} as CardItem;
 
+  /**
+   * Constructor con dependencias a la capa service.
+   * @param router Manejo de redirecciones
+   * @param userService Funciones de manejo de usuario
+   * @param addressService Funciones de manejo de direcciones
+   * @param shoppingCartService Funciones de manejo de carrito
+   */
   constructor(
     private router: Router, 
     private userService: UserService,
@@ -45,10 +55,10 @@ export class AuthService {
   ) {}
 
   /**
-   * 
-   * @param userName 
-   * @param password 
-   * @returns 
+   * Funcion para loguear usuario en la aplicacion
+   * @param userName Nombre de usuario
+   * @param password contrasena de usuario
+   * @returns booleano indicando si se logro loguear
    */
   login(userName: string, password: string): boolean {
 
@@ -66,19 +76,19 @@ export class AuthService {
   }
 
   /**
-   * 
-   * @returns 
+   * Funcion para obetener objeto User
+   * @returns Usuario Actual
    */
   getUser(){
     return this.logedUser;
   }
 
   /**
-   * 
-   * @param firstName 
-   * @param lastName 
-   * @param email 
-   * @returns 
+   * Funcion para editar Nombre, Apellido y correo electronico del usuario logueado
+   * @param firstName Nombre
+   * @param lastName Apellido
+   * @param email Correo electronico
+   * @returns Ususario actualizado
    */
   updateBasicInfo(firstName: string, lastName: string, email: string): boolean {
     this.logedUser.FirstName = firstName;
@@ -88,11 +98,11 @@ export class AuthService {
   }
 
   /**
-   * 
-   * @param name 
-   * @param number 
-   * @param region 
-   * @param Commune 
+   * Funcion para crear una direccion de entrega para el usario logueado.
+   * @param name Nombre de direccon
+   * @param number Numero de direccion
+   * @param region Region de direccion
+   * @param Commune Comuna de direccion
    */
   createAddress(name: string, number: number, region: string, Commune: string){
     this.addressService.createAddress(this.logedUser.id,name,number,region,Commune);
@@ -100,15 +110,16 @@ export class AuthService {
   }
 
   /**
-   * 
-   * @returns 
+   * Obtiene el rol del usuario logueado
+   * @returns Rol de usuario
    */
   getRole(): string {
     return this.logedUser.Role;
   }
 
   /**
-   * 
+   * Funcion para desloguearse de la aplicacion.
+   * Se redirige a la pantalla principal.
    */
   logout() {
     this.logedUser = {} as User;
@@ -149,6 +160,10 @@ export class AuthService {
     }
   }
 
+  /**
+   * Funcion para agregar id de usuario a un carrito.
+   * Se puede crear un carrito de forma anonima al momento de loguearse se asigna el id de usuario al carrito.
+   */
   setUserIdToShoppingCart(){
     if(this.currentShoppingCart.value.id !== undefined){
       this.currentShoppingCart.value.UserId = this.logedUser.id;
@@ -180,10 +195,18 @@ export class AuthService {
     return this.loggedIn.asObservable();
   }
 
+  /**
+   * Funcion para setear la carta selecionada
+   * @param selected Carta sleccionada
+   */
   setSelectedCardForManage(selected: CardItem){
     this.selectedCard = selected;
   }
 
+  /**
+   * Fucion para obteener carta selecionada
+   * @returns Carta seleccionada
+   */
   getSelectedCardForManage(): CardItem{
     return this.selectedCard;
   }

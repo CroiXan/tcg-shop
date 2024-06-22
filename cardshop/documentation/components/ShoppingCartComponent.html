@@ -521,6 +521,10 @@ export class ShoppingCartComponent {
   }
 
   buy(){
+    if(this.authService.getUser().id &#x3D;&#x3D;&#x3D; undefined){
+      alert(&#x27;Necesita Ingresar al sitio para realizar la compra&#x27;);
+      this.router.navigate([&#x27;/login&#x27;]);
+    }
     this.router.navigate([&#x27;/pago&#x27;]);
   }
 }
@@ -546,7 +550,7 @@ export class ShoppingCartComponent {
         &lt;/thead&gt;
         &lt;tbody&gt;
             &lt;tr *ngFor&#x3D;&quot;let card of currentShoppingCart.CardList&quot;&gt;
-                &lt;td&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;img class&#x3D;&quot;rounded mx-auto d-block max-height-100&quot; [src]&#x3D;&quot;card.Image&quot; alt&#x3D;&quot;{{ card.CardName }}&quot;&gt;&lt;/td&gt;
                 &lt;td&gt;{{card.CardName}}&lt;/td&gt;
                 &lt;td&gt;{{card.Price | currency}}&lt;/td&gt;
                 &lt;td&gt;{{card.Quantity}}&lt;/td&gt;
@@ -602,8 +606,8 @@ export class ShoppingCartComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="container-md margin-top-30">    <h2>Carrito de compras</h2>    <hr>    <table class="table table-dark table-hover">        <thead>            <tr>                <th scope="col"></th>                <th scope="col">Carta</th>                <th scope="col">Precio</th>                <th scope="col">Cantidad</th>                <th scope="col">Subtotal</th>                <th scope="col"></th>            </tr>        </thead>        <tbody>            <tr *ngFor="let card of currentShoppingCart.CardList">                <td></td>                <td>{{card.CardName}}</td>                <td>{{card.Price | currency}}</td>                <td>{{card.Quantity}}</td>                <td>{{card.Price * card.Quantity | currency}}</td>                <td></td>            </tr>            <tr>                <td></td>                <td></td>                <td></td>                <td></td>                <td></td>                <td></td>            </tr>            <tr>                <td></td>                <td></td>                <td></td>                <td>Total</td>                <td>{{total | currency}}</td>                <td></td>            </tr>        </tbody>    </table>    <button class="btn btn-primary btn-lg margin-top-30" (click)="buy()" [disabled]="!hasItems">Comprar</button></div></div>'
-    var COMPONENTS = [{'name': 'AccountManagementComponent', 'selector': 'app-account-management'},{'name': 'AddressCreateComponent', 'selector': 'app-address-create'},{'name': 'AddressManagementComponent', 'selector': 'app-address-management'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarditemListComponent', 'selector': 'app-carditem-list'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'OrderDetailComponent', 'selector': 'app-order-detail'},{'name': 'OrderFinishComponent', 'selector': 'app-order-finish'},{'name': 'OrderListComponent', 'selector': 'app-order-list'},{'name': 'PaymentComponent', 'selector': 'app-payment'},{'name': 'RegistrationFormComponent', 'selector': 'app-registration-form'},{'name': 'ShoppingCartComponent', 'selector': 'app-shopping-cart'},{'name': 'UserManagementComponent', 'selector': 'app-user-management'}];
+        var COMPONENT_TEMPLATE = '<div><div class="container-md margin-top-30">    <h2>Carrito de compras</h2>    <hr>    <table class="table table-dark table-hover">        <thead>            <tr>                <th scope="col"></th>                <th scope="col">Carta</th>                <th scope="col">Precio</th>                <th scope="col">Cantidad</th>                <th scope="col">Subtotal</th>                <th scope="col"></th>            </tr>        </thead>        <tbody>            <tr *ngFor="let card of currentShoppingCart.CardList">                <td><img class="rounded mx-auto d-block max-height-100" [src]="card.Image" alt="{{ card.CardName }}"></td>                <td>{{card.CardName}}</td>                <td>{{card.Price | currency}}</td>                <td>{{card.Quantity}}</td>                <td>{{card.Price * card.Quantity | currency}}</td>                <td></td>            </tr>            <tr>                <td></td>                <td></td>                <td></td>                <td></td>                <td></td>                <td></td>            </tr>            <tr>                <td></td>                <td></td>                <td></td>                <td>Total</td>                <td>{{total | currency}}</td>                <td></td>            </tr>        </tbody>    </table>    <button class="btn btn-primary btn-lg margin-top-30" (click)="buy()" [disabled]="!hasItems">Comprar</button></div></div>'
+    var COMPONENTS = [{'name': 'AccountManagementComponent', 'selector': 'app-account-management'},{'name': 'AddressCreateComponent', 'selector': 'app-address-create'},{'name': 'AddressManagementComponent', 'selector': 'app-address-management'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardDetailComponent', 'selector': 'app-card-detail'},{'name': 'CarditemListComponent', 'selector': 'app-carditem-list'},{'name': 'CardManageComponent', 'selector': 'app-card-manage'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'OrderDetailComponent', 'selector': 'app-order-detail'},{'name': 'OrderFinishComponent', 'selector': 'app-order-finish'},{'name': 'OrderListComponent', 'selector': 'app-order-list'},{'name': 'PaymentComponent', 'selector': 'app-payment'},{'name': 'RegistrationFormComponent', 'selector': 'app-registration-form'},{'name': 'ShoppingCartComponent', 'selector': 'app-shopping-cart'},{'name': 'UserManagementComponent', 'selector': 'app-user-management'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ShoppingCartComponent'};
 </script>

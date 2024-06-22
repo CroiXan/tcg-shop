@@ -659,7 +659,7 @@ export class UserService {
      * @returns booleno que indica si se logro crear el usuario.
      */
     createUser(userName: string, firstName: string, lastName: string, password: string, email: string): boolean{
-        if(this.userList.find(user &#x3D;&gt; user.UserName &#x3D;&#x3D;&#x3D; userName) &#x3D;&#x3D;&#x3D; undefined){
+        if(this.userList.find(user &#x3D;&gt; user.UserName &#x3D;&#x3D;&#x3D; userName) !&#x3D;&#x3D; undefined){
             return false;
         }
 

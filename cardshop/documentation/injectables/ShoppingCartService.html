@@ -197,6 +197,8 @@
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor que referencia funcione para manejo de catalogo</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -205,6 +207,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -219,6 +222,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Funciones para manejo de cartas del catalogo</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -254,8 +261,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="63"
-                                    class="link-to-prism">src/app/core/services/shopping-cart.service.ts:63</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">src/app/core/services/shopping-cart.service.ts:67</a></div>
                         </td>
                     </tr>
 
@@ -353,8 +360,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="28"
-                                    class="link-to-prism">src/app/core/services/shopping-cart.service.ts:28</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="32"
+                                    class="link-to-prism">src/app/core/services/shopping-cart.service.ts:32</a></div>
                         </td>
                     </tr>
 
@@ -428,8 +435,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="113"
-                                    class="link-to-prism">src/app/core/services/shopping-cart.service.ts:113</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="115"
+                                    class="link-to-prism">src/app/core/services/shopping-cart.service.ts:115</a></div>
                         </td>
                     </tr>
 
@@ -503,8 +510,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="47"
-                                    class="link-to-prism">src/app/core/services/shopping-cart.service.ts:47</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">src/app/core/services/shopping-cart.service.ts:51</a></div>
                         </td>
                     </tr>
 
@@ -627,6 +634,10 @@ export class ShoppingCartService {
      */
     shoppingCartList: ShoppingCart[] &#x3D; [];
 
+    /**
+     * Constructor que referencia funcione para manejo de catalogo
+     * @param cardItemService Funciones para manejo de cartas del catalogo
+     */
     constructor(private cardItemService: CardItemService){}
 
     /**
@@ -694,8 +705,6 @@ export class ShoppingCartService {
             
         
         if(cardIndex !&#x3D;&#x3D; -1){
-            console.log(selectedCardItem.Quantity)
-            console.log(selectedShoppingCart.CardList[cardIndex].Quantity)
             hasStock &#x3D; selectedCardItem.Quantity &gt; selectedShoppingCart.CardList[cardIndex].Quantity;
             if(hasStock){
                 selectedShoppingCart.CardList[cardIndex].Quantity +&#x3D; 1;

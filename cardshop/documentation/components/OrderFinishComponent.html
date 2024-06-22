@@ -154,6 +154,7 @@
                 <td class="col-md-3">imports</td>
                 <td class="col-md-9">
                                 <code><a href="../components/OrderDetailComponent.html" target="_self" >OrderDetailComponent</a></code>
+                            <code>RouterModule</code>
                 </td>
             </tr>
 
@@ -233,7 +234,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/order-finish/order-finish.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/order-finish/order-finish.component.ts:20</a></div>
                             </td>
                         </tr>
 
@@ -312,8 +313,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="26"
-                                    class="link-to-prism">src/app/order-finish/order-finish.component.ts:26</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="27"
+                                    class="link-to-prism">src/app/order-finish/order-finish.component.ts:27</a></div>
                         </td>
                     </tr>
 
@@ -359,7 +360,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/order-finish/order-finish.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/order-finish/order-finish.component.ts:20</a></div>
                         </td>
                     </tr>
 
@@ -374,7 +375,7 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { AuthService } from &#x27;../core/services/auth.service&#x27;;
-import { Router } from &#x27;@angular/router&#x27;;
+import { Router, RouterModule } from &#x27;@angular/router&#x27;;
 import { ShoppingCart } from &#x27;../core/models/shopping-cart.model&#x27;;
 import { OrderDetailComponent } from &#x27;../order-detail/order-detail.component&#x27;;
 import { CartStatus } from &#x27;../core/enum/cart-status.enum&#x27;;
@@ -383,7 +384,8 @@ import { CartStatus } from &#x27;../core/enum/cart-status.enum&#x27;;
   selector: &#x27;app-order-finish&#x27;,
   standalone: true,
   imports: [
-    OrderDetailComponent
+    OrderDetailComponent,
+    RouterModule
   ],
   templateUrl: &#x27;./order-finish.component.html&#x27;,
   styleUrl: &#x27;./order-finish.component.css&#x27;
@@ -399,16 +401,16 @@ export class OrderFinishComponent {
 
   ngOnInit() {
     this.authService.getCurrentShoppingCart().subscribe(shoppingCart &#x3D;&gt; {
-      if(shoppingCart.id &#x3D;&#x3D;&#x3D; undefined || shoppingCart.id &#x3D;&#x3D;&#x3D; 0){
-        alert(&#x27;ha ocurrido un error&#x27;);
-        this.router.navigate([&#x27;/&#x27;]);
-      }else{
-        if(shoppingCart.Status &#x3D;&#x3D;&#x3D; CartStatus.Abierto){
-          this.authService.updateShoppingCartStatus(CartStatus.Pagado);
-        }
-        this.currentShoppingCart &#x3D; shoppingCart;
-      }
+      this.currentShoppingCart &#x3D; shoppingCart;
     });
+    if(this.currentShoppingCart.id &#x3D;&#x3D;&#x3D; undefined || this.currentShoppingCart.id &#x3D;&#x3D;&#x3D; 0){
+      alert(&#x27;ha ocurrido un error&#x27;);
+      this.router.navigate([&#x27;/&#x27;]);
+    }else{
+      if(this.currentShoppingCart.Status &#x3D;&#x3D;&#x3D; CartStatus.Abierto){
+        this.authService.updateShoppingCartStatus(CartStatus.Pagado);
+      }
+    }
   }
 
 }
@@ -420,11 +422,11 @@ export class OrderFinishComponent {
     &lt;hr&gt;
     &lt;h2&gt;Orden Finalizada&lt;/h2&gt;
     &lt;hr&gt;
-    &lt;app-order-detail [currentShoppingCart]&#x3D;&quot;currentShoppingCart&quot;&gt;&lt;/app-order-detail&gt;
+    &lt;app-order-detail [currentShoppingCart]&#x3D;&quot;currentShoppingCart&quot; [showImage]&#x3D;&quot;true&quot;&gt;&lt;/app-order-detail&gt;
     &lt;hr&gt;
     &lt;div class&#x3D;&quot;btn-group margin-top-30&quot; role&#x3D;&quot;group&quot; aria-label&#x3D;&quot;Basic outlined example&quot;&gt;
-        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-outline-primary&quot;&gt;Hacer otra compra&lt;/button&gt;
-        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-outline-primary&quot;&gt;Ver tus ordenes&lt;/button&gt;
+        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-outline-primary&quot; [routerLink]&#x3D;&quot;[&#x27;/&#x27;]&quot;&gt;Hacer otra compra&lt;/button&gt;
+        &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-outline-primary&quot; [routerLink]&#x3D;&quot;[&#x27;/cuenta&#x27;]&quot;&gt;Ver tus ordenes&lt;/button&gt;
     &lt;/div&gt;
     &lt;hr&gt;
 &lt;/div&gt;</code></pre>
@@ -456,8 +458,8 @@ export class OrderFinishComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="container-md">    <hr>    <h2>Orden Finalizada</h2>    <hr>    <app-order-detail [currentShoppingCart]="currentShoppingCart"></app-order-detail>    <hr>    <div class="btn-group margin-top-30" role="group" aria-label="Basic outlined example">        <button type="button" class="btn btn-outline-primary">Hacer otra compra</button>        <button type="button" class="btn btn-outline-primary">Ver tus ordenes</button>    </div>    <hr></div></div>'
-    var COMPONENTS = [{'name': 'AccountManagementComponent', 'selector': 'app-account-management'},{'name': 'AddressCreateComponent', 'selector': 'app-address-create'},{'name': 'AddressManagementComponent', 'selector': 'app-address-management'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarditemListComponent', 'selector': 'app-carditem-list'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'OrderDetailComponent', 'selector': 'app-order-detail'},{'name': 'OrderFinishComponent', 'selector': 'app-order-finish'},{'name': 'OrderListComponent', 'selector': 'app-order-list'},{'name': 'PaymentComponent', 'selector': 'app-payment'},{'name': 'RegistrationFormComponent', 'selector': 'app-registration-form'},{'name': 'ShoppingCartComponent', 'selector': 'app-shopping-cart'},{'name': 'UserManagementComponent', 'selector': 'app-user-management'}];
+        var COMPONENT_TEMPLATE = '<div><div class="container-md">    <hr>    <h2>Orden Finalizada</h2>    <hr>    <app-order-detail [currentShoppingCart]="currentShoppingCart" [showImage]="true"></app-order-detail>    <hr>    <div class="btn-group margin-top-30" role="group" aria-label="Basic outlined example">        <button type="button" class="btn btn-outline-primary" [routerLink]="[\'/\']">Hacer otra compra</button>        <button type="button" class="btn btn-outline-primary" [routerLink]="[\'/cuenta\']">Ver tus ordenes</button>    </div>    <hr></div></div>'
+    var COMPONENTS = [{'name': 'AccountManagementComponent', 'selector': 'app-account-management'},{'name': 'AddressCreateComponent', 'selector': 'app-address-create'},{'name': 'AddressManagementComponent', 'selector': 'app-address-management'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardDetailComponent', 'selector': 'app-card-detail'},{'name': 'CarditemListComponent', 'selector': 'app-carditem-list'},{'name': 'CardManageComponent', 'selector': 'app-card-manage'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'OrderDetailComponent', 'selector': 'app-order-detail'},{'name': 'OrderFinishComponent', 'selector': 'app-order-finish'},{'name': 'OrderListComponent', 'selector': 'app-order-list'},{'name': 'PaymentComponent', 'selector': 'app-payment'},{'name': 'RegistrationFormComponent', 'selector': 'app-registration-form'},{'name': 'ShoppingCartComponent', 'selector': 'app-shopping-cart'},{'name': 'UserManagementComponent', 'selector': 'app-user-management'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'OrderFinishComponent'};
 </script>

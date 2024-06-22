@@ -225,6 +225,9 @@
                             <li>
                                 <a href="#currentShoppingCart" >currentShoppingCart</a>
                             </li>
+                            <li>
+                                <a href="#showImage" >showImage</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -247,7 +250,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/order-detail/order-detail.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/order-detail/order-detail.component.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -274,6 +277,32 @@
                         <tr>
                             <td class="col-md-2" colspan="2">
                                     <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/order-detail/order-detail.component.ts:16</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="showImage"></a>
+                        <b>showImage</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/order-detail/order-detail.component.ts:17</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -307,8 +336,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="23"
-                                    class="link-to-prism">src/app/order-detail/order-detail.component.ts:23</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="24"
+                                    class="link-to-prism">src/app/order-detail/order-detail.component.ts:24</a></div>
                         </td>
                     </tr>
 
@@ -384,7 +413,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/order-detail/order-detail.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/order-detail/order-detail.component.ts:18</a></div>
                         </td>
                     </tr>
 
@@ -413,6 +442,7 @@ import { CardItem } from &#x27;../core/models/carditem.model&#x27;;
 })
 export class OrderDetailComponent {
   @Input() currentShoppingCart: ShoppingCart;
+  @Input() showImage: boolean &#x3D; false;
   total: number &#x3D; 0;
 
   constructor(){
@@ -446,7 +476,7 @@ export class OrderDetailComponent {
     &lt;/thead&gt;
     &lt;tbody&gt;
         &lt;tr *ngFor&#x3D;&quot;let card of currentShoppingCart.CardList&quot;&gt;
-            &lt;td&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;img class&#x3D;&quot;rounded mx-auto d-block max-height-100&quot; [src]&#x3D;&quot;card.Image&quot; alt&#x3D;&quot;{{ card.CardName }}&quot; *ngIf&#x3D;&quot;showImage&quot;&gt;&lt;/td&gt;
             &lt;td&gt;{{card.CardName}}&lt;/td&gt;
             &lt;td&gt;{{card.Price | currency}}&lt;/td&gt;
             &lt;td&gt;{{card.Quantity}}&lt;/td&gt;
@@ -496,8 +526,8 @@ export class OrderDetailComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><table class="table table-dark table-hover">    <thead>        <tr>            <th scope="col"></th>            <th scope="col">Carta</th>            <th scope="col">Precio</th>            <th scope="col">Cantidad</th>            <th scope="col">Subtotal</th>        </tr>    </thead>    <tbody>        <tr *ngFor="let card of currentShoppingCart.CardList">            <td></td>            <td>{{card.CardName}}</td>            <td>{{card.Price | currency}}</td>            <td>{{card.Quantity}}</td>            <td>{{card.Price * card.Quantity | currency}}</td>        </tr>        <tr>            <td></td>            <td></td>            <td></td>            <td></td>            <td></td>        </tr>        <tr>            <td></td>            <td></td>            <td></td>            <td>Total</td>            <td>{{calcTotal(currentShoppingCart.CardList) | currency}}</td>        </tr>    </tbody></div>'
-    var COMPONENTS = [{'name': 'AccountManagementComponent', 'selector': 'app-account-management'},{'name': 'AddressCreateComponent', 'selector': 'app-address-create'},{'name': 'AddressManagementComponent', 'selector': 'app-address-management'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarditemListComponent', 'selector': 'app-carditem-list'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'OrderDetailComponent', 'selector': 'app-order-detail'},{'name': 'OrderFinishComponent', 'selector': 'app-order-finish'},{'name': 'OrderListComponent', 'selector': 'app-order-list'},{'name': 'PaymentComponent', 'selector': 'app-payment'},{'name': 'RegistrationFormComponent', 'selector': 'app-registration-form'},{'name': 'ShoppingCartComponent', 'selector': 'app-shopping-cart'},{'name': 'UserManagementComponent', 'selector': 'app-user-management'}];
+        var COMPONENT_TEMPLATE = '<div><table class="table table-dark table-hover">    <thead>        <tr>            <th scope="col"></th>            <th scope="col">Carta</th>            <th scope="col">Precio</th>            <th scope="col">Cantidad</th>            <th scope="col">Subtotal</th>        </tr>    </thead>    <tbody>        <tr *ngFor="let card of currentShoppingCart.CardList">            <td><img class="rounded mx-auto d-block max-height-100" [src]="card.Image" alt="{{ card.CardName }}" *ngIf="showImage"></td>            <td>{{card.CardName}}</td>            <td>{{card.Price | currency}}</td>            <td>{{card.Quantity}}</td>            <td>{{card.Price * card.Quantity | currency}}</td>        </tr>        <tr>            <td></td>            <td></td>            <td></td>            <td></td>            <td></td>        </tr>        <tr>            <td></td>            <td></td>            <td></td>            <td>Total</td>            <td>{{calcTotal(currentShoppingCart.CardList) | currency}}</td>        </tr>    </tbody></div>'
+    var COMPONENTS = [{'name': 'AccountManagementComponent', 'selector': 'app-account-management'},{'name': 'AddressCreateComponent', 'selector': 'app-address-create'},{'name': 'AddressManagementComponent', 'selector': 'app-address-management'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardDetailComponent', 'selector': 'app-card-detail'},{'name': 'CarditemListComponent', 'selector': 'app-carditem-list'},{'name': 'CardManageComponent', 'selector': 'app-card-manage'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'OrderDetailComponent', 'selector': 'app-order-detail'},{'name': 'OrderFinishComponent', 'selector': 'app-order-finish'},{'name': 'OrderListComponent', 'selector': 'app-order-list'},{'name': 'PaymentComponent', 'selector': 'app-payment'},{'name': 'RegistrationFormComponent', 'selector': 'app-registration-form'},{'name': 'ShoppingCartComponent', 'selector': 'app-shopping-cart'},{'name': 'UserManagementComponent', 'selector': 'app-user-management'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'OrderDetailComponent'};
 </script>

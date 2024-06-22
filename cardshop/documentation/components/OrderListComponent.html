@@ -215,6 +215,9 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#calcQuantity" >calcQuantity</a>
+                            </li>
+                            <li>
                                 <a href="#calcTotal" >calcTotal</a>
                             </li>
                             <li>
@@ -305,6 +308,73 @@
     <h3 id="methods">
         Methods
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="calcQuantity"></a>
+                    <span class="name">
+                        <span ><b>calcQuantity</b></span>
+                        <a href="#calcQuantity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>calcQuantity(cardList: <a href="../interfaces/CardItem.html" target="_self">CardItem[]</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">src/app/order-list/order-list.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>cardList</td>
+                                            <td>
+                                                            <code><a href="../interfaces/CardItem.html" target="_self" >CardItem[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -631,6 +701,16 @@ export class OrderListComponent {
     return calcTotal;
   }
 
+  calcQuantity(cardList: CardItem[]): number{
+    let calcQuantity &#x3D; 0;
+    if(cardList !&#x3D;&#x3D; undefined){
+      cardList.forEach(card &#x3D;&gt; {
+        calcQuantity +&#x3D; card.Quantity;
+      });
+    }
+    return calcQuantity;
+  }
+
 }
 </code></pre>
     </div>
@@ -657,7 +737,7 @@ export class OrderListComponent {
                 &lt;tr *ngFor&#x3D;&quot;let order of orderList&quot;&gt;
                     &lt;td&gt;{{order.id}}&lt;/td&gt;
                     &lt;td&gt;{{order.Status}}&lt;/td&gt;
-                    &lt;td&gt;{{order.CardList.length}}&lt;/td&gt;
+                    &lt;td&gt;{{calcQuantity(order.CardList)}}&lt;/td&gt;
                     &lt;td&gt;{{calcTotal(order.CardList) | currency}}&lt;/td&gt;
                     &lt;td&gt;&lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-outline-info&quot; (click)&#x3D;&quot;selectForDetail(order)&quot;&gt;Ver detalle&lt;/button&gt;&lt;/td&gt;
                 &lt;/tr&gt;
@@ -694,8 +774,8 @@ export class OrderListComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="row g-5 margin-top-30">    <div class="col-md-5 col-lg-4 order-md-last" *ngIf="isSelected">      <app-order-detail [currentShoppingCart]="selectedOrder"></app-order-detail>    </div>    <div class="col-md-7 col-lg-8">        <table class="table table-dark table-hover">            <thead>                <tr>                    <th scope="col">Orden</th>                    <th scope="col">Estado</th>                    <th scope="col">Cantidad de Cartas</th>                    <th scope="col">Total</th>                    <th scope="col"></th>                </tr>            </thead>            <tbody>                <tr *ngFor="let order of orderList">                    <td>{{order.id}}</td>                    <td>{{order.Status}}</td>                    <td>{{order.CardList.length}}</td>                    <td>{{calcTotal(order.CardList) | currency}}</td>                    <td><button type="button" class="btn btn-outline-info" (click)="selectForDetail(order)">Ver detalle</button></td>                </tr>            </tbody>        </table>    </div>  </div></div>'
-    var COMPONENTS = [{'name': 'AccountManagementComponent', 'selector': 'app-account-management'},{'name': 'AddressCreateComponent', 'selector': 'app-address-create'},{'name': 'AddressManagementComponent', 'selector': 'app-address-management'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CarditemListComponent', 'selector': 'app-carditem-list'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'OrderDetailComponent', 'selector': 'app-order-detail'},{'name': 'OrderFinishComponent', 'selector': 'app-order-finish'},{'name': 'OrderListComponent', 'selector': 'app-order-list'},{'name': 'PaymentComponent', 'selector': 'app-payment'},{'name': 'RegistrationFormComponent', 'selector': 'app-registration-form'},{'name': 'ShoppingCartComponent', 'selector': 'app-shopping-cart'},{'name': 'UserManagementComponent', 'selector': 'app-user-management'}];
+        var COMPONENT_TEMPLATE = '<div><div class="row g-5 margin-top-30">    <div class="col-md-5 col-lg-4 order-md-last" *ngIf="isSelected">      <app-order-detail [currentShoppingCart]="selectedOrder"></app-order-detail>    </div>    <div class="col-md-7 col-lg-8">        <table class="table table-dark table-hover">            <thead>                <tr>                    <th scope="col">Orden</th>                    <th scope="col">Estado</th>                    <th scope="col">Cantidad de Cartas</th>                    <th scope="col">Total</th>                    <th scope="col"></th>                </tr>            </thead>            <tbody>                <tr *ngFor="let order of orderList">                    <td>{{order.id}}</td>                    <td>{{order.Status}}</td>                    <td>{{calcQuantity(order.CardList)}}</td>                    <td>{{calcTotal(order.CardList) | currency}}</td>                    <td><button type="button" class="btn btn-outline-info" (click)="selectForDetail(order)">Ver detalle</button></td>                </tr>            </tbody>        </table>    </div>  </div></div>'
+    var COMPONENTS = [{'name': 'AccountManagementComponent', 'selector': 'app-account-management'},{'name': 'AddressCreateComponent', 'selector': 'app-address-create'},{'name': 'AddressManagementComponent', 'selector': 'app-address-management'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CardDetailComponent', 'selector': 'app-card-detail'},{'name': 'CarditemListComponent', 'selector': 'app-carditem-list'},{'name': 'CardManageComponent', 'selector': 'app-card-manage'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'OrderDetailComponent', 'selector': 'app-order-detail'},{'name': 'OrderFinishComponent', 'selector': 'app-order-finish'},{'name': 'OrderListComponent', 'selector': 'app-order-list'},{'name': 'PaymentComponent', 'selector': 'app-payment'},{'name': 'RegistrationFormComponent', 'selector': 'app-registration-form'},{'name': 'ShoppingCartComponent', 'selector': 'app-shopping-cart'},{'name': 'UserManagementComponent', 'selector': 'app-user-management'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'OrderListComponent'};
 </script>

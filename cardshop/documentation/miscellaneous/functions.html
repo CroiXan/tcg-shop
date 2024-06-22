@@ -112,22 +112,16 @@
                 <td class="col-md-4">
                     <ul class="index-list">
                         <li>
-                            <a href="#onlyLetters_Validator" title="src/app/address-create/address-create.component.ts" ><b>onlyLetters_Validator</b>&nbsp;&nbsp;&nbsp;(src/.../address-create.component.ts)</a>
+                            <a href="#onlyLettersValidator" title="src/app/core/validators/validators.ts" ><b>onlyLettersValidator</b>&nbsp;&nbsp;&nbsp;(src/.../validators.ts)</a>
                         </li>
                         <li>
-                            <a href="#onlyLettersValidator" title="src/app/registration-form/registration-form.component.ts" ><b>onlyLettersValidator</b>&nbsp;&nbsp;&nbsp;(src/.../registration-form.component.ts)</a>
+                            <a href="#onlyNumbersValidator" title="src/app/core/validators/validators.ts" ><b>onlyNumbersValidator</b>&nbsp;&nbsp;&nbsp;(src/.../validators.ts)</a>
                         </li>
                         <li>
-                            <a href="#onlyLettersValidator" title="src/app/user-management/user-management.component.ts" ><b>onlyLettersValidator</b>&nbsp;&nbsp;&nbsp;(src/.../user-management.component.ts)</a>
+                            <a href="#passwordValidator" title="src/app/core/validators/validators.ts" ><b>passwordValidator</b>&nbsp;&nbsp;&nbsp;(src/.../validators.ts)</a>
                         </li>
                         <li>
-                            <a href="#onlyNumbersValidator" title="src/app/address-create/address-create.component.ts" ><b>onlyNumbersValidator</b>&nbsp;&nbsp;&nbsp;(src/.../address-create.component.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#passwordValidator" title="src/app/registration-form/registration-form.component.ts" ><b>passwordValidator</b>&nbsp;&nbsp;&nbsp;(src/.../registration-form.component.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#samePasswordValidator" title="src/app/registration-form/registration-form.component.ts" ><b>samePasswordValidator</b>&nbsp;&nbsp;&nbsp;(src/.../registration-form.component.ts)</a>
+                            <a href="#samePasswordValidator" title="src/app/core/validators/validators.ts" ><b>samePasswordValidator</b>&nbsp;&nbsp;&nbsp;(src/.../validators.ts)</a>
                         </li>
                     </ul>
                 </td>
@@ -136,22 +130,22 @@
     </table>
 </section>
 
-    <h3>src/app/address-create/address-create.component.ts</h3>
+    <h3>src/app/core/validators/validators.ts</h3>
     <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="onlyLetters_Validator"></a>
+                    <a name="onlyLettersValidator"></a>
                     <span class="name">
-                        <span ><b>onlyLetters_Validator</b></span>
-                        <a href="#onlyLetters_Validator"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>onlyLettersValidator</b></span>
+                        <a href="#onlyLettersValidator"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>onlyLetters_Validator()</code>
+<code>onlyLettersValidator()</code>
                 </td>
             </tr>
 
@@ -160,11 +154,17 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para validar que campo solo tenga letras en FormControl.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>    <code>ValidatorFn</code>
 
                         </div>
+                            <div class="io-description">
+                                <p>onlyLetters</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -191,44 +191,17 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para validar con regex que el campo ingresado solo contega numeros en FormControl.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>    <code>ValidatorFn</code>
 
                         </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>    <h3>src/app/registration-form/registration-form.component.ts</h3>
-    <section data-compodoc="block-methods">
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="onlyLettersValidator"></a>
-                    <span class="name">
-                        <span ><b>onlyLettersValidator</b></span>
-                        <a href="#onlyLettersValidator"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>onlyLettersValidator()</code>
-                </td>
-            </tr>
+                            <div class="io-description">
+                                <p>onlyNumbers</p>
 
-
-
-
-            <tr>
-                <td class="col-md-4">
-
-                        <div class="io-description">
-                            <b>Returns : </b>    <code>ValidatorFn</code>
-
-                        </div>
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -255,11 +228,18 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para validar formato de contrasena en FormControl.
+Que tenga un numero, una letra mayuscula, una minuscula y un simbolo.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>    <code>ValidatorFn</code>
 
                         </div>
+                            <div class="io-description">
+                                <p>passwordFromat</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -286,6 +266,8 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para validar que ambas contrasenas ingresadas sean las mismas en FormControl.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -296,6 +278,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -310,6 +293,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>contrasena</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>field2</td>
@@ -322,6 +309,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>contrasena repetida</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -331,41 +322,9 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>notSamePassword</p>
+
                             </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>    <h3>src/app/user-management/user-management.component.ts</h3>
-    <section data-compodoc="block-methods">
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="onlyLettersValidator"></a>
-                    <span class="name">
-                        <span ><b>onlyLettersValidator</b></span>
-                        <a href="#onlyLettersValidator"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>onlyLettersValidator()</code>
-                </td>
-            </tr>
-
-
-
-
-            <tr>
-                <td class="col-md-4">
-
-                        <div class="io-description">
-                            <b>Returns : </b>    <code>ValidatorFn</code>
-
-                        </div>
                 </td>
             </tr>
         </tbody>
