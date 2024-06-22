@@ -120,6 +120,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente para listar las direcciones registradas del usuario</p>
+
+    </p>
 
 
 
@@ -234,12 +241,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/address-management/address-management.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/address-management/address-management.component.ts:24</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor con dependencia a manejo de sesion</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -248,6 +257,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -262,6 +272,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Funciones de manejo de sesion</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -301,14 +315,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="23"
-                                    class="link-to-prism">src/app/address-management/address-management.component.ts:23</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="35"
+                                    class="link-to-prism">src/app/address-management/address-management.component.ts:35</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Inciacion de variable del listado de direcciones.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -348,10 +364,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/address-management/address-management.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/address-management/address-management.component.ts:24</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Listado de direcciones del usuario</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -367,6 +389,9 @@ import { CommonModule } from &#x27;@angular/common&#x27;;
 import { Address } from &#x27;../core/models/address.model&#x27;;
 import { AuthService } from &#x27;../core/services/auth.service&#x27;;
 
+/**
+ * Componente para listar las direcciones registradas del usuario
+ */
 @Component({
   selector: &#x27;app-address-management&#x27;,
   standalone: true,
@@ -378,11 +403,20 @@ import { AuthService } from &#x27;../core/services/auth.service&#x27;;
   styleUrl: &#x27;./address-management.component.css&#x27;
 })
 export class AddressManagementComponent {
-
+  /**
+   * Listado de direcciones del usuario
+   */
   userAddressList: Address[] &#x3D; [] as Address[];
 
+  /**
+   * Constructor con dependencia a manejo de sesion
+   * @param authService Funciones de manejo de sesion
+   */
   constructor(private authService: AuthService){}
 
+  /**
+   * Inciacion de variable del listado de direcciones.
+   */
   ngOnInit(): void {
     this.authService.getCurrentUserAddress().subscribe(addressList &#x3D;&gt; {
       this.userAddressList &#x3D; addressList;

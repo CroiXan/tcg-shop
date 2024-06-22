@@ -255,12 +255,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/login/login.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/login/login.component.ts:25</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor con dependencias a funciones de sesion</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -269,6 +271,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -283,6 +286,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Funciones de sesion</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>router</td>
@@ -295,6 +302,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Manejo de redirecciones</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -334,14 +345,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="24"
-                                    class="link-to-prism">src/app/login/login.component.ts:24</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="37"
+                                    class="link-to-prism">src/app/login/login.component.ts:37</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Iniciacion de formulario de login</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -371,14 +384,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="43"
-                                    class="link-to-prism">src/app/login/login.component.ts:43</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="65"
+                                    class="link-to-prism">src/app/login/login.component.ts:65</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Accion de submit de formulario</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -413,10 +428,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/login/login.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/login/login.component.ts:25</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Formulario para variables de login</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -442,9 +463,16 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/login/login.component.ts:35</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/login/login.component.ts:51</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Get de valor username del formulario</p>
+</div>
+
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -464,9 +492,16 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/login/login.component.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/login/login.component.ts:58</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Get de valor password del formulario</p>
+</div>
+
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -481,6 +516,9 @@ import { FormGroup, ReactiveFormsModule, FormControl, Validators } from &#x27;@a
 import { AuthService } from &#x27;../core/services/auth.service&#x27;;
 import { Router, RouterModule } from &#x27;@angular/router&#x27;;
 
+/**
+ * 
+ */
 @Component({
   selector: &#x27;app-login&#x27;,
   standalone: true,
@@ -493,11 +531,21 @@ import { Router, RouterModule } from &#x27;@angular/router&#x27;;
   styleUrl: &#x27;./login.component.css&#x27;
 })
 export class LoginComponent {
-
+  /**
+   * Formulario para variables de login
+   */
   loginForm!: FormGroup;
 
+  /**
+   * Constructor con dependencias a funciones de sesion
+   * @param authService Funciones de sesion
+   * @param router Manejo de redirecciones
+   */
   constructor(private authService: AuthService,private router: Router){}
 
+  /**
+   * Iniciacion de formulario de login
+   */
   ngOnInit(): void {
     this.loginForm &#x3D; new FormGroup({
       username: new FormControl(&#x27;&#x27;, [
@@ -509,14 +557,23 @@ export class LoginComponent {
     });
   }
 
+  /**
+   * Get de valor username del formulario
+   */
   get username(){
     return this.loginForm.get(&#x27;username&#x27;);
   }
 
+  /**
+   * Get de valor password del formulario
+   */
   get password(){
     return this.loginForm.get(&#x27;password&#x27;);
   }
 
+  /**
+   * Accion de submit de formulario
+   */
   onSubmit(): void {
     if( this.authService.login(this.loginForm.get(&#x27;username&#x27;)?.value,this.loginForm.get(&#x27;password&#x27;)?.value) ){
       alert(&#x27;Se ha logueado&#x27;);

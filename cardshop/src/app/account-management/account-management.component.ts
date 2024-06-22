@@ -6,6 +6,10 @@ import { CardManageComponent } from '../card-manage/card-manage.component';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../core/services/auth.service';
 
+/**
+ * @description
+ * Componente principal para panel de administracion de aplicacion.
+ */
 @Component({
   selector: 'app-account-management',
   standalone: true,
@@ -20,13 +24,22 @@ import { AuthService } from '../core/services/auth.service';
   styleUrl: './account-management.component.css'
 })
 export class AccountManagementComponent {
-
+  /**
+   * Rol de usuario
+   */
   userRole: string = '';
 
+  /**
+   * constructor con dependencias a funciones de sesion
+   * @param authService Funciones de sesion
+   */
   constructor(
     private authService : AuthService
   ){}
 
+  /**
+   * al iniciar el componente obtiene el rol del usuario actual
+   */
   ngOnInit(): void {
     this.userRole = this.authService.getRole();
   }

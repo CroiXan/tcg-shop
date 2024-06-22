@@ -6,6 +6,10 @@ import { onlyLettersValidator, passwordValidator, samePasswordValidator } from '
 import { AuthService } from '../core/services/auth.service';
 import { Router } from '@angular/router';
 
+/**
+ * @description
+ * Componente con pantalla de formulario de registro
+ */
 @Component({
   selector: 'app-registration-form',
   standalone: true,
@@ -18,14 +22,26 @@ import { Router } from '@angular/router';
   styleUrl: './registration-form.component.css'
 })
 export class RegistrationFormComponent {
+  /**
+   * formulario de registro
+   */
   registrationForm!: FormGroup;
 
+  /**
+   * Constructor con dependencias a capa service
+   * @param userService Manejo de informacion de usuario
+   * @param authService Manejo de sesion
+   * @param router Manejo de redirecciones
+   */
   constructor(
     private userService: UserService,
     private authService: AuthService,
     private router: Router
   ){}
 
+  /**
+   * Inciacion de formulario de registro definiendo validaciones de cada campo
+   */
   ngOnInit(): void {
     this.registrationForm = new FormGroup({
       firstName: new FormControl('', [
@@ -91,6 +107,9 @@ export class RegistrationFormComponent {
     return this.registrationForm.get('confirmPassword');
   }
 
+  /**
+   * Accion submit de formulario
+   */
   onSubmit(): void {
     if (this.registrationForm.valid) {
       const result = this.userService.createUser(

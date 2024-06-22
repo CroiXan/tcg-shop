@@ -120,6 +120,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente principal para panel de administracion de aplicacion.</p>
+
+    </p>
 
 
 
@@ -237,12 +244,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/account-management/account-management.component.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/account-management/account-management.component.ts:30</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>constructor con dependencias a funciones de sesion</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -251,6 +260,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -265,6 +275,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Funciones de sesion</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -304,14 +318,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="30"
-                                    class="link-to-prism">src/app/account-management/account-management.component.ts:30</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="43"
+                                    class="link-to-prism">src/app/account-management/account-management.component.ts:43</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>al iniciar el componente obtiene el rol del usuario actual</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -351,10 +367,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/account-management/account-management.component.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/account-management/account-management.component.ts:30</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Rol de usuario</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -372,6 +394,10 @@ import { CardManageComponent } from &#x27;../card-manage/card-manage.component&#
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { AuthService } from &#x27;../core/services/auth.service&#x27;;
 
+/**
+ * @description
+ * Componente principal para panel de administracion de aplicacion.
+ */
 @Component({
   selector: &#x27;app-account-management&#x27;,
   standalone: true,
@@ -386,13 +412,22 @@ import { AuthService } from &#x27;../core/services/auth.service&#x27;;
   styleUrl: &#x27;./account-management.component.css&#x27;
 })
 export class AccountManagementComponent {
-
+  /**
+   * Rol de usuario
+   */
   userRole: string &#x3D; &#x27;&#x27;;
 
+  /**
+   * constructor con dependencias a funciones de sesion
+   * @param authService Funciones de sesion
+   */
   constructor(
     private authService : AuthService
   ){}
 
+  /**
+   * al iniciar el componente obtiene el rol del usuario actual
+   */
   ngOnInit(): void {
     this.userRole &#x3D; this.authService.getRole();
   }
