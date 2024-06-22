@@ -7,6 +7,10 @@ import { CardItem } from '../core/models/carditem.model';
 import { onlyNumbersValidator } from '../core/validators/validators';
 import { CardItemService } from '../core/services/cartitem.service';
 
+/**
+ * @description
+ * Componente para formulario para editar cartas del catalogo
+ */
 @Component({
   selector: 'app-card-detail',
   standalone: true,
@@ -19,17 +23,35 @@ import { CardItemService } from '../core/services/cartitem.service';
   styleUrl: './card-detail.component.css'
 })
 export class CardDetailComponent {
-
+  /**
+   * Fromulario para editar carta del catalogo
+   */
   cardForm!: FormGroup;
+  /**
+   * Variable para mensaje de resultado de submit
+   */
   submitText: string = '';
+  /**
+   * Variable para item de carta selecionada
+   */
   selectedCard: CardItem = {} as CardItem;
 
+  /**
+   * Contructor con dependencias a la capa service
+   * @param authService Manejo de sesion
+   * @param router Manejo de redirecciones
+   * @param cardItemService Funciones de manejo de cartas
+   */
   constructor(
     private authService: AuthService,
     private router: Router,
     private cardItemService: CardItemService,
   ){}
 
+  /**
+   * Iniciacion de Formulario de editar cartas
+   * Iniciacion de valores de carta selecionada
+   */
   ngOnInit(): void {
 
     this.selectedCard = this.authService.getSelectedCardForManage();
@@ -124,6 +146,9 @@ export class CardDetailComponent {
     return this.cardForm.get('CardText')
   }
 
+  /**
+   * Accion de submit de formulario para editar cartas
+   */
   onSubmit(): void {
     this.selectedCard.CreatedBy = 
       this.selectedCard.CreatedBy ? this.selectedCard.CreatedBy : this.authService.getUser().id;

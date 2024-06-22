@@ -120,6 +120,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente para mostrar contenido de carrito de compras</p>
+
+    </p>
 
 
 
@@ -242,12 +249,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/shopping-cart/shopping-cart.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/shopping-cart/shopping-cart.component.ts:32</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor dcon dependencias a funciones de sesion</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -256,6 +265,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -270,6 +280,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Manejo de sesion</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>router</td>
@@ -282,6 +296,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Manejo de redirecciones</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -321,14 +339,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="41"
-                                    class="link-to-prism">src/app/shopping-cart/shopping-cart.component.ts:41</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="65"
+                                    class="link-to-prism">src/app/shopping-cart/shopping-cart.component.ts:65</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para simular pago, redirige a mock pasarela de pago</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -358,14 +378,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="27"
-                                    class="link-to-prism">src/app/shopping-cart/shopping-cart.component.ts:27</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="48"
+                                    class="link-to-prism">src/app/shopping-cart/shopping-cart.component.ts:48</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Iniciacion de variable de carrito de compras actual del cliente logueado.
+se calcula el precio del total del carrito</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -405,10 +428,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/shopping-cart/shopping-cart.component.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/shopping-cart/shopping-cart.component.ts:24</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Varieble que contiene el carrito de compras actual</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -436,10 +465,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/shopping-cart/shopping-cart.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/shopping-cart/shopping-cart.component.ts:32</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Booleano que indica si el carrito tine items</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -467,10 +502,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/shopping-cart/shopping-cart.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/shopping-cart/shopping-cart.component.ts:28</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Valor de precio total del carro de compras</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -486,6 +527,10 @@ import { AuthService } from &#x27;../core/services/auth.service&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
 
+/**
+ * @description
+ * Componente para mostrar contenido de carrito de compras
+ */
 @Component({
   selector: &#x27;app-shopping-cart&#x27;,
   standalone: true,
@@ -496,16 +541,33 @@ import { Router } from &#x27;@angular/router&#x27;;
   styleUrl: &#x27;./shopping-cart.component.css&#x27;
 })
 export class ShoppingCartComponent {
-
+  /**
+   * Varieble que contiene el carrito de compras actual
+   */
   currentShoppingCart: ShoppingCart &#x3D; {} as ShoppingCart;
+  /**
+   * Valor de precio total del carro de compras
+   */
   total: number &#x3D; 0;
+  /**
+   * Booleano que indica si el carrito tine items
+   */
   hasItems: boolean &#x3D; false;
 
+  /**
+   * Constructor dcon dependencias a funciones de sesion
+   * @param authService Manejo de sesion
+   * @param router Manejo de redirecciones
+   */
   constructor(
     private authService: AuthService,
     private router: Router
   ){}
 
+  /**
+   * Iniciacion de variable de carrito de compras actual del cliente logueado.
+   * se calcula el precio del total del carrito
+   */
   ngOnInit(): void {
     this.authService.getCurrentShoppingCart().subscribe(shoppingCart &#x3D;&gt; {
       let calcTotal &#x3D; 0;
@@ -520,6 +582,9 @@ export class ShoppingCartComponent {
     });
   }
 
+  /**
+   * Funcion para simular pago, redirige a mock pasarela de pago
+   */
   buy(){
     if(this.authService.getUser().id &#x3D;&#x3D;&#x3D; undefined){
       alert(&#x27;Necesita Ingresar al sitio para realizar la compra&#x27;);

@@ -120,6 +120,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente de pantalla de administracion de cartas del catalogo</p>
+
+    </p>
 
 
 
@@ -239,12 +246,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/card-manage/card-manage.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/card-manage/card-manage.component.ts:25</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor con dependencias a la capa service</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -253,6 +262,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -267,6 +277,8 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>router</td>
@@ -279,6 +291,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Manejo de redirecciones</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>cardItemService</td>
@@ -291,6 +307,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Funciones de cartas del catalogo</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -330,14 +350,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="36"
-                                    class="link-to-prism">src/app/card-manage/card-manage.component.ts:36</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="58"
+                                    class="link-to-prism">src/app/card-manage/card-manage.component.ts:58</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para redireccionar a pantalla de detalle de carta</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -367,14 +389,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="27"
-                                    class="link-to-prism">src/app/card-manage/card-manage.component.ts:27</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="42"
+                                    class="link-to-prism">src/app/card-manage/card-manage.component.ts:42</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Iniciacion de listado de cartas del catalogo</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -404,14 +428,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="31"
-                                    class="link-to-prism">src/app/card-manage/card-manage.component.ts:31</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="50"
+                                    class="link-to-prism">src/app/card-manage/card-manage.component.ts:50</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Accion para seleccionar carta en la pantalla</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -481,10 +507,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/card-manage/card-manage.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/card-manage/card-manage.component.ts:25</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Listado de cartas del catalogo</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -501,6 +533,10 @@ import { CardItem } from &#x27;../core/models/carditem.model&#x27;;
 import { CardItemService } from &#x27;../core/services/cartitem.service&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 
+/**
+ * @description
+ * Componente de pantalla de administracion de cartas del catalogo
+ */
 @Component({
   selector: &#x27;app-card-manage&#x27;,
   standalone: true,
@@ -511,24 +547,42 @@ import { CommonModule } from &#x27;@angular/common&#x27;;
   styleUrl: &#x27;./card-manage.component.css&#x27;
 })
 export class CardManageComponent {
-
+  /**
+   * Listado de cartas del catalogo
+   */
   cardList: CardItem[] &#x3D; [];
 
+  /**
+   * Constructor con dependencias a la capa service
+   * @param authService 
+   * @param router Manejo de redirecciones
+   * @param cardItemService Funciones de cartas del catalogo
+   */
   constructor(
     private authService: AuthService,
     private router: Router,
     private cardItemService: CardItemService
   ){}
 
+  /**
+   * Iniciacion de listado de cartas del catalogo
+   */
   ngOnInit(): void {
     this.cardList &#x3D; this.cardItemService.getCardsList();
   }
 
+  /**
+   * Accion para seleccionar carta en la pantalla
+   * @param card 
+   */
   setSelecetedCard(card: CardItem){
     this.authService.setSelectedCardForManage(card);
     this.goToDetail();
   }
 
+  /**
+   * Funcion para redireccionar a pantalla de detalle de carta
+   */
   goToDetail(){
     if(this.authService.getUser().id &#x3D;&#x3D;&#x3D; undefined || 
       this.authService.getUser().Role !&#x3D; &#x27;admin&#x27;){

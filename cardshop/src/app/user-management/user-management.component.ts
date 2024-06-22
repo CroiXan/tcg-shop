@@ -5,6 +5,10 @@ import { User } from '../core/models/user.model';
 import { AuthService } from '../core/services/auth.service';
 import { onlyLettersValidator } from '../core/validators/validators';
 
+/**
+ * @description
+ * Componente con formulario de edicion de usuario
+ */
 @Component({
   selector: 'app-user-management',
   standalone: true,
@@ -17,12 +21,25 @@ import { onlyLettersValidator } from '../core/validators/validators';
   styleUrl: './user-management.component.css'
 })
 export class UserManagementComponent {
-
+  /**
+   * Formulario de edicion de usuario
+   */
   updateForm!: FormGroup;
+  /**
+   * Variable con informacion de usuario
+   */
   currentUser: User = {} as User;
 
+  /**
+   * Constructor con dependencias a funciones de sesion
+   * @param authService Manejo de sesion
+   */
   constructor(private authService: AuthService){}
 
+  /**
+   * Iniciacion de informacion de usuario.
+   * Iniciacion de formulario de edicion de usuario
+   */
   ngOnInit(): void {
     this.currentUser = this.authService.getUser();
     this.updateForm = new FormGroup({
@@ -61,6 +78,9 @@ export class UserManagementComponent {
     return this.updateForm.get('email');
   }
 
+  /**
+   * Accion de submit de formulario
+   */
   onSubmit(){
     if(this.authService.updateBasicInfo(this.updateForm.get('firstName')?.value,this.updateForm.get('lastName')?.value,this.updateForm.get('email')?.value)){
       alert('Se han actualizado los datos.');
