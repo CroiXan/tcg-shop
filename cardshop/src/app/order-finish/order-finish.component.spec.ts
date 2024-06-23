@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OrderFinishComponent } from './order-finish.component';
+import { ActivatedRoute } from '@angular/router';
 
 describe('OrderFinishComponent', () => {
   let component: OrderFinishComponent;
@@ -8,7 +9,13 @@ describe('OrderFinishComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [OrderFinishComponent]
+      imports: [OrderFinishComponent],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: { }
+        }
+      ]
     })
     .compileComponents();
     
