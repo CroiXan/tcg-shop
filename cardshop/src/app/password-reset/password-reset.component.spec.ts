@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PasswordResetComponent } from './password-reset.component';
+import { ActivatedRoute, convertToParamMap } from '@angular/router';
+import { of } from 'rxjs';
 
 describe('PasswordResetComponent', () => {
   let component: PasswordResetComponent;
@@ -8,7 +10,15 @@ describe('PasswordResetComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PasswordResetComponent]
+      imports: [PasswordResetComponent],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: { 
+            paramMap: of({ recovery: ''})
+          }
+        }
+      ]
     })
     .compileComponents();
     
