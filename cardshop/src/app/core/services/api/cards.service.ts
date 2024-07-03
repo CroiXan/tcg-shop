@@ -22,5 +22,50 @@ export class CardsService {
   getAllCards(): Observable<CardItem[]>{
     return this.http.get<CardItem[]>(this.url);
   }
+  
+  createOrUpdateCardItem(card: CardItem,callback: (result: boolean) => void){
+    this.getAllCards().subscribe(
+      response => {
+        let cardList = this.modifyCardItem(card,response);
+        if(cardList.length == 0){
+          callback(false)
+        }
+        return this.editCardsJson(cardList).subscribe(
+          response => {
+            callback(true)
+          },
+          error => {
+            callback(false)
+          }
+        )     
+      },
+      error => {
+        console.error('Error a invocar cards : ' + error );
+        callback(false)
+      }
+    );
+  }
+  
+  modifyCardItem(card: CardItem, cardList: CardItem[]): CardItem[]{
+    if(card.Id === undefined || card.Id === 0){
+        const newId = cardList.reduce((maxId, card) => {
+            return Math.max(maxId, card.Id);
+        }, 0) + 1;
+        card.Id = newId;
+        cardList.push(card);
+        return cardList;
+    }else{
+        const index = cardList.findIndex(cardItem => cardItem.Id === card.Id);
+        if(index !== -1){
+            cardList[index] = card;
+            return cardList;
+        }
+    }
+    return [];
+  }
+
+  editCardsJson(cardList: CardItem[]): Observable<any>{
+    return this.http.post(this.url,cardList,this.httpOptions);
+  }
 
 }
