@@ -4,6 +4,7 @@ import { AuthService } from '../core/services/auth.service';
 import { CardItem } from '../core/models/carditem.model';
 import { CardItemService } from '../core/services/cartitem.service';
 import { CommonModule } from '@angular/common';
+import { CardsService } from '../core/services/api/cards.service';
 
 /**
  * @description
@@ -33,14 +34,22 @@ export class CardManageComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private cardItemService: CardItemService
+    private cardItemService: CardItemService,
+    private cardsServcie: CardsService
   ){}
 
   /**
    * Iniciacion de listado de cartas del catalogo
    */
   ngOnInit(): void {
-    this.cardList = this.cardItemService.getCardsList();
+    this.cardsServcie.getAllCards().subscribe(
+      response => {
+        this.cardList = response;
+      },
+      error => {
+        console.error('Error a invocar cards : ' + error );
+      }
+    );
   }
 
   /**

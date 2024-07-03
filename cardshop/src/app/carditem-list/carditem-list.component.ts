@@ -4,6 +4,7 @@ import { CardItemService } from '../core/services/cartitem.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../core/services/auth.service';
+import { CardsService } from '../core/services/api/cards.service';
 
 /**
  * @description
@@ -29,11 +30,13 @@ export class CarditemListComponent {
    * @param route Manejo de redirecciones
    * @param cardItemService Manejo de catalogo de cartas
    * @param authService Manejo de sesion
+   * 
    */
   constructor(
     private route: ActivatedRoute, 
     private cardItemService: CardItemService, 
-    private authService: AuthService
+    private authService: AuthService,
+    private cardService: CardsService
   ) {}
 
   /**
@@ -50,7 +53,14 @@ export class CarditemListComponent {
       if (categoria !== '' || search !== '') {
         this.carditemList = this.cardItemService.getCardListWithFilters(categoria,search);
       }else{
-        this.carditemList = this.cardItemService.getCardsList();
+        this.cardService.getAllCards().subscribe(
+          response => {
+            this.carditemList = response;
+          },
+          error => {
+            console.error('Error a invocar cards : ' + error );
+          }
+        );
       }
     });
   }
