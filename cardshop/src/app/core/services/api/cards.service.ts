@@ -29,6 +29,7 @@ export class CardsService {
         let cardList = this.modifyCardItem(card,response);
         if(cardList.length == 0){
           callback(false)
+          return
         }
         return this.editCardsJson(cardList).subscribe(
           response => {
