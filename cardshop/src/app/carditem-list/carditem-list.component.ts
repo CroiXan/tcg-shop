@@ -71,12 +71,16 @@ export class CarditemListComponent {
    * @param cardName Nombre de carta
    */
   addItem(cardId: number, cardName: string){
-    const result = this.authService.addItemToShoppingCart(cardId);
-    if(result){
-      alert('Se ha agregado '+cardName+' al carrito');
-    }else{
-      alert('No hay suficiente stock para '+cardName);
-    }
+    this.authService.addItemToShoppingCart(
+      cardId,
+      result => {
+        if(result){
+          alert('Se ha agregado '+cardName+' al carrito');
+        }else{
+          alert('No hay suficiente stock para '+cardName);
+        }
+      }
+    );
   }
 
 }

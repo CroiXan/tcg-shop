@@ -67,5 +67,18 @@ export class CardsService {
   editCardsJson(cardList: CardItem[]): Observable<any>{
     return this.http.post(this.url,cardList,this.httpOptions);
   }
+  
+  getCard(cardId: number,callback: (result: CardItem) => void){
+    this.getAllCards().subscribe(
+      response => {
+        let resultCard:CardItem = response.find(card => card.Id === cardId ) || {} as CardItem;
+        callback(resultCard);
+      },
+      error => {
+        console.error('Error a invocar cards : ' + error );
+        callback({} as CardItem);
+      }
+    );
+  }
 
 }

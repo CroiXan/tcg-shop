@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ShoppingCart } from '../models/shopping-cart.model';
 import { CartStatus } from '../enum/cart-status.enum';
-import { CardItemService } from './cartitem.service';
+import { CardsService } from './api/cards.service';
 
 /**
  * @description
@@ -22,7 +22,9 @@ export class ShoppingCartService {
      * Constructor que referencia funcione para manejo de catalogo
      * @param cardItemService Funciones para manejo de cartas del catalogo
      */
-    constructor(private cardItemService: CardItemService){}
+    constructor(
+        private cardsService: CardsService
+    ){}
 
     /**
      * Funcion para crear un carrito de compras dado un usuario especifico.
@@ -64,47 +66,51 @@ export class ShoppingCartService {
      * @param shoppingCartId Identificador de carrito de compras actual
      * @returns tupla de item de carrito actualizado y booleano que indica si hay stock
      */
-    addItemToShoppingCart(userId: number, cardId: number, shoppingCartId: number): [ShoppingCart,boolean]{
+    addItemToShoppingCart(userId: number, cardId: number, shoppingCartId: number,callback: (result: [ShoppingCart,boolean]) => void) {
         const index = this.shoppingCartList.findIndex(shoppingCart => 
             shoppingCart.id === shoppingCartId &&
             shoppingCart.Status === CartStatus.Abierto);
 
         let selectedShoppingCart: ShoppingCart = {} as ShoppingCart;
-        const selectedCardItem = this.cardItemService.getCard(cardId);
-        let hasStock = false;
 
-        if(index !== -1){
-            selectedShoppingCart = this.shoppingCartList[index];
-        }else{
-            selectedShoppingCart = this.createShoppingcar(userId);
-        }
+        this.cardsService.getCard(cardId, result => {
+            const selectedCardItem = result;
+            let hasStock = false;
+            
+            if(index !== -1){
+                selectedShoppingCart = this.shoppingCartList[index];
+            }else{
+                selectedShoppingCart = this.createShoppingcar(userId);
+            }
 
-        let cardIndex = -1;
+            let cardIndex = -1;
+                
+            if(selectedShoppingCart.CardList !== undefined){
+                cardIndex = selectedShoppingCart.CardList.findIndex(card => card.Id === cardId);
+            }else{
+                selectedShoppingCart.CardList = [];
+            }
+                
             
-        if(selectedShoppingCart.CardList !== undefined){
-            cardIndex = selectedShoppingCart.CardList.findIndex(card => card.Id === cardId);
-        }else{
-            selectedShoppingCart.CardList = [];
-        }
-            
-        
-        if(cardIndex !== -1){
-            hasStock = selectedCardItem.Quantity > selectedShoppingCart.CardList[cardIndex].Quantity;
-            if(hasStock){
-                selectedShoppingCart.CardList[cardIndex].Quantity += 1;
+            if(cardIndex !== -1){
+                hasStock = selectedCardItem.Quantity > selectedShoppingCart.CardList[cardIndex].Quantity;
+                if(hasStock){
+                    selectedShoppingCart.CardList[cardIndex].Quantity += 1;
+                }
+                
+            }else{
+                hasStock = selectedCardItem.Quantity > 1;
+                if(hasStock){
+                    let cardCopy = {...selectedCardItem};
+                    cardCopy.Quantity = 1;
+                    selectedShoppingCart.CardList.push(cardCopy);
+                }
             }
             
-        }else{
-            hasStock = selectedCardItem.Quantity > 1;
-            if(hasStock){
-                let cardCopy = {...selectedCardItem};
-                cardCopy.Quantity = 1;
-                selectedShoppingCart.CardList.push(cardCopy);
-            }
-        }
-        
+            callback([selectedShoppingCart,hasStock]);
 
-        return [selectedShoppingCart,hasStock];
+        });
+        
     }
 
     /**

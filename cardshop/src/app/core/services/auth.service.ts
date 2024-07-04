@@ -140,13 +140,18 @@ export class AuthService {
    * @param cardId Identificador de carta seleccionado
    * @returns booleano que indica si la carta tiene stock
    */
-  addItemToShoppingCart(cardId: number): boolean{
+  addItemToShoppingCart(cardId: number, callback: (result: boolean) => void) {
     if(this.currentShoppingCart.value.id === undefined || this.currentShoppingCart.value.Status != CartStatus.Abierto){
       this.currentShoppingCart.next(this.shoppingCartService.createShoppingcar(this.logedUser.id));
     }
-    const addItemResult = this.shoppingCartService.addItemToShoppingCart(this.logedUser.id,cardId,this.currentShoppingCart.value.id);
-    this.currentShoppingCart.next(addItemResult[0]);
-    return addItemResult[1];
+    this.shoppingCartService.addItemToShoppingCart(
+      this.logedUser.id,cardId,
+      this.currentShoppingCart.value.id,
+      result => {
+        this.currentShoppingCart.next(result[0]);
+        callback(result[1]);
+      }
+    );
   }
 
   /**
