@@ -68,7 +68,7 @@ export class CardsService {
     return this.http.post(this.url,cardList,this.httpOptions);
   }
   
-  getCard(cardId: number,callback: (result: CardItem) => void){
+  getCard(cardId: number, callback: (result: CardItem) => void){
     this.getAllCards().subscribe(
       response => {
         let resultCard:CardItem = response.find(card => card.Id === cardId ) || {} as CardItem;
@@ -77,6 +77,36 @@ export class CardsService {
       error => {
         console.error('Error a invocar cards : ' + error );
         callback({} as CardItem);
+      }
+    );
+  }
+
+  getCardListWithFilters(category: string, search: string, callback: (result: CardItem[]) => void) {
+    this.getAllCards().subscribe(
+      response => {
+        let resultCardList:CardItem[] = [];
+
+        if(category !== ''){
+          resultCardList = response.filter(cardItem =>
+              cardItem.CardType.toLowerCase().includes(category.toLowerCase())
+          );
+        }
+      
+        if(category === '' && search !== ''){
+          resultCardList = response;
+        }
+        
+        if(search !== ''){
+          resultCardList = resultCardList.filter(cardItem =>
+                cardItem.CardName.toLowerCase().includes(search.toLowerCase())
+            );
+        }
+
+        callback(resultCardList);
+      },
+      error => {
+        console.error('Error a invocar cards : ' + error );
+        callback([]);
       }
     );
   }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CardItem } from '../core/models/carditem.model';
-import { CardItemService } from '../core/services/cartitem.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../core/services/auth.service';
@@ -34,7 +33,6 @@ export class CarditemListComponent {
    */
   constructor(
     private route: ActivatedRoute, 
-    private cardItemService: CardItemService, 
     private authService: AuthService,
     private cardService: CardsService
   ) {}
@@ -50,9 +48,17 @@ export class CarditemListComponent {
     this.route.paramMap.subscribe(params => {
       const categoria = params.get('categoria') || '';
       const search = params.get('search') || '';
+
       if (categoria !== '' || search !== '') {
-        this.carditemList = this.cardItemService.getCardListWithFilters(categoria,search);
+        
+        this.cardService.getCardListWithFilters(categoria,search,
+          result => {
+            this.carditemList = result
+          }
+        );
+
       }else{
+
         this.cardService.getAllCards().subscribe(
           response => {
             this.carditemList = response;
@@ -61,6 +67,7 @@ export class CarditemListComponent {
             console.error('Error a invocar cards : ' + error );
           }
         );
+
       }
     });
   }
