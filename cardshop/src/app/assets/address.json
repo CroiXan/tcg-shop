@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "UserId": 1,
+        "Name": "Av Testing",
+        "AddressName": "",
+        "Number": 123,
+        "Region": "Metropolitana",
+        "Commune": "Santiago"
+    },
+    {
+        "id": 2,
+        "UserId": 2,
+        "Name": "Av Framework",
+        "AddressName": "",
+        "Number": 123,
+        "Region": "Valparaiso",
+        "Commune": "Valparaiso"
+    }
+]

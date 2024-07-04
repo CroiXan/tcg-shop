@@ -238,7 +238,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(route: ActivatedRoute, cardItemService: <a href="../injectables/CardItemService.html" target="_self">CardItemService</a>, authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>)</code>
+<code>constructor(route: ActivatedRoute, authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, cardService: <a href="../injectables/CardsService.html" target="_self">CardsService</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -280,22 +280,6 @@
                                                         </td>
                                                 </tr>
                                                 <tr>
-                                                        <td>cardItemService</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/CardItemService.html" target="_self" >CardItemService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                        <td>
-                                                                <p>Manejo de catalogo de cartas</p>
-
-                                                        </td>
-                                                </tr>
-                                                <tr>
                                                         <td>authService</td>
                                                   
                                                         <td>
@@ -309,6 +293,20 @@
                                                         <td>
                                                                 <p>Manejo de sesion</p>
 
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>cardService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CardsService.html" target="_self" >CardsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -349,8 +347,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="63"
-                                    class="link-to-prism">src/app/carditem-list/carditem-list.component.ts:63</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="80"
+                                    class="link-to-prism">src/app/carditem-list/carditem-list.component.ts:80</a></div>
                         </td>
                     </tr>
 
@@ -439,8 +437,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="46"
-                                    class="link-to-prism">src/app/carditem-list/carditem-list.component.ts:46</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="47"
+                                    class="link-to-prism">src/app/carditem-list/carditem-list.component.ts:47</a></div>
                         </td>
                     </tr>
 
@@ -513,10 +511,10 @@ Se obtiene listado de carta segun filtros o se trae el catalogo completo a mostr
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { CardItem } from &#x27;../core/models/carditem.model&#x27;;
-import { CardItemService } from &#x27;../core/services/cartitem.service&#x27;;
 import { ActivatedRoute } from &#x27;@angular/router&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { AuthService } from &#x27;../core/services/auth.service&#x27;;
+import { CardsService } from &#x27;../core/services/api/cards.service&#x27;;
 
 /**
  * @description
@@ -542,11 +540,12 @@ export class CarditemListComponent {
    * @param route Manejo de redirecciones
    * @param cardItemService Manejo de catalogo de cartas
    * @param authService Manejo de sesion
+   * 
    */
   constructor(
     private route: ActivatedRoute, 
-    private cardItemService: CardItemService, 
-    private authService: AuthService
+    private authService: AuthService,
+    private cardService: CardsService
   ) {}
 
   /**
@@ -560,10 +559,26 @@ export class CarditemListComponent {
     this.route.paramMap.subscribe(params &#x3D;&gt; {
       const categoria &#x3D; params.get(&#x27;categoria&#x27;) || &#x27;&#x27;;
       const search &#x3D; params.get(&#x27;search&#x27;) || &#x27;&#x27;;
+
       if (categoria !&#x3D;&#x3D; &#x27;&#x27; || search !&#x3D;&#x3D; &#x27;&#x27;) {
-        this.carditemList &#x3D; this.cardItemService.getCardListWithFilters(categoria,search);
+        
+        this.cardService.getCardListWithFilters(categoria,search,
+          result &#x3D;&gt; {
+            this.carditemList &#x3D; result
+          }
+        );
+
       }else{
-        this.carditemList &#x3D; this.cardItemService.getCardsList();
+
+        this.cardService.getAllCards().subscribe(
+          response &#x3D;&gt; {
+            this.carditemList &#x3D; response;
+          },
+          error &#x3D;&gt; {
+            console.error(&#x27;Error a invocar cards : &#x27; + error );
+          }
+        );
+
       }
     });
   }
@@ -574,12 +589,16 @@ export class CarditemListComponent {
    * @param cardName Nombre de carta
    */
   addItem(cardId: number, cardName: string){
-    const result &#x3D; this.authService.addItemToShoppingCart(cardId);
-    if(result){
-      alert(&#x27;Se ha agregado &#x27;+cardName+&#x27; al carrito&#x27;);
-    }else{
-      alert(&#x27;No hay suficiente stock para &#x27;+cardName);
-    }
+    this.authService.addItemToShoppingCart(
+      cardId,
+      result &#x3D;&gt; {
+        if(result){
+          alert(&#x27;Se ha agregado &#x27;+cardName+&#x27; al carrito&#x27;);
+        }else{
+          alert(&#x27;No hay suficiente stock para &#x27;+cardName);
+        }
+      }
+    );
   }
 
 }

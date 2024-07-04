@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "UserName": "admin",
+        "FirstName": "first",
+        "LastName": "second",
+        "Password": "admin",
+        "Email": "mail@mail.cl",
+        "Role": "admin",
+        "IsActive": true
+    },
+    {
+        "id": 2,
+        "UserName": "user1",
+        "FirstName": "prueba",
+        "LastName": "prueba",
+        "Password": "qwerty",
+        "Email": "mail2@mail.cl",
+        "Role": "user",
+        "IsActive": true
+    }
+]
