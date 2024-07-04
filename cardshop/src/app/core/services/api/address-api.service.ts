@@ -1,4 +1,4 @@
-import { HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -15,5 +15,5 @@ export class AddressApiService {
 
   private url = 'https://firebasestorage.googleapis.com/v0/b/mtg-shop-d23a4.appspot.com/o/address.json?alt=media&token=177adff0-9ba2-4243-b2f9-00ce0410a300';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 }
