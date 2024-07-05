@@ -3,12 +3,12 @@ import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 import { BehaviorSubject } from 'rxjs';
 import { Address } from '../models/address.model';
-import { AddressService } from './address.service';
 import { ShoppingCart } from '../models/shopping-cart.model';
 import { ShoppingCartService } from './shopping-cart.service';
 import { CartStatus } from '../enum/cart-status.enum';
 import { CardItem } from '../models/carditem.model';
 import { UserApiService } from './api/user-api.service';
+import { AddressApiService } from './api/address-api.service';
 
 /**
  * @description
@@ -49,9 +49,9 @@ export class AuthService {
    */
   constructor(
     private router: Router,
-    private addressService: AddressService,
     private shoppingCartService: ShoppingCartService,
-    private userApiService: UserApiService
+    private userApiService: UserApiService,
+    private addressApiService: AddressApiService
   ) {}
 
   /**
@@ -73,7 +73,12 @@ export class AuthService {
         }
     
         this.setUserIdToShoppingCart();
-        this.userAddress.next(this.addressService.getAddressByUser(this.logedUser.id));
+        this.addressApiService.getAddressByUser(
+          this.logedUser.id,
+          result => {
+            this.userAddress.next(result);
+          }
+        )
         this.loggedIn.next(true);
         callback(true);
         return;
@@ -116,8 +121,13 @@ export class AuthService {
    * @param Commune Comuna de direccion
    */
   createAddress(name: string, number: number, region: string, Commune: string){
-    this.addressService.createAddress(this.logedUser.id,name,number,region,Commune);
-    this.userAddress.next(this.addressService.getAddressByUser(this.logedUser.id));
+    this.addressApiService.createAddress(this.logedUser.id,name,number,region,Commune);
+    this.addressApiService.getAddressByUser(
+      this.logedUser.id,
+      result => {
+        this.userAddress.next(result);
+      }
+    )
   }
 
   /**
