@@ -51,7 +51,7 @@ export class RecoveryService {
             recovery.token = this.generateRandomToken();
 
             response.push(recovery);
-            this.editRecoveriesJson(response)
+            this.editRecoveriesJson(response).subscribe();
 
             callback('');
             return;

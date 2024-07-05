@@ -159,7 +159,7 @@ export class ShoppingCartApiService {
         callback([]);
       }
     );
-    
+
   }
 
   addCardToShoppingCart(shoppingCartIndex: number, shoppingCartList: ShoppingCart[],selectedShoppingCart: ShoppingCart, cardId: number, selectedCardItem: CardItem, callback: (result: [ShoppingCart,boolean]) => void){
@@ -182,7 +182,7 @@ export class ShoppingCartApiService {
         }else{
           shoppingCartList[shoppingCartIndex] = selectedShoppingCart;
         }
-        this.editShoppingCartJson(shoppingCartList);
+        this.editShoppingCartJson(shoppingCartList).subscribe();
       }
     }else{
       hasStock = selectedCardItem.Quantity > 1;
@@ -195,7 +195,7 @@ export class ShoppingCartApiService {
         }else{
           shoppingCartList[shoppingCartIndex] = selectedShoppingCart;
         }
-        this.editShoppingCartJson(shoppingCartList);
+        this.editShoppingCartJson(shoppingCartList).subscribe();
       }
     }
 

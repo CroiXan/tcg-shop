@@ -52,7 +52,7 @@ export class AddressApiService {
           
           response.push(newAddress);
 
-          this.editAddressJson(response);
+          this.editAddressJson(response).subscribe();
         },
         error => {
 

@@ -4,6 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterModule } from '@angular/router';
 import { UserService } from '../core/services/user.service';
 import { UserApiService } from '../core/services/api/user-api.service';
+import { RecoveryService } from '../core/services/api/recovery.service';
 
 /**
  * @description
@@ -34,7 +35,8 @@ export class PasswordRecoveryComponent {
   constructor(
     private router: Router, 
     private userServie: UserService,
-    private userApiService: UserApiService
+    private userApiService: UserApiService,
+    private recoveryService: RecoveryService
   ){}
 
   /**
@@ -63,8 +65,13 @@ export class PasswordRecoveryComponent {
       this.email?.value,
       result => {
         if(result){
-          let token = this.userServie.createRecovery(this.email?.value);
-          this.router.navigate(['/actualizar-contrasena/'+token]);
+          this.recoveryService.createRecovery(
+            this.email?.value,
+            result => {
+              this.router.navigate(['/actualizar-contrasena/'+result]);
+            }
+          );
+          
         }
       }
     )

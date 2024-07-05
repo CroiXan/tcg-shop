@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { passwordValidator, samePasswordValidator } from '../core/validators/validators';
-import { UserService } from '../core/services/user.service';
+import { RecoveryService } from '../core/services/api/recovery.service';
 
 /**
  * @description
@@ -37,9 +37,9 @@ export class PasswordResetComponent {
    * @param route Manejo de parametros de entrada
    */
   constructor(
-    private userService: UserService,
     private router: Router,
-    private route: ActivatedRoute 
+    private route: ActivatedRoute,
+    private recoveryService: RecoveryService
   ){}
 
   /**
@@ -49,11 +49,15 @@ export class PasswordResetComponent {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const token = params.get('recovery') || '';
-      const message = this.userService.checkRecovery(token);
-      if(message != ''){
-        alert(message);
-        this.router.navigate(['/']);
-      }
+      this.recoveryService.checkRecovery(
+        token,
+        result => {
+          if(result != ''){
+            alert(result);
+            this.router.navigate(['/']);
+          }
+        }
+      );
       this.localToken = token;
     });
     this.updatePasswordForm = new FormGroup({
@@ -86,14 +90,19 @@ export class PasswordResetComponent {
    * Accion submit de formulario
    */
   onSubmit(): void {
-    let message = this.userService.updatePassword(this.localToken,this.password?.value);
-    if(message == ''){
-      alert('Se ha actualizado la Contraseña');
-      this.router.navigate(['/login']);
-    }else{
-      alert(message);
-      this.router.navigate(['/']);
-    }
+    this.recoveryService.updatePassword(
+      this.localToken,
+      this.password?.value,
+      result => {
+        if(result == ''){
+          alert('Se ha actualizado la Contraseña');
+          this.router.navigate(['/login']);
+        }else{
+          alert(result);
+          this.router.navigate(['/']);
+        }
+      }
+    );
   }
 
 }

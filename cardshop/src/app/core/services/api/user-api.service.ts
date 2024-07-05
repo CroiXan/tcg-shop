@@ -60,17 +60,19 @@ export class UserApiService {
           response.push(newUser);
           this.editUsersJson(response).subscribe(
             result => {
-              console.log('usuario creado ' + result)
+              console.log('usuario creado')
+              callback(true)
             },
             error => {
               console.error('error al crear usuarios',error)
+              callback(false)
             }
           )
-      
-          callback(true)
+
         },
         error => {
           console.error('error al obtener usuarios',error)
+          callback(false)
         }
       );
 
