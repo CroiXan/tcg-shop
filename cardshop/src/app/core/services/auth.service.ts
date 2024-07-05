@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from './user.service';
 import { User } from '../models/user.model';
 import { BehaviorSubject } from 'rxjs';
 import { Address } from '../models/address.model';
@@ -9,6 +8,7 @@ import { ShoppingCart } from '../models/shopping-cart.model';
 import { ShoppingCartService } from './shopping-cart.service';
 import { CartStatus } from '../enum/cart-status.enum';
 import { CardItem } from '../models/carditem.model';
+import { UserApiService } from './api/user-api.service';
 
 /**
  * @description
@@ -48,10 +48,10 @@ export class AuthService {
    * @param shoppingCartService Funciones de manejo de carrito
    */
   constructor(
-    private router: Router, 
-    private userService: UserService,
+    private router: Router,
     private addressService: AddressService,
-    private shoppingCartService: ShoppingCartService
+    private shoppingCartService: ShoppingCartService,
+    private userApiService: UserApiService
   ) {}
 
   /**
@@ -60,19 +60,26 @@ export class AuthService {
    * @param password contrasena de usuario
    * @returns booleano indicando si se logro loguear
    */
-  login(userName: string, password: string): boolean {
+  login(userName: string, password: string, callback: (result: boolean) => void) {
 
-    this.logedUser = this.userService.getUserAuth(userName,password);
+    this.userApiService.getUserAuth(userName,password,
+      result => {
+        this.logedUser = result;
 
-    if(this.logedUser.id === undefined || this.logedUser.id === 0 || this.logedUser.UserName === '' ){
-        this.loggedIn.next(false);
-        return false;
-    }
+        if(this.logedUser.id === undefined || this.logedUser.id === 0 || this.logedUser.UserName === '' ){
+          this.loggedIn.next(false);
+          callback(false);
+          return;
+        }
+    
+        this.setUserIdToShoppingCart();
+        this.userAddress.next(this.addressService.getAddressByUser(this.logedUser.id));
+        this.loggedIn.next(true);
+        callback(true);
+        return;
+      }
+    );
 
-    this.setUserIdToShoppingCart();
-    this.userAddress.next(this.addressService.getAddressByUser(this.logedUser.id));
-    this.loggedIn.next(true);
-    return true;
   }
 
   /**
@@ -90,11 +97,15 @@ export class AuthService {
    * @param email Correo electronico
    * @returns Ususario actualizado
    */
-  updateBasicInfo(firstName: string, lastName: string, email: string): boolean {
+  updateBasicInfo(firstName: string, lastName: string, email: string, callback: (result: boolean) => void) {
     this.logedUser.FirstName = firstName;
     this.logedUser.LastName = lastName;
-    this.logedUser.Email = email;
-    return this.userService.updateUser(this.logedUser);
+    this.logedUser.Email = email; 
+    this.userApiService.updateUser(this.logedUser,
+      result =>{
+        callback(result)
+      }
+    );
   }
 
   /**

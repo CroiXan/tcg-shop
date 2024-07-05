@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { UserService } from '../core/services/user.service';
+import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgClass, CommonModule} from '@angular/common';
 import { onlyLettersValidator, passwordValidator, samePasswordValidator } from '../core/validators/validators';
 import { AuthService } from '../core/services/auth.service';
 import { Router } from '@angular/router';
+import { UserApiService } from '../core/services/api/user-api.service';
 
 /**
  * @description
@@ -34,9 +34,9 @@ export class RegistrationFormComponent {
    * @param router Manejo de redirecciones
    */
   constructor(
-    private userService: UserService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private userApiService: UserApiService
   ){}
 
   /**
@@ -112,20 +112,33 @@ export class RegistrationFormComponent {
    */
   onSubmit(): void {
     if (this.registrationForm.valid) {
-      const result = this.userService.createUser(
+      this.userApiService.createUser(
         this.registrationForm.get('username')?.value,
         this.registrationForm.get('firstName')?.value,
         this.registrationForm.get('lastName')?.value,
         this.registrationForm.get('password')?.value,
-        this.registrationForm.get('email')?.value
+        this.registrationForm.get('email')?.value,
+        result => {
+          if(result){
+            alert('Se ha registrado con exito');
+            this.authService.login(
+              this.registrationForm.get('username')?.value,
+              this.registrationForm.get('password')?.value,
+              result => {
+                if (result) {
+                  this.router.navigate(['/']);
+                } else {
+                  alert('Error en el ingreso');
+                }
+              }
+            );
+            
+          }else{
+            alert('El nombre de usuario ya esta en uso');
+          }
+        }
       );
-      if(result){
-        alert('Se ha registrado con exito');
-        this.authService.login(this.registrationForm.get('username')?.value,this.registrationForm.get('password')?.value);
-        this.router.navigate(['/']);
-      }else{
-        alert('El nombre de usuario ya esta en uso');
-      }
+      
     }else{
       alert('Vuelva comprobar los campos del formulario');
     }

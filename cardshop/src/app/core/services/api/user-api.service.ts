@@ -58,6 +58,14 @@ export class UserApiService {
           newUser.IsActive = true;
       
           response.push(newUser);
+          this.editUsersJson(response).subscribe(
+            result => {
+              console.log('usuario creado ' + result)
+            },
+            error => {
+              console.error('error al crear usuarios',error)
+            }
+          )
       
           callback(true)
         },
@@ -70,6 +78,17 @@ export class UserApiService {
 
   checkEmail(email: string, userList: User[]): boolean{
     return (userList.find(user => user.Email === email) !== undefined)
+  }
+
+  checkEmailApi(email: string, callback: (result: boolean) => void){
+    this.getUsers().subscribe(
+      response => {
+        callback(this.checkEmail(email,response))
+      },
+      error => {
+        callback(false);
+      }
+    )
   }
 
   getUserAuth(

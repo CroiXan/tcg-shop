@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { UserService } from '../core/services/user.service';
+import { UserApiService } from '../core/services/api/user-api.service';
 
 /**
  * @description
@@ -30,7 +31,11 @@ export class PasswordRecoveryComponent {
    * @param router Manejo de redirecciones
    * @param userServie Funciones de informacion de ususario
    */
-  constructor(private router: Router, private userServie: UserService){}
+  constructor(
+    private router: Router, 
+    private userServie: UserService,
+    private userApiService: UserApiService
+  ){}
 
   /**
    * Iniciacion de formulario de recuperacion de contrasena
@@ -54,11 +59,15 @@ export class PasswordRecoveryComponent {
   onSubmit() {
     alert('Se ha enviado Email de recuperacion');
 
-    if(this.userServie.checkEmail(this.email?.value)){
-      let token = this.userServie.createRecovery(this.email?.value);
-      this.router.navigate(['/actualizar-contrasena/'+token]);
-    }
-
+    this.userApiService.checkEmailApi(
+      this.email?.value,
+      result => {
+        if(result){
+          let token = this.userServie.createRecovery(this.email?.value);
+          this.router.navigate(['/actualizar-contrasena/'+token]);
+        }
+      }
+    )
   }
 
 }

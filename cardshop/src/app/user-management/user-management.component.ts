@@ -82,11 +82,18 @@ export class UserManagementComponent {
    * Accion de submit de formulario
    */
   onSubmit(){
-    if(this.authService.updateBasicInfo(this.updateForm.get('firstName')?.value,this.updateForm.get('lastName')?.value,this.updateForm.get('email')?.value)){
-      alert('Se han actualizado los datos.');
-    }else{
-      alert('Error al actualizar los datos');
-    }
+    this.authService.updateBasicInfo(
+      this.updateForm.get('firstName')?.value,
+      this.updateForm.get('lastName')?.value,
+      this.updateForm.get('email')?.value,
+      result => {
+        if(result){
+          alert('Se han actualizado los datos.');
+        }else{
+          alert('Error al actualizar los datos');
+        }
+      }
+    )
   }
 
 }
