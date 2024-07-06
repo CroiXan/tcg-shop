@@ -241,7 +241,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, router: Router, cardItemService: <a href="../injectables/CardItemService.html" target="_self">CardItemService</a>)</code>
+<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, router: Router, cardsServcie: <a href="../injectables/CardsService.html" target="_self">CardsService</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -297,10 +297,10 @@
                                                         </td>
                                                 </tr>
                                                 <tr>
-                                                        <td>cardItemService</td>
+                                                        <td>cardsServcie</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/CardItemService.html" target="_self" >CardItemService</a></code>
+                                                                        <code><a href="../injectables/CardsService.html" target="_self" >CardsService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -308,8 +308,6 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <p>Funciones de cartas del catalogo</p>
-
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -350,8 +348,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="58"
-                                    class="link-to-prism">src/app/card-manage/card-manage.component.ts:58</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="65"
+                                    class="link-to-prism">src/app/card-manage/card-manage.component.ts:65</a></div>
                         </td>
                     </tr>
 
@@ -428,8 +426,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="50"
-                                    class="link-to-prism">src/app/card-manage/card-manage.component.ts:50</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="57"
+                                    class="link-to-prism">src/app/card-manage/card-manage.component.ts:57</a></div>
                         </td>
                     </tr>
 
@@ -530,8 +528,8 @@
 import { Router } from &#x27;@angular/router&#x27;;
 import { AuthService } from &#x27;../core/services/auth.service&#x27;;
 import { CardItem } from &#x27;../core/models/carditem.model&#x27;;
-import { CardItemService } from &#x27;../core/services/cartitem.service&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
+import { CardsService } from &#x27;../core/services/api/cards.service&#x27;;
 
 /**
  * @description
@@ -561,14 +559,21 @@ export class CardManageComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private cardItemService: CardItemService
+    private cardsServcie: CardsService
   ){}
 
   /**
    * Iniciacion de listado de cartas del catalogo
    */
   ngOnInit(): void {
-    this.cardList &#x3D; this.cardItemService.getCardsList();
+    this.cardsServcie.getAllCards().subscribe(
+      response &#x3D;&gt; {
+        this.cardList &#x3D; response;
+      },
+      error &#x3D;&gt; {
+        console.error(&#x27;Error a invocar cards : &#x27; + error );
+      }
+    );
   }
 
   /**

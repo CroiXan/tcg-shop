@@ -5,7 +5,7 @@ import { AuthService } from '../core/services/auth.service';
 import { Router, RouterModule } from '@angular/router';
 import { CardItem } from '../core/models/carditem.model';
 import { onlyNumbersValidator } from '../core/validators/validators';
-import { CardItemService } from '../core/services/cartitem.service';
+import { CardsService } from '../core/services/api/cards.service';
 
 /**
  * @description
@@ -45,7 +45,7 @@ export class CardDetailComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private cardItemService: CardItemService,
+    private cardsService: CardsService
   ){}
 
   /**
@@ -164,12 +164,15 @@ export class CardDetailComponent {
     this.selectedCard.ManaValue = this.cardForm.get('ManaValue')?.value;
     this.selectedCard.CardText = this.cardForm.get('CardText')?.value;
 
-    const result = this.cardItemService.createOrUpdateCardItem(this.selectedCard);
-    if(result){
-      alert(this.submitText + ' con éxito');
-    }else{
-      alert(this.submitText + ' con error');
-    }
+    this.cardsService.createOrUpdateCardItem(this.selectedCard,
+      result => {
+        if(result){
+          alert(this.submitText + ' con éxito');
+        }else{
+          alert(this.submitText + ' con error');
+        }
+      }
+    )
 
   }
 

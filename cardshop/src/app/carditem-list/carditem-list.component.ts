@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { CardItem } from '../core/models/carditem.model';
-import { CardItemService } from '../core/services/cartitem.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../core/services/auth.service';
+import { CardsService } from '../core/services/api/cards.service';
 
 /**
  * @description
@@ -29,11 +29,12 @@ export class CarditemListComponent {
    * @param route Manejo de redirecciones
    * @param cardItemService Manejo de catalogo de cartas
    * @param authService Manejo de sesion
+   * 
    */
   constructor(
     private route: ActivatedRoute, 
-    private cardItemService: CardItemService, 
-    private authService: AuthService
+    private authService: AuthService,
+    private cardService: CardsService
   ) {}
 
   /**
@@ -47,10 +48,26 @@ export class CarditemListComponent {
     this.route.paramMap.subscribe(params => {
       const categoria = params.get('categoria') || '';
       const search = params.get('search') || '';
+
       if (categoria !== '' || search !== '') {
-        this.carditemList = this.cardItemService.getCardListWithFilters(categoria,search);
+        
+        this.cardService.getCardListWithFilters(categoria,search,
+          result => {
+            this.carditemList = result
+          }
+        );
+
       }else{
-        this.carditemList = this.cardItemService.getCardsList();
+
+        this.cardService.getAllCards().subscribe(
+          response => {
+            this.carditemList = response;
+          },
+          error => {
+            console.error('Error a invocar cards : ' + error );
+          }
+        );
+
       }
     });
   }
@@ -61,12 +78,16 @@ export class CarditemListComponent {
    * @param cardName Nombre de carta
    */
   addItem(cardId: number, cardName: string){
-    const result = this.authService.addItemToShoppingCart(cardId);
-    if(result){
-      alert('Se ha agregado '+cardName+' al carrito');
-    }else{
-      alert('No hay suficiente stock para '+cardName);
-    }
+    this.authService.addItemToShoppingCart(
+      cardId,
+      result => {
+        if(result){
+          alert('Se ha agregado '+cardName+' al carrito');
+        }else{
+          alert('No hay suficiente stock para '+cardName);
+        }
+      }
+    );
   }
 
 }

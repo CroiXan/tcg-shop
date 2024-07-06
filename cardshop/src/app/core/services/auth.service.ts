@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from './user.service';
 import { User } from '../models/user.model';
 import { BehaviorSubject } from 'rxjs';
 import { Address } from '../models/address.model';
-import { AddressService } from './address.service';
 import { ShoppingCart } from '../models/shopping-cart.model';
-import { ShoppingCartService } from './shopping-cart.service';
 import { CartStatus } from '../enum/cart-status.enum';
 import { CardItem } from '../models/carditem.model';
+import { UserApiService } from './api/user-api.service';
+import { AddressApiService } from './api/address-api.service';
+import { ShoppingCartApiService } from './api/shopping-cart-api.service';
 
 /**
  * @description
@@ -48,10 +48,10 @@ export class AuthService {
    * @param shoppingCartService Funciones de manejo de carrito
    */
   constructor(
-    private router: Router, 
-    private userService: UserService,
-    private addressService: AddressService,
-    private shoppingCartService: ShoppingCartService
+    private router: Router,
+    private userApiService: UserApiService,
+    private addressApiService: AddressApiService,
+    private shoppingCartApiService: ShoppingCartApiService
   ) {}
 
   /**
@@ -60,19 +60,31 @@ export class AuthService {
    * @param password contrasena de usuario
    * @returns booleano indicando si se logro loguear
    */
-  login(userName: string, password: string): boolean {
+  login(userName: string, password: string, callback: (result: boolean) => void) {
 
-    this.logedUser = this.userService.getUserAuth(userName,password);
+    this.userApiService.getUserAuth(userName,password,
+      result => {
+        this.logedUser = result;
 
-    if(this.logedUser.id === undefined || this.logedUser.id === 0 || this.logedUser.UserName === '' ){
-        this.loggedIn.next(false);
-        return false;
-    }
+        if(this.logedUser.id === undefined || this.logedUser.id === 0 || this.logedUser.UserName === '' ){
+          this.loggedIn.next(false);
+          callback(false);
+          return;
+        }
+    
+        this.setUserIdToShoppingCart();
+        this.addressApiService.getAddressByUser(
+          this.logedUser.id,
+          result => {
+            this.userAddress.next(result);
+          }
+        )
+        this.loggedIn.next(true);
+        callback(true);
+        return;
+      }
+    );
 
-    this.setUserIdToShoppingCart();
-    this.userAddress.next(this.addressService.getAddressByUser(this.logedUser.id));
-    this.loggedIn.next(true);
-    return true;
   }
 
   /**
@@ -90,11 +102,15 @@ export class AuthService {
    * @param email Correo electronico
    * @returns Ususario actualizado
    */
-  updateBasicInfo(firstName: string, lastName: string, email: string): boolean {
+  updateBasicInfo(firstName: string, lastName: string, email: string, callback: (result: boolean) => void) {
     this.logedUser.FirstName = firstName;
     this.logedUser.LastName = lastName;
-    this.logedUser.Email = email;
-    return this.userService.updateUser(this.logedUser);
+    this.logedUser.Email = email; 
+    this.userApiService.updateUser(this.logedUser,
+      result =>{
+        callback(result)
+      }
+    );
   }
 
   /**
@@ -105,8 +121,13 @@ export class AuthService {
    * @param Commune Comuna de direccion
    */
   createAddress(name: string, number: number, region: string, Commune: string){
-    this.addressService.createAddress(this.logedUser.id,name,number,region,Commune);
-    this.userAddress.next(this.addressService.getAddressByUser(this.logedUser.id));
+    this.addressApiService.createAddress(this.logedUser.id,name,number,region,Commune);
+    this.addressApiService.getAddressByUser(
+      this.logedUser.id,
+      result => {
+        this.userAddress.next(result);
+      }
+    )
   }
 
   /**
@@ -140,14 +161,41 @@ export class AuthService {
    * @param cardId Identificador de carta seleccionado
    * @returns booleano que indica si la carta tiene stock
    */
-  addItemToShoppingCart(cardId: number): boolean{
+  addItemToShoppingCart(cardId: number, callback: (result: boolean) => void) {
+
     if(this.currentShoppingCart.value.id === undefined || this.currentShoppingCart.value.Status != CartStatus.Abierto){
-      this.currentShoppingCart.next(this.shoppingCartService.createShoppingcar(this.logedUser.id));
+      
+      this.shoppingCartApiService.createShoppingcar(
+        this.logedUser.id,
+        resultCreate => {
+          this.shoppingCartApiService.addItemToShoppingCart(
+            this.logedUser.id,
+            cardId,
+            resultCreate.id,
+            resultAdded => {
+              this.currentShoppingCart.next(resultAdded[0]);
+              callback(resultAdded[1]);
+            }
+          )
+        }
+      )
+
+    }else{
+
+      this.shoppingCartApiService.addItemToShoppingCart(
+        this.logedUser.id,
+        cardId,
+        this.currentShoppingCart.value.id,
+        resultAdded => {
+          this.currentShoppingCart.next(resultAdded[0]);
+          callback(resultAdded[1]);
+        }
+      )
+
     }
-    const addItemResult = this.shoppingCartService.addItemToShoppingCart(this.logedUser.id,cardId,this.currentShoppingCart.value.id);
-    this.currentShoppingCart.next(addItemResult[0]);
-    return addItemResult[1];
+
   }
+
 
   /**
    * Funcion para cambiar el estado al carrito de compras de la sesion actual
@@ -156,7 +204,10 @@ export class AuthService {
   updateShoppingCartStatus(status: CartStatus){
     if(this.currentShoppingCart.value.id !== undefined){
       this.currentShoppingCart.value.Status = status;
-      this.shoppingCartService.updateShoppingCart(this.currentShoppingCart.value);
+      this.shoppingCartApiService.updateShoppingCart(
+        this.currentShoppingCart.value,
+        result => {}
+      );
     }
   }
 
@@ -167,7 +218,10 @@ export class AuthService {
   setUserIdToShoppingCart(){
     if(this.currentShoppingCart.value.id !== undefined){
       this.currentShoppingCart.value.UserId = this.logedUser.id;
-      this.shoppingCartService.updateShoppingCart(this.currentShoppingCart.value);
+      this.shoppingCartApiService.updateShoppingCart(
+        this.currentShoppingCart.value,
+        result => {}
+      );
     }
   }
 

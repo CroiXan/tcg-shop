@@ -16,6 +16,10 @@ export interface Address{
      */
     Name: string;
     /**
+     * Direccion.
+     */
+    AddressName: string;
+    /**
      * Numero de direccion.
      */
     Number: number;

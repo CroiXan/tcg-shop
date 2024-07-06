@@ -20,6 +20,7 @@ export class AddressService{
             UserId: 1,
             Name: 'Av Testing',
             Number: 123,
+            AddressName: "",
             Region: 'Metropolitana',
             Commune: 'Santiago',
         },
@@ -28,6 +29,7 @@ export class AddressService{
             UserId: 2,
             Name: 'Av Framework',
             Number: 123,
+            AddressName: "",
             Region: 'Valparaiso',
             Commune: 'Valparaiso'
         }

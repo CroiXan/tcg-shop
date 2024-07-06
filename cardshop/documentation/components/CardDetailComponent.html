@@ -290,7 +290,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, router: Router, cardItemService: <a href="../injectables/CardItemService.html" target="_self">CardItemService</a>)</code>
+<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, router: Router, cardsService: <a href="../injectables/CardsService.html" target="_self">CardsService</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -348,10 +348,10 @@
                                                         </td>
                                                 </tr>
                                                 <tr>
-                                                        <td>cardItemService</td>
+                                                        <td>cardsService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/CardItemService.html" target="_self" >CardItemService</a></code>
+                                                                        <code><a href="../injectables/CardsService.html" target="_self" >CardsService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -359,8 +359,6 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <p>Funciones de manejo de cartas</p>
-
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -832,7 +830,7 @@ import { AuthService } from &#x27;../core/services/auth.service&#x27;;
 import { Router, RouterModule } from &#x27;@angular/router&#x27;;
 import { CardItem } from &#x27;../core/models/carditem.model&#x27;;
 import { onlyNumbersValidator } from &#x27;../core/validators/validators&#x27;;
-import { CardItemService } from &#x27;../core/services/cartitem.service&#x27;;
+import { CardsService } from &#x27;../core/services/api/cards.service&#x27;;
 
 /**
  * @description
@@ -872,7 +870,7 @@ export class CardDetailComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private cardItemService: CardItemService,
+    private cardsService: CardsService
   ){}
 
   /**
@@ -991,12 +989,15 @@ export class CardDetailComponent {
     this.selectedCard.ManaValue &#x3D; this.cardForm.get(&#x27;ManaValue&#x27;)?.value;
     this.selectedCard.CardText &#x3D; this.cardForm.get(&#x27;CardText&#x27;)?.value;
 
-    const result &#x3D; this.cardItemService.createOrUpdateCardItem(this.selectedCard);
-    if(result){
-      alert(this.submitText + &#x27; con éxito&#x27;);
-    }else{
-      alert(this.submitText + &#x27; con error&#x27;);
-    }
+    this.cardsService.createOrUpdateCardItem(this.selectedCard,
+      result &#x3D;&gt; {
+        if(result){
+          alert(this.submitText + &#x27; con éxito&#x27;);
+        }else{
+          alert(this.submitText + &#x27; con error&#x27;);
+        }
+      }
+    )
 
   }
 

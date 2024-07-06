@@ -64,12 +64,19 @@ export class LoginComponent {
    * Accion de submit de formulario
    */
   onSubmit(): void {
-    if( this.authService.login(this.loginForm.get('username')?.value,this.loginForm.get('password')?.value) ){
-      alert('Se ha logueado');
-      this.router.navigate(['/']);
-    }else{
-      alert('Usuario o Contraseña incorretos');
-    }
+    this.authService.login(
+      this.loginForm.get('username')?.value,
+      this.loginForm.get('password')?.value,
+      result => {
+        if( result ){
+          alert('Se ha logueado');
+          this.router.navigate(['/']);
+        }else{
+          alert('Usuario o Contraseña incorretos');
+        }
+      }
+    )
+    
   }
 
 }
