@@ -4,11 +4,11 @@ import { User } from '../models/user.model';
 import { BehaviorSubject } from 'rxjs';
 import { Address } from '../models/address.model';
 import { ShoppingCart } from '../models/shopping-cart.model';
-import { ShoppingCartService } from './shopping-cart.service';
 import { CartStatus } from '../enum/cart-status.enum';
 import { CardItem } from '../models/carditem.model';
 import { UserApiService } from './api/user-api.service';
 import { AddressApiService } from './api/address-api.service';
+import { ShoppingCartApiService } from './api/shopping-cart-api.service';
 
 /**
  * @description
@@ -49,9 +49,9 @@ export class AuthService {
    */
   constructor(
     private router: Router,
-    private shoppingCartService: ShoppingCartService,
     private userApiService: UserApiService,
-    private addressApiService: AddressApiService
+    private addressApiService: AddressApiService,
+    private shoppingCartApiService: ShoppingCartApiService
   ) {}
 
   /**
@@ -162,18 +162,40 @@ export class AuthService {
    * @returns booleano que indica si la carta tiene stock
    */
   addItemToShoppingCart(cardId: number, callback: (result: boolean) => void) {
+
     if(this.currentShoppingCart.value.id === undefined || this.currentShoppingCart.value.Status != CartStatus.Abierto){
-      this.currentShoppingCart.next(this.shoppingCartService.createShoppingcar(this.logedUser.id));
+      
+      this.shoppingCartApiService.createShoppingcar(
+        this.logedUser.id,
+        resultCreate => {
+          this.shoppingCartApiService.addItemToShoppingCart(
+            this.logedUser.id,
+            cardId,
+            resultCreate.id,
+            resultAdded => {
+              this.currentShoppingCart.next(resultAdded[0]);
+              callback(resultAdded[1]);
+            }
+          )
+        }
+      )
+
+    }else{
+
+      this.shoppingCartApiService.addItemToShoppingCart(
+        this.logedUser.id,
+        cardId,
+        this.currentShoppingCart.value.id,
+        resultAdded => {
+          this.currentShoppingCart.next(resultAdded[0]);
+          callback(resultAdded[1]);
+        }
+      )
+
     }
-    this.shoppingCartService.addItemToShoppingCart(
-      this.logedUser.id,cardId,
-      this.currentShoppingCart.value.id,
-      result => {
-        this.currentShoppingCart.next(result[0]);
-        callback(result[1]);
-      }
-    );
+
   }
+
 
   /**
    * Funcion para cambiar el estado al carrito de compras de la sesion actual
@@ -182,7 +204,10 @@ export class AuthService {
   updateShoppingCartStatus(status: CartStatus){
     if(this.currentShoppingCart.value.id !== undefined){
       this.currentShoppingCart.value.Status = status;
-      this.shoppingCartService.updateShoppingCart(this.currentShoppingCart.value);
+      this.shoppingCartApiService.updateShoppingCart(
+        this.currentShoppingCart.value,
+        result => {}
+      );
     }
   }
 
@@ -193,7 +218,10 @@ export class AuthService {
   setUserIdToShoppingCart(){
     if(this.currentShoppingCart.value.id !== undefined){
       this.currentShoppingCart.value.UserId = this.logedUser.id;
-      this.shoppingCartService.updateShoppingCart(this.currentShoppingCart.value);
+      this.shoppingCartApiService.updateShoppingCart(
+        this.currentShoppingCart.value,
+        result => {}
+      );
     }
   }
 

@@ -64,7 +64,8 @@ export class AddressApiService {
   getAddressByUser(userId: number, callback: (result: Address[]) => void) {
     this.getAddress().subscribe(
       result => {
-        callback(result.filter(address => address.UserId === userId) || [] as Address[]);
+        let userAddress = result.filter(address => address.UserId === userId) || [] as Address[]
+        callback(userAddress);
       },
       error => {
         callback([] as Address[]);
