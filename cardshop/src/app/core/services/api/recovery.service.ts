@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Recovery } from '../../models/Recovery.model';
 import { UserApiService } from './user-api.service';
 import { User } from '../../models/user.model';
+import * as CryptoJS from 'crypto-js';
 
 @Injectable({
   providedIn: 'root'
