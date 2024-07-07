@@ -52,10 +52,15 @@ export class RecoveryService {
             recovery.token = this.generateRandomToken();
 
             response.push(recovery);
-            this.editRecoveriesJson(response).subscribe();
+            this.editRecoveriesJson(response).subscribe(
+              response =>{
+                callback(recovery.token);
+              },
+              error => {
+                callback('error');
+              }
+            );
 
-            callback(recovery.token);
-            return;
           },
           error => {
             callback('error');
@@ -114,7 +119,7 @@ export class RecoveryService {
         return;
       }
 
-      const recoverytimestamp = recovery.date.getTime();
+      const recoverytimestamp = new Date(recovery.date).getTime();
       const currenttimestamp = currentDate.getTime();
       const differenceInMillis = Math.abs(currenttimestamp - recoverytimestamp);
       const differenceInHours = differenceInMillis / (1000 * 60 * 60);
@@ -146,7 +151,7 @@ export class RecoveryService {
         return;
       }
 
-      const recoverytimestamp = recovery.date.getTime();
+      const recoverytimestamp = new Date(recovery.date).getTime();
       const currenttimestamp = currentDate.getTime();
       const differenceInMillis = Math.abs(currenttimestamp - recoverytimestamp);
       const differenceInHours = differenceInMillis / (1000 * 60 * 60);
