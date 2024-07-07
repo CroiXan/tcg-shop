@@ -42,7 +42,7 @@ export class RecoveryService {
 
             let findUser = userResponse.find(user => user.Email === email);
             if(findUser == undefined){
-              callback('');
+              callback('error');
               return;
             }
 
@@ -54,11 +54,11 @@ export class RecoveryService {
             response.push(recovery);
             this.editRecoveriesJson(response).subscribe();
 
-            callback('');
+            callback(recovery.token);
             return;
           },
           error => {
-            callback('');
+            callback('error');
               return;
           }
         );
