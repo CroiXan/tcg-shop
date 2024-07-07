@@ -77,14 +77,11 @@ export class ShoppingCartApiService {
             this.editShoppingCartJson(response).subscribe(
               response =>{
                 callback(true)
-                return;
               },
               error => {
                 callback(false)
-                return;
               }
-            );
-            return;
+            )
         }
         callback(false)
         return;

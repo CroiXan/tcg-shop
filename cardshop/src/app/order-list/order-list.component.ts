@@ -5,6 +5,7 @@ import { ShoppingCart } from '../core/models/shopping-cart.model';
 import { CommonModule } from '@angular/common';
 import { CardItem } from '../core/models/carditem.model';
 import { OrderDetailComponent } from '../order-detail/order-detail.component';
+import { ShoppingCartApiService } from '../core/services/api/shopping-cart-api.service';
 
 /**
  * @description
@@ -40,8 +41,8 @@ export class OrderListComponent {
    * @param authService Manejo de sesion
    */
   constructor(
-    private shoppingCartService: ShoppingCartService,
-    private authService: AuthService
+    private authService: AuthService,
+    private shoppingCartApiService: ShoppingCartApiService
   ){}
 
   /**
@@ -50,7 +51,14 @@ export class OrderListComponent {
   ngOnInit(): void {
     this.isSelected = false;
     const userId = this.authService.getUser().id;
-    this.orderList = this.shoppingCartService.getAllShopppingCartsByUser(userId);
+    
+    this.shoppingCartApiService.getAllShopppingCartsByUser(
+      userId,
+      result => {
+        this.orderList = result
+      }
+    );
+    
   }
 
   /**
