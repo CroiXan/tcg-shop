@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Recovery } from '../../models/Recovery.model';
 import { UserApiService } from './user-api.service';
 import { User } from '../../models/user.model';
+import * as CryptoJS from 'crypto-js';
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +42,7 @@ export class RecoveryService {
 
             let findUser = userResponse.find(user => user.Email === email);
             if(findUser == undefined){
-              callback('');
+              callback('error');
               return;
             }
 
@@ -51,13 +52,18 @@ export class RecoveryService {
             recovery.token = this.generateRandomToken();
 
             response.push(recovery);
-            this.editRecoveriesJson(response).subscribe();
+            this.editRecoveriesJson(response).subscribe(
+              response =>{
+                callback(recovery.token);
+              },
+              error => {
+                callback('error');
+              }
+            );
 
-            callback('');
-            return;
           },
           error => {
-            callback('');
+            callback('error');
               return;
           }
         );
@@ -113,7 +119,7 @@ export class RecoveryService {
         return;
       }
 
-      const recoverytimestamp = recovery.date.getTime();
+      const recoverytimestamp = new Date(recovery.date).getTime();
       const currenttimestamp = currentDate.getTime();
       const differenceInMillis = Math.abs(currenttimestamp - recoverytimestamp);
       const differenceInHours = differenceInMillis / (1000 * 60 * 60);
@@ -145,7 +151,7 @@ export class RecoveryService {
         return;
       }
 
-      const recoverytimestamp = recovery.date.getTime();
+      const recoverytimestamp = new Date(recovery.date).getTime();
       const currenttimestamp = currentDate.getTime();
       const differenceInMillis = Math.abs(currenttimestamp - recoverytimestamp);
       const differenceInHours = differenceInMillis / (1000 * 60 * 60);
