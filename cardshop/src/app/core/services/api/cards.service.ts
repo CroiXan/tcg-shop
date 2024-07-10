@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CardItem } from '../../models/carditem.model';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -82,32 +82,27 @@ export class CardsService {
     );
   }
 
-  getCardListWithFilters(category: string, search: string, callback: (result: CardItem[]) => void) {
-    this.getAllCards().subscribe(
-      response => {
-        let resultCardList:CardItem[] = [];
+  getCardListWithFiltersFetch(category: string, search: string): Observable<CardItem[]> {
+    return this.getAllCards().pipe(
+      map(data => data.filter(cardItem => {
 
         if(category !== ''){
-          resultCardList = response.filter(cardItem =>
-              cardItem.CardType.toLowerCase().includes(category.toLowerCase())
-          );
-        }
-      
-        if(category === '' && search !== ''){
-          resultCardList = response;
+          return cardItem.CardType.toLowerCase().includes(category.toLowerCase())
         }
         
         if(search !== ''){
-          resultCardList = resultCardList.filter(cardItem =>
-                cardItem.CardName.toLowerCase().includes(search.toLowerCase())
-            );
+          return cardItem.CardName.toLowerCase().includes(search.toLowerCase())
         }
+        return false;
 
-        callback(resultCardList);
-      },
-      error => {
-        console.error('Error a invocar cards : ' + error );
-        callback([]);
+      })
+    ));
+  }
+
+  getCardListWithFilters(category: string, search: string, callback: (result: CardItem[]) => void) {
+    this.getCardListWithFiltersFetch( category, search ).subscribe(
+      response => {
+        callback(response);
       }
     );
   }
