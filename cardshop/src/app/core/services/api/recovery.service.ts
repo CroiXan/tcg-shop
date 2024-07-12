@@ -6,11 +6,18 @@ import { UserApiService } from './user-api.service';
 import { User } from '../../models/user.model';
 import * as CryptoJS from 'crypto-js';
 
+/**
+ * @description 
+ * Clase con Funciones de API de recuperacion de contrasena
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class RecoveryService {
 
+  /**
+   * Headers para invocacion de API POST
+   */
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -18,21 +25,43 @@ export class RecoveryService {
     })
   }
 
+  /**
+   * Enpoint de API de recuperacion
+   */
   private url = 'https://firebasestorage.googleapis.com/v0/b/mtg-shop-d23a4.appspot.com/o/recovery.json?alt=media&token=3fa8f2c2-2089-4013-bfaf-237a30543693';
 
+  /**
+   * Constructor para recuperacion de contrasena
+   * @param http Libreria HTTP
+   * @param userApiService Referencia Conservicio de Usuarios
+   */
   constructor(
     private http: HttpClient,
     private userApiService: UserApiService
   ) { }
 
+  /**
+   * Funcion de Metodo GET de API de recuperacion
+   * @returns Observable con listado de Items de recuperacion
+   */
   getRecoveries(): Observable<Recovery[]>{
     return this.http.get<Recovery[]>(this.url);
   }
 
+  /**
+   * Funcion de Metodo POST de API de recuperacion
+   * @param recoveryList Lista de Recovery con elementos modificados
+   * @returns Retorna Observable de llamado Post de API
+   */
   editRecoveriesJson(recoveryList: Recovery[]): Observable<any>{
     return this.http.post(this.url,recoveryList,this.httpOptions);
   }
 
+  /**
+   * Funcion que genera y almacena un token para recuperacion de contrasena
+   * @param email Email de cliente 
+   * @param callback Funcion que retorna Token generado
+   */
   createRecovery(email:string, callback: (result: string) => void){
 
     this.getRecoveries().subscribe(
@@ -86,10 +115,10 @@ export class RecoveryService {
   }
 
   /**
-     * Funcion para encontrar item de recuperacion segun un token dado
-     * @param token Token de recuperacion
-     * @returns Item de recuperacion de clave
-     */
+   * Funcion para encontrar item de recuperacion segun un token dado
+   * @param token Token de recuperacion
+   * @param callback Funcion que retorna Item de recuperacion de clave
+   */
   findRecovery(token: string, callback: (result: Recovery) => void) {
 
     this.getRecoveries().subscribe(
@@ -105,10 +134,10 @@ export class RecoveryService {
   }
 
   /**
-     * Funcion para checkear validez de token de recuperacion
-     * @param token Token de recuperacion
-     * @returns mensaje de error
-     */
+   * Funcion para checkear validez de token de recuperacion
+   * @param token Token de recuperacion
+   * @param callback funcion para retornar mensaje de error
+   */
   checkRecovery(token: string, callback: (result: string) => void) {
 
     this.findRecovery(token, recovery => {
@@ -136,11 +165,11 @@ export class RecoveryService {
   }
 
   /**
-     * Funcion para actualizar contrasena dado un token 
-     * @param token token de recuperacion
-     * @param password nueva contrasena
-     * @returns mensaje de error
-     */
+   * Funcion para actualizar contrasena dado un token 
+   * @param token token de recuperacion
+   * @param password nueva contrasena
+   * @param callback funcion para retiornar mensaje de error
+   */
   updatePassword(token: string, password: string, callback: (result: string) => void) {
 
     this.findRecovery(token, recovery => {

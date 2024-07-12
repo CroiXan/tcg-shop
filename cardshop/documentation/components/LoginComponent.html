@@ -583,12 +583,19 @@ export class LoginComponent {
    * Accion de submit de formulario
    */
   onSubmit(): void {
-    if( this.authService.login(this.loginForm.get(&#x27;username&#x27;)?.value,this.loginForm.get(&#x27;password&#x27;)?.value) ){
-      alert(&#x27;Se ha logueado&#x27;);
-      this.router.navigate([&#x27;/&#x27;]);
-    }else{
-      alert(&#x27;Usuario o Contraseña incorretos&#x27;);
-    }
+    this.authService.login(
+      this.loginForm.get(&#x27;username&#x27;)?.value,
+      this.loginForm.get(&#x27;password&#x27;)?.value,
+      result &#x3D;&gt; {
+        if( result ){
+          alert(&#x27;Se ha logueado&#x27;);
+          this.router.navigate([&#x27;/&#x27;]);
+        }else{
+          alert(&#x27;Usuario o Contraseña incorretos&#x27;);
+        }
+      }
+    )
+    
   }
 
 }</code></pre>
