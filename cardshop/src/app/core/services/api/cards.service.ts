@@ -83,7 +83,7 @@ export class CardsService {
   }
 
   getCardListWithFiltersFetch(category: string, search: string): Observable<CardItem[]> {
-    return this.getAllCards().pipe(
+    return this.http.get<CardItem[]>(this.url).pipe(
       map(data => data.filter(cardItem => {
 
         if(category !== ''){
