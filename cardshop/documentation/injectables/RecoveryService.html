@@ -91,7 +91,7 @@
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item">Injectables</li>
-  <li class="breadcrumb-item" >CardsService</li>
+  <li class="breadcrumb-item" >RecoveryService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -115,7 +115,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/core/services/api/cards.service.ts</code>
+            <code>src/app/core/services/api/recovery.service.ts</code>
         </p>
 
 
@@ -161,25 +161,25 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#createOrUpdateCardItem" >createOrUpdateCardItem</a>
+                                <a href="#checkRecovery" >checkRecovery</a>
                             </li>
                             <li>
-                                <a href="#editCardsJson" >editCardsJson</a>
+                                <a href="#createRecovery" >createRecovery</a>
                             </li>
                             <li>
-                                <a href="#getAllCards" >getAllCards</a>
+                                <a href="#editRecoveriesJson" >editRecoveriesJson</a>
                             </li>
                             <li>
-                                <a href="#getCard" >getCard</a>
+                                <a href="#findRecovery" >findRecovery</a>
                             </li>
                             <li>
-                                <a href="#getCardListWithFilters" >getCardListWithFilters</a>
+                                <a href="#generateRandomToken" >generateRandomToken</a>
                             </li>
                             <li>
-                                <a href="#getCardListWithFiltersFetch" >getCardListWithFiltersFetch</a>
+                                <a href="#getRecoveries" >getRecoveries</a>
                             </li>
                             <li>
-                                <a href="#modifyCardItem" >modifyCardItem</a>
+                                <a href="#updatePassword" >updatePassword</a>
                             </li>
                         </ul>
                     </td>
@@ -199,18 +199,18 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(http: HttpClient)</code>
+<code>constructor(http: HttpClient, userApiService: <a href="../injectables/UserApiService.html" target="_self">UserApiService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/core/services/api/cards.service.ts:28</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/core/services/api/recovery.service.ts:31</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>Constructor con dependencias a libreria HTTP</p>
+                            <div class="io-description"><p>Constructor para recuperacion de contrasena</p>
 </div>
                             <div>
                                     <b>Parameters :</b>
@@ -240,6 +240,22 @@
 
                                                         </td>
                                                 </tr>
+                                                <tr>
+                                                        <td>userApiService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserApiService.html" target="_self" >UserApiService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Referencia Conservicio de Usuarios</p>
+
+                                                        </td>
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -258,31 +274,31 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="createOrUpdateCardItem"></a>
+                    <a name="checkRecovery"></a>
                     <span class="name">
-                        <span ><b>createOrUpdateCardItem</b></span>
-                        <a href="#createOrUpdateCardItem"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>checkRecovery</b></span>
+                        <a href="#checkRecovery"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>createOrUpdateCardItem(card: <a href="../interfaces/CardItem.html" target="_self">CardItem</a>, callback: (result: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>) => void)</code>
+<code>checkRecovery(token: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, callback: (result: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>) => void)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="49"
-                                    class="link-to-prism">src/app/core/services/api/cards.service.ts:49</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="141"
+                                    class="link-to-prism">src/app/core/services/api/recovery.service.ts:141</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Funcion para crear cartas en el catalogo</p>
+                        <div class="io-description"><p>Funcion para checkear validez de token de recuperacion</p>
 </div>
 
                             <div class="io-description">
@@ -299,9 +315,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>card</td>
+                                                <td>token</td>
                                             <td>
-                                                            <code><a href="../interfaces/CardItem.html" target="_self" >CardItem</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -310,7 +326,7 @@
 
 
                                             <td>
-                                                    <p>Objeto de nueva Carta</p>
+                                                    <p>Token de recuperacion</p>
 
                                             </td>
                                         </tr>
@@ -326,7 +342,7 @@
 
 
                                             <td>
-                                                    <p>Funcion para retornar booleano con resultado de la ejecucion</p>
+                                                    <p>funcion para retornar mensaje de error</p>
 
                                             </td>
                                         </tr>
@@ -348,31 +364,31 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="editCardsJson"></a>
+                    <a name="createRecovery"></a>
                     <span class="name">
-                        <span ><b>editCardsJson</b></span>
-                        <a href="#editCardsJson"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>createRecovery</b></span>
+                        <a href="#createRecovery"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>editCardsJson(cardList: <a href="../interfaces/CardItem.html" target="_self">CardItem[]</a>)</code>
+<code>createRecovery(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, callback: (result: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>) => void)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="102"
-                                    class="link-to-prism">src/app/core/services/api/cards.service.ts:102</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="65"
+                                    class="link-to-prism">src/app/core/services/api/recovery.service.ts:65</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Funcion de Metodo POST de API de catalogo de cartas</p>
+                        <div class="io-description"><p>Funcion que genera y almacena un token para recuperacion de contrasena</p>
 </div>
 
                             <div class="io-description">
@@ -389,9 +405,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>cardList</td>
+                                                <td>email</td>
                                             <td>
-                                                            <code><a href="../interfaces/CardItem.html" target="_self" >CardItem[]</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -400,7 +416,97 @@
 
 
                                             <td>
-                                                    <p>Listado modificado de cartas</p>
+                                                    <p>Email de cliente</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>callback</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Funcion que retorna Token generado</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editRecoveriesJson"></a>
+                    <span class="name">
+                        <span ><b>editRecoveriesJson</b></span>
+                        <a href="#editRecoveriesJson"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>editRecoveriesJson(recoveryList: <a href="../interfaces/Recovery.html" target="_self">Recovery[]</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="56"
+                                    class="link-to-prism">src/app/core/services/api/recovery.service.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Funcion de Metodo POST de API de recuperacion</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>recoveryList</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Recovery.html" target="_self" >Recovery[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Lista de Recovery con elementos modificados</p>
 
                                             </td>
                                         </tr>
@@ -423,74 +529,31 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getAllCards"></a>
+                    <a name="findRecovery"></a>
                     <span class="name">
-                        <span ><b>getAllCards</b></span>
-                        <a href="#getAllCards"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>findRecovery</b></span>
+                        <a href="#findRecovery"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getAllCards()</code>
+<code>findRecovery(token: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, callback: (result: <a href="../interfaces/Recovery.html">Recovery</a>) => void)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="40"
-                                    class="link-to-prism">src/app/core/services/api/cards.service.ts:40</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="122"
+                                    class="link-to-prism">src/app/core/services/api/recovery.service.ts:122</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Funcion de Metodo GET de API de catalogo de cartas</p>
-</div>
-
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="../interfaces/CardItem.html" target="_self" >Observable&lt;CardItem[]&gt;</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                <p>Observable con listado de Items de cartas</p>
-
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getCard"></a>
-                    <span class="name">
-                        <span ><b>getCard</b></span>
-                        <a href="#getCard"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>getCard(cardId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, callback: (result: <a href="../interfaces/CardItem.html">CardItem</a>) => void)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="111"
-                                    class="link-to-prism">src/app/core/services/api/cards.service.ts:111</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-description"><p>Funcion para Obetenr carta de catalogo segun ID</p>
+                        <div class="io-description"><p>Funcion para encontrar item de recuperacion segun un token dado</p>
 </div>
 
                             <div class="io-description">
@@ -507,9 +570,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>cardId</td>
+                                                <td>token</td>
                                             <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -518,7 +581,7 @@
 
 
                                             <td>
-                                                    <p>Id de carta</p>
+                                                    <p>Token de recuperacion</p>
 
                                             </td>
                                         </tr>
@@ -534,7 +597,7 @@
 
 
                                             <td>
-                                                    <p>Funcion para retornar Objeto de Carta encontrada</p>
+                                                    <p>Funcion que retorna Item de recuperacion de clave</p>
 
                                             </td>
                                         </tr>
@@ -556,31 +619,117 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getCardListWithFilters"></a>
+                    <a name="generateRandomToken"></a>
                     <span class="name">
-                        <span ><b>getCardListWithFilters</b></span>
-                        <a href="#getCardListWithFilters"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>generateRandomToken</b></span>
+                        <a href="#generateRandomToken"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getCardListWithFilters(category: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, search: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, callback: (result: <a href="../interfaces/CardItem.html">CardItem[]</a>) => void)</code>
+<code>generateRandomToken()</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="153"
-                                    class="link-to-prism">src/app/core/services/api/cards.service.ts:153</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="112"
+                                    class="link-to-prism">src/app/core/services/api/recovery.service.ts:112</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Funcion para obtener listado de cartas filtratadas respondeiendo el resultado en una funcion callback</p>
+                        <div class="io-description"><p>Funcion para generar token aleatorio</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Token</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getRecoveries"></a>
+                    <span class="name">
+                        <span ><b>getRecoveries</b></span>
+                        <a href="#getRecoveries"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getRecoveries()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="47"
+                                    class="link-to-prism">src/app/core/services/api/recovery.service.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Funcion de Metodo GET de API de recuperacion</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/Recovery.html" target="_self" >Observable&lt;Recovery[]&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Observable con listado de Items de recuperacion</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updatePassword"></a>
+                    <span class="name">
+                        <span ><b>updatePassword</b></span>
+                        <a href="#updatePassword"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updatePassword(token: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, password: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, callback: (result: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>) => void)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="173"
+                                    class="link-to-prism">src/app/core/services/api/recovery.service.ts:173</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Funcion para actualizar contrasena dado un token</p>
 </div>
 
                             <div class="io-description">
@@ -597,7 +746,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>category</td>
+                                                <td>token</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -608,12 +757,12 @@
 
 
                                             <td>
-                                                    <p>filtro para categoria de cartas</p>
+                                                    <p>token de recuperacion</p>
 
                                             </td>
                                         </tr>
                                         <tr>
-                                                <td>search</td>
+                                                <td>password</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -624,7 +773,7 @@
 
 
                                             <td>
-                                                    <p>filtro para nombre de cartas</p>
+                                                    <p>nueva contrasena</p>
 
                                             </td>
                                         </tr>
@@ -640,7 +789,7 @@
 
 
                                             <td>
-                                                    <p>funcion que restorna listado de cartas filtradas</p>
+                                                    <p>funcion para retiornar mensaje de error</p>
 
                                             </td>
                                         </tr>
@@ -653,188 +802,6 @@
                         </div>
                             <div class="io-description">
                                 
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getCardListWithFiltersFetch"></a>
-                    <span class="name">
-                        <span ><b>getCardListWithFiltersFetch</b></span>
-                        <a href="#getCardListWithFiltersFetch"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>getCardListWithFiltersFetch(category: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, search: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="130"
-                                    class="link-to-prism">src/app/core/services/api/cards.service.ts:130</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-description"><p>Funcion para obtener listado de cartas filtratadas</p>
-</div>
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                                <td>Description</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>category</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                            <td>
-                                                    <p>filtro para categoria de cartas</p>
-
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                                <td>search</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                            <td>
-                                                    <p>filtro para nombre de cartas</p>
-
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="../interfaces/CardItem.html" target="_self" >Observable&lt;CardItem[]&gt;</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                <p>Observable con listado de cartas filtradas</p>
-
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="modifyCardItem"></a>
-                    <span class="name">
-                        <span ><b>modifyCardItem</b></span>
-                        <a href="#modifyCardItem"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>modifyCardItem(card: <a href="../interfaces/CardItem.html" target="_self">CardItem</a>, cardList: <a href="../interfaces/CardItem.html" target="_self">CardItem[]</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="79"
-                                    class="link-to-prism">src/app/core/services/api/cards.service.ts:79</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-description"><p>Funcion con logica para agregar o modificar una carta en catalogo</p>
-</div>
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                                <td>Description</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>card</td>
-                                            <td>
-                                                            <code><a href="../interfaces/CardItem.html" target="_self" >CardItem</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                            <td>
-                                                    <p>Carta modificada o nueva</p>
-
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                                <td>cardList</td>
-                                            <td>
-                                                            <code><a href="../interfaces/CardItem.html" target="_self" >CardItem[]</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                            <td>
-                                                    <p>Listado de catalogo</p>
-
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="../interfaces/CardItem.html" target="_self" >CardItem[]</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                <p>booleano de resultado de la funcion</p>
-
                             </div>
                 </td>
             </tr>
@@ -868,14 +835,14 @@
                         <i>Default value : </i><code>{
     headers: new HttpHeaders({
       &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
-      &#x27;Authorization&#x27;: &#x27;Bearer 832767d2-6c98-4c19-8749-373d73475912&#x27; 
+      &#x27;Authorization&#x27;: &#x27;Bearer 8c91f5c5-305e-4ac9-86b7-bd01e3634afe&#x27; 
     })
   }</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/core/services/api/cards.service.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/core/services/api/recovery.service.ts:21</a></div>
                         </td>
                     </tr>
 
@@ -908,18 +875,18 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;https://firebasestorage.googleapis.com/v0/b/mtg-shop-d23a4.appspot.com/o/cards.json?alt&#x3D;media&amp;token&#x3D;3ee7efb3-ba94-4a4b-93b4-09b9b7597d35&#x27;</code>
+                        <i>Default value : </i><code>&#x27;https://firebasestorage.googleapis.com/v0/b/mtg-shop-d23a4.appspot.com/o/recovery.json?alt&#x3D;media&amp;token&#x3D;3fa8f2c2-2089-4013-bfaf-237a30543693&#x27;</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/core/services/api/cards.service.ts:28</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/core/services/api/recovery.service.ts:31</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Enpoint de API de Catalogo de Cartas</p>
+                    <div class="io-description"><p>Enpoint de API de recuperacion</p>
 </div>
                 </td>
             </tr>
@@ -934,17 +901,20 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient, HttpHeaders } from &#x27;@angular/common/http&#x27;;
 import { Injectable } from &#x27;@angular/core&#x27;;
-import { CardItem } from &#x27;../../models/carditem.model&#x27;;
-import { Observable, map } from &#x27;rxjs&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+import { Recovery } from &#x27;../../models/Recovery.model&#x27;;
+import { UserApiService } from &#x27;./user-api.service&#x27;;
+import { User } from &#x27;../../models/user.model&#x27;;
+import * as CryptoJS from &#x27;crypto-js&#x27;;
 
 /**
- * @description
+ * @description 
  * Clase con Funciones de API de recuperacion de contrasena
  */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
-export class CardsService {
+export class RecoveryService {
 
   /**
    * Headers para invocacion de API POST
@@ -952,144 +922,206 @@ export class CardsService {
   httpOptions &#x3D; {
     headers: new HttpHeaders({
       &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
-      &#x27;Authorization&#x27;: &#x27;Bearer 832767d2-6c98-4c19-8749-373d73475912&#x27; 
+      &#x27;Authorization&#x27;: &#x27;Bearer 8c91f5c5-305e-4ac9-86b7-bd01e3634afe&#x27; 
     })
   }
 
   /**
-   * Enpoint de API de Catalogo de Cartas
+   * Enpoint de API de recuperacion
    */
-  private url &#x3D; &#x27;https://firebasestorage.googleapis.com/v0/b/mtg-shop-d23a4.appspot.com/o/cards.json?alt&#x3D;media&amp;token&#x3D;3ee7efb3-ba94-4a4b-93b4-09b9b7597d35&#x27;;
+  private url &#x3D; &#x27;https://firebasestorage.googleapis.com/v0/b/mtg-shop-d23a4.appspot.com/o/recovery.json?alt&#x3D;media&amp;token&#x3D;3fa8f2c2-2089-4013-bfaf-237a30543693&#x27;;
 
   /**
-   * Constructor con dependencias a libreria HTTP
+   * Constructor para recuperacion de contrasena
    * @param http Libreria HTTP
+   * @param userApiService Referencia Conservicio de Usuarios
    */
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private userApiService: UserApiService
+  ) { }
 
   /**
-   * Funcion de Metodo GET de API de catalogo de cartas
-   * @returns Observable con listado de Items de cartas
+   * Funcion de Metodo GET de API de recuperacion
+   * @returns Observable con listado de Items de recuperacion
    */
-  getAllCards(): Observable&lt;CardItem[]&gt;{
-    return this.http.get&lt;CardItem[]&gt;(this.url);
-  }
-  
-  /**
-   * Funcion para crear cartas en el catalogo
-   * @param card Objeto de nueva Carta
-   * @param callback Funcion para retornar booleano con resultado de la ejecucion
-   */
-  createOrUpdateCardItem(card: CardItem,callback: (result: boolean) &#x3D;&gt; void){
-    this.getAllCards().subscribe(
-      response &#x3D;&gt; {
-        let cardList &#x3D; this.modifyCardItem(card,response);
-        if(cardList.length &#x3D;&#x3D; 0){
-          callback(false)
-          return
-        }
-        return this.editCardsJson(cardList).subscribe(
-          response &#x3D;&gt; {
-            callback(true)
-          },
-          error &#x3D;&gt; {
-            callback(false)
-          }
-        )     
-      },
-      error &#x3D;&gt; {
-        console.error(&#x27;Error a invocar cards : &#x27; + error );
-        callback(false)
-      }
-    );
-  }
-  
-  /**
-   * Funcion con logica para agregar o modificar una carta en catalogo
-   * @param card Carta modificada o nueva
-   * @param cardList Listado de catalogo
-   * @returns booleano de resultado de la funcion
-   */
-  modifyCardItem(card: CardItem, cardList: CardItem[]): CardItem[]{
-    if(card.Id &#x3D;&#x3D;&#x3D; undefined || card.Id &#x3D;&#x3D;&#x3D; 0){
-        const newId &#x3D; cardList.reduce((maxId, card) &#x3D;&gt; {
-            return Math.max(maxId, card.Id);
-        }, 0) + 1;
-        card.Id &#x3D; newId;
-        cardList.push(card);
-        return cardList;
-    }else{
-        const index &#x3D; cardList.findIndex(cardItem &#x3D;&gt; cardItem.Id &#x3D;&#x3D;&#x3D; card.Id);
-        if(index !&#x3D;&#x3D; -1){
-            cardList[index] &#x3D; card;
-            return cardList;
-        }
-    }
-    return [];
+  getRecoveries(): Observable&lt;Recovery[]&gt;{
+    return this.http.get&lt;Recovery[]&gt;(this.url);
   }
 
   /**
-   * Funcion de Metodo POST de API de catalogo de cartas
-   * @param cardList Listado modificado de cartas 
+   * Funcion de Metodo POST de API de recuperacion
+   * @param recoveryList Lista de Recovery con elementos modificados
    * @returns Retorna Observable de llamado Post de API
    */
-  editCardsJson(cardList: CardItem[]): Observable&lt;any&gt;{
-    return this.http.post(this.url,cardList,this.httpOptions);
+  editRecoveriesJson(recoveryList: Recovery[]): Observable&lt;any&gt;{
+    return this.http.post(this.url,recoveryList,this.httpOptions);
   }
-  
+
   /**
-   * Funcion para Obetenr carta de catalogo segun ID
-   * @param cardId Id de carta
-   * @param callback Funcion para retornar Objeto de Carta encontrada
+   * Funcion que genera y almacena un token para recuperacion de contrasena
+   * @param email Email de cliente 
+   * @param callback Funcion que retorna Token generado
    */
-  getCard(cardId: number, callback: (result: CardItem) &#x3D;&gt; void){
-    this.getAllCards().subscribe(
+  createRecovery(email:string, callback: (result: string) &#x3D;&gt; void){
+
+    this.getRecoveries().subscribe(
       response &#x3D;&gt; {
-        let resultCard:CardItem &#x3D; response.find(card &#x3D;&gt; card.Id &#x3D;&#x3D;&#x3D; cardId ) || {} as CardItem;
-        callback(resultCard);
+        this.userApiService.getUsers().subscribe(
+          userResponse &#x3D;&gt;{
+
+            let findUser &#x3D; userResponse.find(user &#x3D;&gt; user.Email &#x3D;&#x3D;&#x3D; email);
+            if(findUser &#x3D;&#x3D; undefined){
+              callback(&#x27;error&#x27;);
+              return;
+            }
+
+            let recovery &#x3D; {} as Recovery;
+            recovery.UserId &#x3D; findUser.id;
+            recovery.date &#x3D; new Date();
+            recovery.token &#x3D; this.generateRandomToken();
+
+            response.push(recovery);
+            this.editRecoveriesJson(response).subscribe(
+              response &#x3D;&gt;{
+                callback(recovery.token);
+              },
+              error &#x3D;&gt; {
+                callback(&#x27;error&#x27;);
+              }
+            );
+
+          },
+          error &#x3D;&gt; {
+            callback(&#x27;error&#x27;);
+              return;
+          }
+        );
       },
       error &#x3D;&gt; {
-        console.error(&#x27;Error a invocar cards : &#x27; + error );
-        callback({} as CardItem);
+        callback(&#x27;&#x27;);
+        return;
       }
     );
+
   }
 
   /**
-   * Funcion para obtener listado de cartas filtratadas
-   * @param category filtro para categoria de cartas
-   * @param search filtro para nombre de cartas
-   * @returns Observable con listado de cartas filtradas
-   */
-  getCardListWithFiltersFetch(category: string, search: string): Observable&lt;CardItem[]&gt; {
-    return this.http.get&lt;CardItem[]&gt;(this.url).pipe(
-      map(data &#x3D;&gt; data.filter(cardItem &#x3D;&gt; {
-
-        if(category !&#x3D;&#x3D; &#x27;&#x27;){
-          return cardItem.CardType.toLowerCase().includes(category.toLowerCase())
-        }
-        
-        if(search !&#x3D;&#x3D; &#x27;&#x27;){
-          return cardItem.CardName.toLowerCase().includes(search.toLowerCase())
-        }
-        return false;
-
-      })
-    ));
+     * Funcion para generar token aleatorio
+     * @returns Token
+     */
+  generateRandomToken(): string {
+    const randomBytes &#x3D; CryptoJS.lib.WordArray.random(16);
+    return randomBytes.toString(CryptoJS.enc.Hex);
   }
 
   /**
-   * Funcion para obtener listado de cartas filtratadas respondeiendo el resultado en una funcion callback
-   * @param category filtro para categoria de cartas
-   * @param search filtro para nombre de cartas
-   * @param callback funcion que restorna listado de cartas filtradas
+   * Funcion para encontrar item de recuperacion segun un token dado
+   * @param token Token de recuperacion
+   * @param callback Funcion que retorna Item de recuperacion de clave
    */
-  getCardListWithFilters(category: string, search: string, callback: (result: CardItem[]) &#x3D;&gt; void) {
-    this.getCardListWithFiltersFetch( category, search ).subscribe(
+  findRecovery(token: string, callback: (result: Recovery) &#x3D;&gt; void) {
+
+    this.getRecoveries().subscribe(
       response &#x3D;&gt; {
-        callback(response);
+        callback(response.find(recovery &#x3D;&gt; recovery.token &#x3D;&#x3D;&#x3D; token) || {} as Recovery);
+      },
+      error &#x3D;&gt; {
+        callback({} as Recovery);
+        return;
       }
     );
+    
+  }
+
+  /**
+   * Funcion para checkear validez de token de recuperacion
+   * @param token Token de recuperacion
+   * @param callback funcion para retornar mensaje de error
+   */
+  checkRecovery(token: string, callback: (result: string) &#x3D;&gt; void) {
+
+    this.findRecovery(token, recovery &#x3D;&gt; {
+      let currentDate &#x3D; new Date();
+
+      if(recovery.UserId &#x3D;&#x3D; undefined){
+        callback(&#x27;error de recuperacion&#x27;);
+        return;
+      }
+
+      const recoverytimestamp &#x3D; new Date(recovery.date).getTime();
+      const currenttimestamp &#x3D; currentDate.getTime();
+      const differenceInMillis &#x3D; Math.abs(currenttimestamp - recoverytimestamp);
+      const differenceInHours &#x3D; differenceInMillis / (1000 * 60 * 60);
+
+      if(differenceInHours &gt; 1){
+        callback(&#x27;token ha expirado&#x27;);
+          return;
+      }
+
+      callback(&#x27;&#x27;);
+      return;
+    });
+
+  }
+
+  /**
+   * Funcion para actualizar contrasena dado un token 
+   * @param token token de recuperacion
+   * @param password nueva contrasena
+   * @param callback funcion para retiornar mensaje de error
+   */
+  updatePassword(token: string, password: string, callback: (result: string) &#x3D;&gt; void) {
+
+    this.findRecovery(token, recovery &#x3D;&gt; {
+      let currentDate &#x3D; new Date();
+
+      if(recovery.UserId &#x3D;&#x3D; undefined){
+        callback(&#x27;error de recuperacion&#x27;);
+        return;
+      }
+
+      const recoverytimestamp &#x3D; new Date(recovery.date).getTime();
+      const currenttimestamp &#x3D; currentDate.getTime();
+      const differenceInMillis &#x3D; Math.abs(currenttimestamp - recoverytimestamp);
+      const differenceInHours &#x3D; differenceInMillis / (1000 * 60 * 60);
+
+      if(differenceInHours &gt; 1){
+        callback(&#x27;token ha expirado&#x27;);
+        return;
+      }
+
+      this.userApiService.getUsers().subscribe(
+        response &#x3D;&gt; {
+          let user: User &#x3D; response.find(user &#x3D;&gt; user.id &#x3D;&#x3D;&#x3D; recovery.UserId ) || {} as User;
+
+          if(user.id &#x3D;&#x3D; undefined){
+            callback(&#x27;error de recuperacion&#x27;);
+            return;
+          }
+
+          user.Password &#x3D; password;
+    
+          this.userApiService.updateUser(user,
+            result &#x3D;&gt; {
+              if (!result) {
+                callback(&#x27;error al actualizar usuario&#x27;);
+                return;
+              }
+              callback(&#x27;&#x27;);
+              return;
+            }
+          );
+    
+        },
+        error &#x3D;&gt; {
+          callback(&#x27;error de sistema, intentelo mas tarde&#x27;);
+          return;
+        }
+      );
+
+    });
+    
   }
 
 }
@@ -1136,7 +1168,7 @@ export class CardsService {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'CardsService.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'RecoveryService.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

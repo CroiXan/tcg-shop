@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PasswordRecoveryComponent } from './password-recovery.component';
 import { ActivatedRoute } from '@angular/router';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('PasswordRecoveryComponent', () => {
   let component: PasswordRecoveryComponent;
@@ -9,7 +10,9 @@ describe('PasswordRecoveryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PasswordRecoveryComponent],
+      imports: [
+        HttpClientTestingModule,
+        PasswordRecoveryComponent],
       providers: [
         {
           provide: ActivatedRoute,

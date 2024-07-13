@@ -6,11 +6,18 @@ import { CartStatus } from '../../enum/cart-status.enum';
 import { CardsService } from './cards.service';
 import { CardItem } from '../../models/carditem.model';
 
+/**
+ * @description
+ * Clase con Funciones de API de manejo de carrito de compras
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingCartApiService {
 
+  /**
+   * Headers para invocacion de API POST
+   */
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -18,21 +25,43 @@ export class ShoppingCartApiService {
     })
   }
 
+  /**
+   * Enpoint de API de Informacion de Carrito de Compras
+   */
   private url = 'https://firebasestorage.googleapis.com/v0/b/mtg-shop-d23a4.appspot.com/o/shopcart.json?alt=media&token=47fa4eaf-983c-4d26-9703-7869d0269d9c';
 
+  /**
+   * Constructor con dependencia a librerias de Catalogo de Cartas y HTTP
+   * @param http Libreria HTTP
+   * @param cardsService Dependencia a API de Catalogo de Cartas
+   */
   constructor(
     private http: HttpClient,
     private cardsService: CardsService
   ) { }
 
+  /**
+   * Funcion de Metodo GET de API de carrito de compras
+   * @returns Observable con listado de carrito de compras
+   */
   getShoppingCart(): Observable<ShoppingCart[]>{
     return this.http.get<ShoppingCart[]>(this.url);
   }
 
+  /**
+   * Funcion de Metodo POST de API de carrito de compras
+   * @param shoppingCartList Listado modificado de carrito de compras
+   * @returns Retorna Observable de llamado Post de API
+   */
   editShoppingCartJson(shoppingCartList: ShoppingCart[]): Observable<any>{
     return this.http.post(this.url,shoppingCartList,this.httpOptions);
   }
 
+  /**
+   * Funcion para crear carrito de compras
+   * @param userId Id de usuario
+   * @param callback Funcion que retorna carrito de compras creado
+   */
   createShoppingcar(userId: number, callback: (result: ShoppingCart) => void) {
     let newShoppingCart: ShoppingCart = {} as ShoppingCart;
 
@@ -66,6 +95,11 @@ export class ShoppingCartApiService {
     
   }
 
+  /**
+   * Funcion para actualizar un carrito de compras
+   * @param updatedShoppingCart carrito de compras modificado
+   * @param callback Funcion que retorna booleano que indica si se realizo la accion
+   */
   updateShoppingCart(updatedShoppingCart: ShoppingCart, callback: (result: boolean) => void){
 
     this.getShoppingCart().subscribe(
@@ -94,6 +128,13 @@ export class ShoppingCartApiService {
 
   }
 
+  /**
+   * Funcion para agregar una carta al carrito de compras
+   * @param userId Id de usuario
+   * @param cardId Id de carta
+   * @param shoppingCartId Id de carrito e compras
+   * @param callback Funcion que retorna carrito de compras actualizado
+   */
   addItemToShoppingCart(userId: number, cardId: number, shoppingCartId: number, callback: (result: [ShoppingCart,boolean]) => void) {
     
     let selectedShoppingCart: ShoppingCart = {} as ShoppingCart;
@@ -146,6 +187,11 @@ export class ShoppingCartApiService {
     
   }
 
+  /**
+   * Funcion que retorna todos los carritos de compra asociado a un usuario
+   * @param userId Id de usuario
+   * @param callback Funcion que retorna listado de carrito de compras resultante
+   */
   getAllShopppingCartsByUser(userId: number, callback: (result: ShoppingCart[]) => void) {
 
     this.getShoppingCart().subscribe(
@@ -159,6 +205,15 @@ export class ShoppingCartApiService {
 
   }
 
+  /**
+   * Funcion auxiliar para anadir cartas al carrito de compras
+   * @param shoppingCartIndex Index de carrito de compras
+   * @param shoppingCartList Listado de carrito de compras
+   * @param selectedShoppingCart Carrito de compras
+   * @param cardId Id de carta para agregar
+   * @param selectedCardItem Carta para agregar
+   * @param callback Funcion que retorna Tupla con carrito de compras actualizado y booleano que indica si se ejecuto la accion
+   */
   addCardToShoppingCart(shoppingCartIndex: number, shoppingCartList: ShoppingCart[],selectedShoppingCart: ShoppingCart, cardId: number, selectedCardItem: CardItem, callback: (result: [ShoppingCart,boolean]) => void){
 
     let cardIndex = -1;

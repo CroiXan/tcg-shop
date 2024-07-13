@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OrderFinishComponent } from './order-finish.component';
 import { ActivatedRoute } from '@angular/router';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('OrderFinishComponent', () => {
   let component: OrderFinishComponent;
@@ -9,7 +10,9 @@ describe('OrderFinishComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [OrderFinishComponent],
+      imports: [
+        HttpClientTestingModule,
+        OrderFinishComponent],
       providers: [
         {
           provide: ActivatedRoute,

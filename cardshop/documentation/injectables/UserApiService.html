@@ -91,7 +91,7 @@
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item">Injectables</li>
-  <li class="breadcrumb-item" >CardsService</li>
+  <li class="breadcrumb-item" >UserApiService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -115,7 +115,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/core/services/api/cards.service.ts</code>
+            <code>src/app/core/services/api/user-api.service.ts</code>
         </p>
 
 
@@ -123,7 +123,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Clase con Funciones de API de recuperacion de contrasena</p>
+                <p>Clase con Funciones de API de manipulacion de usuarios</p>
 
             </p>
 
@@ -161,25 +161,25 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#createOrUpdateCardItem" >createOrUpdateCardItem</a>
+                                <a href="#checkEmail" >checkEmail</a>
                             </li>
                             <li>
-                                <a href="#editCardsJson" >editCardsJson</a>
+                                <a href="#checkEmailApi" >checkEmailApi</a>
                             </li>
                             <li>
-                                <a href="#getAllCards" >getAllCards</a>
+                                <a href="#createUser" >createUser</a>
                             </li>
                             <li>
-                                <a href="#getCard" >getCard</a>
+                                <a href="#editUsersJson" >editUsersJson</a>
                             </li>
                             <li>
-                                <a href="#getCardListWithFilters" >getCardListWithFilters</a>
+                                <a href="#getUserAuth" >getUserAuth</a>
                             </li>
                             <li>
-                                <a href="#getCardListWithFiltersFetch" >getCardListWithFiltersFetch</a>
+                                <a href="#getUsers" >getUsers</a>
                             </li>
                             <li>
-                                <a href="#modifyCardItem" >modifyCardItem</a>
+                                <a href="#updateUser" >updateUser</a>
                             </li>
                         </ul>
                     </td>
@@ -204,7 +204,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/core/services/api/cards.service.ts:28</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/core/services/api/user-api.service.ts:28</a></div>
                             </td>
                         </tr>
 
@@ -258,31 +258,31 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="createOrUpdateCardItem"></a>
+                    <a name="checkEmail"></a>
                     <span class="name">
-                        <span ><b>createOrUpdateCardItem</b></span>
-                        <a href="#createOrUpdateCardItem"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>checkEmail</b></span>
+                        <a href="#checkEmail"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>createOrUpdateCardItem(card: <a href="../interfaces/CardItem.html" target="_self">CardItem</a>, callback: (result: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>) => void)</code>
+<code>checkEmail(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, userList: <a href="../interfaces/User.html" target="_self">User[]</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="49"
-                                    class="link-to-prism">src/app/core/services/api/cards.service.ts:49</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="114"
+                                    class="link-to-prism">src/app/core/services/api/user-api.service.ts:114</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Funcion para crear cartas en el catalogo</p>
+                        <div class="io-description"><p>Funcion para buscar email en el listado de usuarios</p>
 </div>
 
                             <div class="io-description">
@@ -299,9 +299,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>card</td>
+                                                <td>email</td>
                                             <td>
-                                                            <code><a href="../interfaces/CardItem.html" target="_self" >CardItem</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -310,7 +310,98 @@
 
 
                                             <td>
-                                                    <p>Objeto de nueva Carta</p>
+                                                    <p>Email para buscar</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>userList</td>
+                                            <td>
+                                                            <code><a href="../interfaces/User.html" target="_self" >User[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Listado de Usuarios</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>booleano que indica si se encontro el email</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkEmailApi"></a>
+                    <span class="name">
+                        <span ><b>checkEmailApi</b></span>
+                        <a href="#checkEmailApi"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkEmailApi(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, callback: (result: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>) => void)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="123"
+                                    class="link-to-prism">src/app/core/services/api/user-api.service.ts:123</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Funcion que busca email en API de Usuarios</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>email</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Email a buscar</p>
 
                                             </td>
                                         </tr>
@@ -326,7 +417,7 @@
 
 
                                             <td>
-                                                    <p>Funcion para retornar booleano con resultado de la ejecucion</p>
+                                                    <p>Funcion que retorna booleano que indica si se encontro el email</p>
 
                                             </td>
                                         </tr>
@@ -348,31 +439,31 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="editCardsJson"></a>
+                    <a name="createUser"></a>
                     <span class="name">
-                        <span ><b>editCardsJson</b></span>
-                        <a href="#editCardsJson"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>createUser</b></span>
+                        <a href="#createUser"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>editCardsJson(cardList: <a href="../interfaces/CardItem.html" target="_self">CardItem[]</a>)</code>
+<code>createUser(userName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, firstName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, lastName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, password: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, callback: (result: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>) => void)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="102"
-                                    class="link-to-prism">src/app/core/services/api/cards.service.ts:102</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="53"
+                                    class="link-to-prism">src/app/core/services/api/user-api.service.ts:53</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Funcion de Metodo POST de API de catalogo de cartas</p>
+                        <div class="io-description"><p>Funcion para crear Usuario</p>
 </div>
 
                             <div class="io-description">
@@ -389,9 +480,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>cardList</td>
+                                                <td>userName</td>
                                             <td>
-                                                            <code><a href="../interfaces/CardItem.html" target="_self" >CardItem[]</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -400,7 +491,161 @@
 
 
                                             <td>
-                                                    <p>Listado modificado de cartas</p>
+                                                    <p>Nombre de Usuario</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>firstName</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Nombre</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>lastName</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Apellido</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>password</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>contrasena</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>email</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Correo Electronico</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>callback</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Funcion para retornar resultado booleano</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editUsersJson"></a>
+                    <span class="name">
+                        <span ><b>editUsersJson</b></span>
+                        <a href="#editUsersJson"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>editUsersJson(userList: <a href="../interfaces/User.html" target="_self">User[]</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="193"
+                                    class="link-to-prism">src/app/core/services/api/user-api.service.ts:193</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Funcion de Metodo POST de API de Usuarios</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>userList</td>
+                                            <td>
+                                                            <code><a href="../interfaces/User.html" target="_self" >User[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Listado modificado de usuarios</p>
 
                                             </td>
                                         </tr>
@@ -423,16 +668,122 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getAllCards"></a>
+                    <a name="getUserAuth"></a>
                     <span class="name">
-                        <span ><b>getAllCards</b></span>
-                        <a href="#getAllCards"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>getUserAuth</b></span>
+                        <a href="#getUserAuth"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getAllCards()</code>
+<code>getUserAuth(userName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, password: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, callback: (result: <a href="../interfaces/User.html">User</a>) => void)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="140"
+                                    class="link-to-prism">src/app/core/services/api/user-api.service.ts:140</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Funcion que entrega usuario segun el nombre de usuario y contrasena</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>userName</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Nombre de ususario</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>password</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Contrasena</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>callback</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Funcion que retorna objeto Ususario resultante</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUsers"></a>
+                    <span class="name">
+                        <span ><b>getUsers</b></span>
+                        <a href="#getUsers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getUsers()</code>
                 </td>
             </tr>
 
@@ -440,22 +791,22 @@
                     <tr>
                         <td class="col-md-4">
                             <div class="io-line">Defined in <a href="" data-line="40"
-                                    class="link-to-prism">src/app/core/services/api/cards.service.ts:40</a></div>
+                                    class="link-to-prism">src/app/core/services/api/user-api.service.ts:40</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Funcion de Metodo GET de API de catalogo de cartas</p>
+                        <div class="io-description"><p>Funcion de Metodo GET de API de usuarios</p>
 </div>
 
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="../interfaces/CardItem.html" target="_self" >Observable&lt;CardItem[]&gt;</a></code>
+                            <b>Returns : </b>        <code><a href="../interfaces/User.html" target="_self" >Observable&lt;User[]&gt;</a></code>
 
                         </div>
                             <div class="io-description">
-                                <p>Observable con listado de Items de cartas</p>
+                                <p>Observable con listado de usuarios</p>
 
                             </div>
                 </td>
@@ -466,31 +817,31 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getCard"></a>
+                    <a name="updateUser"></a>
                     <span class="name">
-                        <span ><b>getCard</b></span>
-                        <a href="#getCard"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>updateUser</b></span>
+                        <a href="#updateUser"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getCard(cardId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, callback: (result: <a href="../interfaces/CardItem.html">CardItem</a>) => void)</code>
+<code>updateUser(updatedUser: <a href="../interfaces/User.html" target="_self">User</a>, callback: (result: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>) => void)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="111"
-                                    class="link-to-prism">src/app/core/services/api/cards.service.ts:111</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="159"
+                                    class="link-to-prism">src/app/core/services/api/user-api.service.ts:159</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Funcion para Obetenr carta de catalogo segun ID</p>
+                        <div class="io-description"><p>Funcion para actualizar la informacion de usuario</p>
 </div>
 
                             <div class="io-description">
@@ -507,9 +858,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>cardId</td>
+                                                <td>updatedUser</td>
                                             <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                            <code><a href="../interfaces/User.html" target="_self" >User</a></code>
                                             </td>
 
                                             <td>
@@ -518,7 +869,7 @@
 
 
                                             <td>
-                                                    <p>Id de carta</p>
+                                                    <p>Usuario modificado</p>
 
                                             </td>
                                         </tr>
@@ -534,7 +885,7 @@
 
 
                                             <td>
-                                                    <p>Funcion para retornar Objeto de Carta encontrada</p>
+                                                    <p>Funcion que retorna booleano indicando si se logro ejecutar</p>
 
                                             </td>
                                         </tr>
@@ -547,294 +898,6 @@
                         </div>
                             <div class="io-description">
                                 
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getCardListWithFilters"></a>
-                    <span class="name">
-                        <span ><b>getCardListWithFilters</b></span>
-                        <a href="#getCardListWithFilters"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>getCardListWithFilters(category: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, search: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, callback: (result: <a href="../interfaces/CardItem.html">CardItem[]</a>) => void)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="153"
-                                    class="link-to-prism">src/app/core/services/api/cards.service.ts:153</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-description"><p>Funcion para obtener listado de cartas filtratadas respondeiendo el resultado en una funcion callback</p>
-</div>
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                                <td>Description</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>category</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                            <td>
-                                                    <p>filtro para categoria de cartas</p>
-
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                                <td>search</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                            <td>
-                                                    <p>filtro para nombre de cartas</p>
-
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                                <td>callback</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                            <td>
-                                                    <p>funcion que restorna listado de cartas filtradas</p>
-
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getCardListWithFiltersFetch"></a>
-                    <span class="name">
-                        <span ><b>getCardListWithFiltersFetch</b></span>
-                        <a href="#getCardListWithFiltersFetch"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>getCardListWithFiltersFetch(category: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, search: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="130"
-                                    class="link-to-prism">src/app/core/services/api/cards.service.ts:130</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-description"><p>Funcion para obtener listado de cartas filtratadas</p>
-</div>
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                                <td>Description</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>category</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                            <td>
-                                                    <p>filtro para categoria de cartas</p>
-
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                                <td>search</td>
-                                            <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                            <td>
-                                                    <p>filtro para nombre de cartas</p>
-
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="../interfaces/CardItem.html" target="_self" >Observable&lt;CardItem[]&gt;</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                <p>Observable con listado de cartas filtradas</p>
-
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="modifyCardItem"></a>
-                    <span class="name">
-                        <span ><b>modifyCardItem</b></span>
-                        <a href="#modifyCardItem"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>modifyCardItem(card: <a href="../interfaces/CardItem.html" target="_self">CardItem</a>, cardList: <a href="../interfaces/CardItem.html" target="_self">CardItem[]</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="79"
-                                    class="link-to-prism">src/app/core/services/api/cards.service.ts:79</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-description"><p>Funcion con logica para agregar o modificar una carta en catalogo</p>
-</div>
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                                <td>Description</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>card</td>
-                                            <td>
-                                                            <code><a href="../interfaces/CardItem.html" target="_self" >CardItem</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                            <td>
-                                                    <p>Carta modificada o nueva</p>
-
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                                <td>cardList</td>
-                                            <td>
-                                                            <code><a href="../interfaces/CardItem.html" target="_self" >CardItem[]</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                            <td>
-                                                    <p>Listado de catalogo</p>
-
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="../interfaces/CardItem.html" target="_self" >CardItem[]</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                <p>booleano de resultado de la funcion</p>
-
                             </div>
                 </td>
             </tr>
@@ -868,14 +931,14 @@
                         <i>Default value : </i><code>{
     headers: new HttpHeaders({
       &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
-      &#x27;Authorization&#x27;: &#x27;Bearer 832767d2-6c98-4c19-8749-373d73475912&#x27; 
+      &#x27;Authorization&#x27;: &#x27;Bearer a8db4a92-87b9-4210-86e5-4a56a84e17d5&#x27; 
     })
   }</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/core/services/api/cards.service.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/core/services/api/user-api.service.ts:18</a></div>
                         </td>
                     </tr>
 
@@ -908,18 +971,18 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;https://firebasestorage.googleapis.com/v0/b/mtg-shop-d23a4.appspot.com/o/cards.json?alt&#x3D;media&amp;token&#x3D;3ee7efb3-ba94-4a4b-93b4-09b9b7597d35&#x27;</code>
+                        <i>Default value : </i><code>&#x27;https://firebasestorage.googleapis.com/v0/b/mtg-shop-d23a4.appspot.com/o/users.json?alt&#x3D;media&amp;token&#x3D;41e3ea2d-98dd-400d-a6b2-1c4649bc7596&#x27;</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/core/services/api/cards.service.ts:28</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/core/services/api/user-api.service.ts:28</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Enpoint de API de Catalogo de Cartas</p>
+                    <div class="io-description"><p>Enpoint de API de Informacion de usuario</p>
 </div>
                 </td>
             </tr>
@@ -934,17 +997,17 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient, HttpHeaders } from &#x27;@angular/common/http&#x27;;
 import { Injectable } from &#x27;@angular/core&#x27;;
-import { CardItem } from &#x27;../../models/carditem.model&#x27;;
-import { Observable, map } from &#x27;rxjs&#x27;;
+import { User } from &#x27;../../models/user.model&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
 
 /**
  * @description
- * Clase con Funciones de API de recuperacion de contrasena
+ * Clase con Funciones de API de manipulacion de usuarios
  */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
-export class CardsService {
+export class UserApiService {
 
   /**
    * Headers para invocacion de API POST
@@ -952,14 +1015,14 @@ export class CardsService {
   httpOptions &#x3D; {
     headers: new HttpHeaders({
       &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
-      &#x27;Authorization&#x27;: &#x27;Bearer 832767d2-6c98-4c19-8749-373d73475912&#x27; 
+      &#x27;Authorization&#x27;: &#x27;Bearer a8db4a92-87b9-4210-86e5-4a56a84e17d5&#x27; 
     })
   }
 
   /**
-   * Enpoint de API de Catalogo de Cartas
+   * Enpoint de API de Informacion de usuario
    */
-  private url &#x3D; &#x27;https://firebasestorage.googleapis.com/v0/b/mtg-shop-d23a4.appspot.com/o/cards.json?alt&#x3D;media&amp;token&#x3D;3ee7efb3-ba94-4a4b-93b4-09b9b7597d35&#x27;;
+  private url &#x3D; &#x27;https://firebasestorage.googleapis.com/v0/b/mtg-shop-d23a4.appspot.com/o/users.json?alt&#x3D;media&amp;token&#x3D;41e3ea2d-98dd-400d-a6b2-1c4649bc7596&#x27;;
 
   /**
    * Constructor con dependencias a libreria HTTP
@@ -968,128 +1031,164 @@ export class CardsService {
   constructor(private http: HttpClient) { }
 
   /**
-   * Funcion de Metodo GET de API de catalogo de cartas
-   * @returns Observable con listado de Items de cartas
+   * Funcion de Metodo GET de API de usuarios
+   * @returns Observable con listado de usuarios
    */
-  getAllCards(): Observable&lt;CardItem[]&gt;{
-    return this.http.get&lt;CardItem[]&gt;(this.url);
-  }
-  
-  /**
-   * Funcion para crear cartas en el catalogo
-   * @param card Objeto de nueva Carta
-   * @param callback Funcion para retornar booleano con resultado de la ejecucion
-   */
-  createOrUpdateCardItem(card: CardItem,callback: (result: boolean) &#x3D;&gt; void){
-    this.getAllCards().subscribe(
-      response &#x3D;&gt; {
-        let cardList &#x3D; this.modifyCardItem(card,response);
-        if(cardList.length &#x3D;&#x3D; 0){
-          callback(false)
-          return
-        }
-        return this.editCardsJson(cardList).subscribe(
-          response &#x3D;&gt; {
-            callback(true)
-          },
-          error &#x3D;&gt; {
-            callback(false)
-          }
-        )     
-      },
-      error &#x3D;&gt; {
-        console.error(&#x27;Error a invocar cards : &#x27; + error );
-        callback(false)
-      }
-    );
-  }
-  
-  /**
-   * Funcion con logica para agregar o modificar una carta en catalogo
-   * @param card Carta modificada o nueva
-   * @param cardList Listado de catalogo
-   * @returns booleano de resultado de la funcion
-   */
-  modifyCardItem(card: CardItem, cardList: CardItem[]): CardItem[]{
-    if(card.Id &#x3D;&#x3D;&#x3D; undefined || card.Id &#x3D;&#x3D;&#x3D; 0){
-        const newId &#x3D; cardList.reduce((maxId, card) &#x3D;&gt; {
-            return Math.max(maxId, card.Id);
-        }, 0) + 1;
-        card.Id &#x3D; newId;
-        cardList.push(card);
-        return cardList;
-    }else{
-        const index &#x3D; cardList.findIndex(cardItem &#x3D;&gt; cardItem.Id &#x3D;&#x3D;&#x3D; card.Id);
-        if(index !&#x3D;&#x3D; -1){
-            cardList[index] &#x3D; card;
-            return cardList;
-        }
-    }
-    return [];
+  getUsers(): Observable&lt;User[]&gt;{
+    return this.http.get&lt;User[]&gt;(this.url);
   }
 
   /**
-   * Funcion de Metodo POST de API de catalogo de cartas
-   * @param cardList Listado modificado de cartas 
+   * Funcion para crear Usuario
+   * @param userName Nombre de Usuario
+   * @param firstName Nombre
+   * @param lastName Apellido
+   * @param password contrasena
+   * @param email Correo Electronico
+   * @param callback Funcion para retornar resultado booleano
+   */
+  createUser(
+    userName: string, 
+    firstName: string, 
+    lastName: string, 
+    password: string, 
+    email: string,
+    callback: (result: boolean) &#x3D;&gt; void){
+
+      this.getUsers().subscribe(
+        response &#x3D;&gt; {
+          if(response.find(user &#x3D;&gt; user.UserName &#x3D;&#x3D;&#x3D; userName) !&#x3D;&#x3D; undefined){
+            callback(false)
+            return
+          }
+      
+          if(this.checkEmail(email,response)){
+            callback(false)
+            return
+          }
+      
+          let newUser: User &#x3D; {} as User;
+          const newId &#x3D; response.reduce((maxId, user) &#x3D;&gt; {
+              return Math.max(maxId, user.id);
+          }, 0) + 1;
+      
+          newUser.id &#x3D; newId;
+          newUser.UserName &#x3D; userName;
+          newUser.FirstName &#x3D; firstName;
+          newUser.LastName &#x3D; lastName;
+          newUser.Password &#x3D; password;
+          newUser.Email &#x3D; email;
+          newUser.Role &#x3D; &#x27;user&#x27;;
+          newUser.IsActive &#x3D; true;
+      
+          response.push(newUser);
+          this.editUsersJson(response).subscribe(
+            result &#x3D;&gt; {
+              console.log(&#x27;usuario creado&#x27;)
+              callback(true)
+            },
+            error &#x3D;&gt; {
+              console.error(&#x27;error al crear usuarios&#x27;,error)
+              callback(false)
+            }
+          )
+
+        },
+        error &#x3D;&gt; {
+          console.error(&#x27;error al obtener usuarios&#x27;,error)
+          callback(false)
+        }
+      );
+
+  }
+
+  /**
+   * Funcion para buscar email en el listado de usuarios
+   * @param email Email para buscar
+   * @param userList Listado de Usuarios
+   * @returns booleano que indica si se encontro el email
+   */
+  checkEmail(email: string, userList: User[]): boolean{
+    return (userList.find(user &#x3D;&gt; user.Email &#x3D;&#x3D;&#x3D; email) !&#x3D;&#x3D; undefined)
+  }
+
+  /**
+   * Funcion que busca email en API de Usuarios
+   * @param email Email a buscar
+   * @param callback Funcion que retorna booleano que indica si se encontro el email
+   */
+  checkEmailApi(email: string, callback: (result: boolean) &#x3D;&gt; void){
+    this.getUsers().subscribe(
+      response &#x3D;&gt; {
+        callback(this.checkEmail(email,response))
+      },
+      error &#x3D;&gt; {
+        callback(false);
+      }
+    )
+  }
+
+  /**
+   * Funcion que entrega usuario segun el nombre de usuario y contrasena
+   * @param userName Nombre de ususario
+   * @param password Contrasena
+   * @param callback Funcion que retorna objeto Ususario resultante
+   */
+  getUserAuth(
+    userName: string, 
+    password: string,
+    callback: (result: User) &#x3D;&gt; void) {
+      this.getUsers().subscribe(
+        response &#x3D;&gt; {
+          callback(response.find(user &#x3D;&gt; user.UserName &#x3D;&#x3D;&#x3D; userName &amp;&amp; user.Password &#x3D;&#x3D;&#x3D; password) || {} as User)
+        },
+        error &#x3D;&gt; {
+          console.error(&#x27;error al obtener usuarios&#x27;,error)
+        }
+      );
+  }
+
+  /**
+   * Funcion para actualizar la informacion de usuario
+   * @param updatedUser Usuario modificado
+   * @param callback Funcion que retorna booleano indicando si se logro ejecutar 
+   */
+  updateUser(updatedUser: User, callback: (result: boolean) &#x3D;&gt; void) {
+    this.getUsers().subscribe(
+      response &#x3D;&gt; {
+        const index &#x3D; response.findIndex(user &#x3D;&gt; user.id &#x3D;&#x3D;&#x3D; updatedUser.id &amp;&amp; user.UserName &#x3D;&#x3D;&#x3D; updatedUser.UserName);
+        if(index !&#x3D;&#x3D; -1){
+          response[index] &#x3D; updatedUser;
+
+          this.editUsersJson(response).subscribe(
+            response &#x3D;&gt; {
+              callback(true)
+            },
+            error &#x3D;&gt; {
+              callback(false)
+            }
+          );
+          
+        }else{
+          callback(false)
+          return;
+        }
+      },
+      error &#x3D;&gt; {
+        console.error(&#x27;error al obtener usuarios&#x27;,error)
+        callback(false)
+        return;
+      }
+    );
+  }
+
+  /**
+   * Funcion de Metodo POST de API de Usuarios
+   * @param userList Listado modificado de usuarios
    * @returns Retorna Observable de llamado Post de API
    */
-  editCardsJson(cardList: CardItem[]): Observable&lt;any&gt;{
-    return this.http.post(this.url,cardList,this.httpOptions);
-  }
-  
-  /**
-   * Funcion para Obetenr carta de catalogo segun ID
-   * @param cardId Id de carta
-   * @param callback Funcion para retornar Objeto de Carta encontrada
-   */
-  getCard(cardId: number, callback: (result: CardItem) &#x3D;&gt; void){
-    this.getAllCards().subscribe(
-      response &#x3D;&gt; {
-        let resultCard:CardItem &#x3D; response.find(card &#x3D;&gt; card.Id &#x3D;&#x3D;&#x3D; cardId ) || {} as CardItem;
-        callback(resultCard);
-      },
-      error &#x3D;&gt; {
-        console.error(&#x27;Error a invocar cards : &#x27; + error );
-        callback({} as CardItem);
-      }
-    );
-  }
-
-  /**
-   * Funcion para obtener listado de cartas filtratadas
-   * @param category filtro para categoria de cartas
-   * @param search filtro para nombre de cartas
-   * @returns Observable con listado de cartas filtradas
-   */
-  getCardListWithFiltersFetch(category: string, search: string): Observable&lt;CardItem[]&gt; {
-    return this.http.get&lt;CardItem[]&gt;(this.url).pipe(
-      map(data &#x3D;&gt; data.filter(cardItem &#x3D;&gt; {
-
-        if(category !&#x3D;&#x3D; &#x27;&#x27;){
-          return cardItem.CardType.toLowerCase().includes(category.toLowerCase())
-        }
-        
-        if(search !&#x3D;&#x3D; &#x27;&#x27;){
-          return cardItem.CardName.toLowerCase().includes(search.toLowerCase())
-        }
-        return false;
-
-      })
-    ));
-  }
-
-  /**
-   * Funcion para obtener listado de cartas filtratadas respondeiendo el resultado en una funcion callback
-   * @param category filtro para categoria de cartas
-   * @param search filtro para nombre de cartas
-   * @param callback funcion que restorna listado de cartas filtradas
-   */
-  getCardListWithFilters(category: string, search: string, callback: (result: CardItem[]) &#x3D;&gt; void) {
-    this.getCardListWithFiltersFetch( category, search ).subscribe(
-      response &#x3D;&gt; {
-        callback(response);
-      }
-    );
+  editUsersJson(userList: User[]): Observable&lt;any&gt;{
+    return this.http.post(this.url,userList,this.httpOptions);
   }
 
 }
@@ -1136,7 +1235,7 @@ export class CardsService {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'CardsService.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'UserApiService.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

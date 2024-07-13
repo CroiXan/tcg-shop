@@ -118,6 +118,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </div>
                             <ul class="links collapse " ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
                                 <li class="link">
+                                    <a href="injectables/AddressApiService.html" data-type="entity-link" >AddressApiService</a>
+                                </li>
+                                <li class="link">
                                     <a href="injectables/AddressService.html" data-type="entity-link" >AddressService</a>
                                 </li>
                                 <li class="link">
@@ -130,7 +133,16 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="injectables/CardsService.html" data-type="entity-link" >CardsService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="injectables/RecoveryService.html" data-type="entity-link" >RecoveryService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/ShoppingCartApiService.html" data-type="entity-link" >ShoppingCartApiService</a>
+                                </li>
+                                <li class="link">
                                     <a href="injectables/ShoppingCartService.html" data-type="entity-link" >ShoppingCartService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/UserApiService.html" data-type="entity-link" >UserApiService</a>
                                 </li>
                                 <li class="link">
                                     <a href="injectables/UserService.html" data-type="entity-link" >UserService</a>

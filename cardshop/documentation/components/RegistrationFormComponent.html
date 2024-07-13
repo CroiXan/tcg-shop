@@ -269,7 +269,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, router: Router)</code>
+<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, router: Router, userApiService: <a href="../injectables/UserApiService.html" target="_self">UserApiService</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -294,22 +294,6 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                                <tr>
-                                                        <td>userService</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                        <td>
-                                                                <p>Manejo de informacion de usuario</p>
-
-                                                        </td>
-                                                </tr>
                                                 <tr>
                                                         <td>authService</td>
                                                   
@@ -340,6 +324,20 @@
                                                         <td>
                                                                 <p>Manejo de redirecciones</p>
 
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>userApiService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserApiService.html" target="_self" >UserApiService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -620,12 +618,12 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
-import { FormGroup, FormControl, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors, ValidatorFn } from &#x27;@angular/forms&#x27;;
-import { UserService } from &#x27;../core/services/user.service&#x27;;
+import { FormGroup, FormControl, ReactiveFormsModule, Validators } from &#x27;@angular/forms&#x27;;
 import { NgClass, CommonModule} from &#x27;@angular/common&#x27;;
 import { onlyLettersValidator, passwordValidator, samePasswordValidator } from &#x27;../core/validators/validators&#x27;;
 import { AuthService } from &#x27;../core/services/auth.service&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
+import { UserApiService } from &#x27;../core/services/api/user-api.service&#x27;;
 
 /**
  * @description
@@ -655,9 +653,9 @@ export class RegistrationFormComponent {
    * @param router Manejo de redirecciones
    */
   constructor(
-    private userService: UserService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private userApiService: UserApiService
   ){}
 
   /**
@@ -733,20 +731,33 @@ export class RegistrationFormComponent {
    */
   onSubmit(): void {
     if (this.registrationForm.valid) {
-      const result &#x3D; this.userService.createUser(
+      this.userApiService.createUser(
         this.registrationForm.get(&#x27;username&#x27;)?.value,
         this.registrationForm.get(&#x27;firstName&#x27;)?.value,
         this.registrationForm.get(&#x27;lastName&#x27;)?.value,
         this.registrationForm.get(&#x27;password&#x27;)?.value,
-        this.registrationForm.get(&#x27;email&#x27;)?.value
+        this.registrationForm.get(&#x27;email&#x27;)?.value,
+        result &#x3D;&gt; {
+          if(result){
+            alert(&#x27;Se ha registrado con exito&#x27;);
+            this.authService.login(
+              this.registrationForm.get(&#x27;username&#x27;)?.value,
+              this.registrationForm.get(&#x27;password&#x27;)?.value,
+              result &#x3D;&gt; {
+                if (result) {
+                  this.router.navigate([&#x27;/&#x27;]);
+                } else {
+                  alert(&#x27;Error en el ingreso&#x27;);
+                }
+              }
+            );
+            
+          }else{
+            alert(&#x27;El nombre de usuario ya esta en uso&#x27;);
+          }
+        }
       );
-      if(result){
-        alert(&#x27;Se ha registrado con exito&#x27;);
-        this.authService.login(this.registrationForm.get(&#x27;username&#x27;)?.value,this.registrationForm.get(&#x27;password&#x27;)?.value);
-        this.router.navigate([&#x27;/&#x27;]);
-      }else{
-        alert(&#x27;El nombre de usuario ya esta en uso&#x27;);
-      }
+      
     }else{
       alert(&#x27;Vuelva comprobar los campos del formulario&#x27;);
     }

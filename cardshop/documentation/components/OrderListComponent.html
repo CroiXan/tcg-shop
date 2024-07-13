@@ -251,12 +251,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(shoppingCartService: <a href="../injectables/ShoppingCartService.html" target="_self">ShoppingCartService</a>, authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>)</code>
+<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, shoppingCartApiService: <a href="../injectables/ShoppingCartApiService.html" target="_self">ShoppingCartApiService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/order-list/order-list.component.ts:35</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/order-list/order-list.component.ts:36</a></div>
                             </td>
                         </tr>
 
@@ -277,22 +277,6 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>shoppingCartService</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/ShoppingCartService.html" target="_self" >ShoppingCartService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                        <td>
-                                                                <p>Manejo de carrito de compras</p>
-
-                                                        </td>
-                                                </tr>
-                                                <tr>
                                                         <td>authService</td>
                                                   
                                                         <td>
@@ -306,6 +290,20 @@
                                                         <td>
                                                                 <p>Manejo de sesion</p>
 
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>shoppingCartApiService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ShoppingCartApiService.html" target="_self" >ShoppingCartApiService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -346,8 +344,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="85"
-                                    class="link-to-prism">src/app/order-list/order-list.component.ts:85</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/app/order-list/order-list.component.ts:93</a></div>
                         </td>
                     </tr>
 
@@ -421,8 +419,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="70"
-                                    class="link-to-prism">src/app/order-list/order-list.component.ts:70</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="78"
+                                    class="link-to-prism">src/app/order-list/order-list.component.ts:78</a></div>
                         </td>
                     </tr>
 
@@ -496,8 +494,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="50"
-                                    class="link-to-prism">src/app/order-list/order-list.component.ts:50</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">src/app/order-list/order-list.component.ts:51</a></div>
                         </td>
                     </tr>
 
@@ -535,8 +533,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="60"
-                                    class="link-to-prism">src/app/order-list/order-list.component.ts:60</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="68"
+                                    class="link-to-prism">src/app/order-list/order-list.component.ts:68</a></div>
                         </td>
                     </tr>
 
@@ -619,7 +617,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/order-list/order-list.component.ts:35</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/order-list/order-list.component.ts:36</a></div>
                         </td>
                     </tr>
 
@@ -656,7 +654,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/order-list/order-list.component.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/order-list/order-list.component.ts:28</a></div>
                         </td>
                     </tr>
 
@@ -693,7 +691,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/order-list/order-list.component.ts:31</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/order-list/order-list.component.ts:32</a></div>
                         </td>
                     </tr>
 
@@ -719,6 +717,7 @@ import { ShoppingCart } from &#x27;../core/models/shopping-cart.model&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { CardItem } from &#x27;../core/models/carditem.model&#x27;;
 import { OrderDetailComponent } from &#x27;../order-detail/order-detail.component&#x27;;
+import { ShoppingCartApiService } from &#x27;../core/services/api/shopping-cart-api.service&#x27;;
 
 /**
  * @description
@@ -754,8 +753,8 @@ export class OrderListComponent {
    * @param authService Manejo de sesion
    */
   constructor(
-    private shoppingCartService: ShoppingCartService,
-    private authService: AuthService
+    private authService: AuthService,
+    private shoppingCartApiService: ShoppingCartApiService
   ){}
 
   /**
@@ -764,7 +763,14 @@ export class OrderListComponent {
   ngOnInit(): void {
     this.isSelected &#x3D; false;
     const userId &#x3D; this.authService.getUser().id;
-    this.orderList &#x3D; this.shoppingCartService.getAllShopppingCartsByUser(userId);
+    
+    this.shoppingCartApiService.getAllShopppingCartsByUser(
+      userId,
+      result &#x3D;&gt; {
+        this.orderList &#x3D; result
+      }
+    );
+    
   }
 
   /**

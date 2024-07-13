@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RegistrationFormComponent } from './registration-form.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('RegistrationFormComponent', () => {
   let component: RegistrationFormComponent;
@@ -8,7 +9,9 @@ describe('RegistrationFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RegistrationFormComponent]
+      imports: [
+        HttpClientTestingModule,
+        RegistrationFormComponent]
     })
     .compileComponents();
     

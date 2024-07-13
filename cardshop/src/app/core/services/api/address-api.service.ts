@@ -3,11 +3,18 @@ import { Injectable } from '@angular/core';
 import { Address } from '../../models/address.model';
 import { Observable } from 'rxjs';
 
+/**
+ * @description
+ * Clase con Funciones de API de direcciones de usuario
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class AddressApiService {
 
+  /**
+   * Headers para invocacion de API POST
+   */
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -15,18 +22,42 @@ export class AddressApiService {
     })
   }
 
+  /**
+   * Enpoint de API de Informacion de Direcciones
+   */
   private url = 'https://firebasestorage.googleapis.com/v0/b/mtg-shop-d23a4.appspot.com/o/address.json?alt=media&token=177adff0-9ba2-4243-b2f9-00ce0410a300';
 
+  /**
+   * Constructor con dependencias a libreria HTTP
+   * @param http Libreria HTTP
+   */
   constructor(private http: HttpClient) { }
 
+  /**
+   * Funcion de Metodo GET de API de direcciones
+   * @returns Observable con listado de direcciones
+   */
   getAddress(): Observable<Address[]>{
     return this.http.get<Address[]>(this.url);
   }
 
+  /**
+   * Funcion de Metodo POST de API de direcciones
+   * @param addressList Listado modificado de direcciones
+   * @returns Retorna Observable de llamado Post de API
+   */
   editAddressJson(addressList: Address[]): Observable<any>{
     return this.http.post(this.url,addressList,this.httpOptions);
   }
 
+  /**
+   * Funcion para crear una direccion
+   * @param userId Id de usuario
+   * @param name Nombre de direccion
+   * @param number Numero de direccion
+   * @param region Region
+   * @param Commune Comuna
+   */
   createAddress(
     userId: number, 
     name: string, 
@@ -61,6 +92,11 @@ export class AddressApiService {
       
   }
 
+  /**
+   * Funcion para obtener listado de direcciones de un usuario especifico
+   * @param userId Id de usuario
+   * @param callback Funcion que retorna listado de direcciones del usuario
+   */
   getAddressByUser(userId: number, callback: (result: Address[]) => void) {
     this.getAddress().subscribe(
       result => {
